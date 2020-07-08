@@ -9,21 +9,43 @@
 /* Begin PBXBuildFile section */
 		EE51957924A39BD200F71F5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957824A39BD200F71F5C /* AppDelegate.swift */; };
 		EE51957B24A39BD200F71F5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957A24A39BD200F71F5C /* SceneDelegate.swift */; };
-		EE51957D24A39BD200F71F5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957C24A39BD200F71F5C /* ViewController.swift */; };
+		EE51957D24A39BD200F71F5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957C24A39BD200F71F5C /* MainViewController.swift */; };
 		EE51958024A39BD200F71F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE51957E24A39BD200F71F5C /* Main.storyboard */; };
 		EE51958224A39BD500F71F5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE51958124A39BD500F71F5C /* Assets.xcassets */; };
 		EE51958524A39BD500F71F5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE51958324A39BD500F71F5C /* LaunchScreen.storyboard */; };
+		EE51958D24A39C2500F71F5C /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51958C24A39C2500F71F5C /* DateManager.swift */; };
+		EE51958F24A39DBC00F71F5C /* MoneyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51958E24A39DBC00F71F5C /* MoneyCategory.swift */; };
+		EE51959424A3AD0400F71F5C /* Purchases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51959324A3AD0400F71F5C /* Purchases.swift */; };
+		EE51959624A3B40D00F71F5C /* MainNavigationBarIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE51959524A3B40D00F71F5C /* MainNavigationBarIB.xib */; };
+		EE51959924A3CDDB00F71F5C /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */; };
+		EE93DB2C24A7A28A003F01DA /* Valute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE93DB2B24A7A28A003F01DA /* Valute.swift */; };
+		EE93DB3124A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */; };
+		EE93DB3224A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */; };
+		EEF7AB1C24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */; };
+		EEF7AB1D24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */; };
+		EEF813FD24A48C63003C7F0C /* PurchasesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF813FC24A48C63003C7F0C /* PurchasesCategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EE51957524A39BD200F71F5C /* SaveMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE51957824A39BD200F71F5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE51957A24A39BD200F71F5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EE51957C24A39BD200F71F5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EE51957C24A39BD200F71F5C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE51957F24A39BD200F71F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE51958124A39BD500F71F5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE51958424A39BD500F71F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE51958624A39BD500F71F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE51958C24A39C2500F71F5C /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		EE51958E24A39DBC00F71F5C /* MoneyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCategory.swift; sourceTree = "<group>"; };
+		EE51959324A3AD0400F71F5C /* Purchases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchases.swift; sourceTree = "<group>"; };
+		EE51959524A3B40D00F71F5C /* MainNavigationBarIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationBarIB.xib; sourceTree = "<group>"; };
+		EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
+		EE93DB2B24A7A28A003F01DA /* Valute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Valute.swift; sourceTree = "<group>"; };
+		EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasesCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		EEF813FC24A48C63003C7F0C /* PurchasesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesCategory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +80,56 @@
 			children = (
 				EE51957824A39BD200F71F5C /* AppDelegate.swift */,
 				EE51957A24A39BD200F71F5C /* SceneDelegate.swift */,
-				EE51957C24A39BD200F71F5C /* ViewController.swift */,
+				EE51957C24A39BD200F71F5C /* MainViewController.swift */,
+				EE51958C24A39C2500F71F5C /* DateManager.swift */,
+				EE51959024A39F5B00F71F5C /* Models */,
 				EE51957E24A39BD200F71F5C /* Main.storyboard */,
+				EE93DB3324A8FE17003F01DA /* PurchasesCategoryCollectionCell */,
+				EE51959724A3B41C00F71F5C /* MainNavigationControoler */,
 				EE51958124A39BD500F71F5C /* Assets.xcassets */,
+				EEF7AB1E24A4F9AD00FE5694 /* MoneyCategoryCell */,
 				EE51958324A39BD500F71F5C /* LaunchScreen.storyboard */,
 				EE51958624A39BD500F71F5C /* Info.plist */,
 			);
 			path = SaveMoney;
+			sourceTree = "<group>";
+		};
+		EE51959024A39F5B00F71F5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE51958E24A39DBC00F71F5C /* MoneyCategory.swift */,
+				EEF813FC24A48C63003C7F0C /* PurchasesCategory.swift */,
+				EE51959324A3AD0400F71F5C /* Purchases.swift */,
+				EE93DB2B24A7A28A003F01DA /* Valute.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE51959724A3B41C00F71F5C /* MainNavigationControoler */ = {
+			isa = PBXGroup;
+			children = (
+				EE51959524A3B40D00F71F5C /* MainNavigationBarIB.xib */,
+				EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */,
+			);
+			path = MainNavigationControoler;
+			sourceTree = "<group>";
+		};
+		EE93DB3324A8FE17003F01DA /* PurchasesCategoryCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */,
+				EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */,
+			);
+			path = PurchasesCategoryCollectionCell;
+			sourceTree = "<group>";
+		};
+		EEF7AB1E24A4F9AD00FE5694 /* MoneyCategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */,
+				EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */,
+			);
+			path = MoneyCategoryCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +191,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE51958524A39BD500F71F5C /* LaunchScreen.storyboard in Resources */,
+				EEF7AB1D24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib in Resources */,
 				EE51958224A39BD500F71F5C /* Assets.xcassets in Resources */,
+				EE93DB3224A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib in Resources */,
+				EE51959624A3B40D00F71F5C /* MainNavigationBarIB.xib in Resources */,
 				EE51958024A39BD200F71F5C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +206,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE51957D24A39BD200F71F5C /* ViewController.swift in Sources */,
+				EE51959424A3AD0400F71F5C /* Purchases.swift in Sources */,
+				EE51957D24A39BD200F71F5C /* MainViewController.swift in Sources */,
+				EE51958D24A39C2500F71F5C /* DateManager.swift in Sources */,
 				EE51957924A39BD200F71F5C /* AppDelegate.swift in Sources */,
+				EE93DB2C24A7A28A003F01DA /* Valute.swift in Sources */,
+				EE51959924A3CDDB00F71F5C /* MainNavigationBar.swift in Sources */,
+				EE93DB3124A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift in Sources */,
+				EE51958F24A39DBC00F71F5C /* MoneyCategory.swift in Sources */,
+				EEF813FD24A48C63003C7F0C /* PurchasesCategory.swift in Sources */,
 				EE51957B24A39BD200F71F5C /* SceneDelegate.swift in Sources */,
+				EEF7AB1C24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
