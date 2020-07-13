@@ -7,51 +7,32 @@
 //
 
 import Foundation
-
-struct MoneyCategory {
-    let categoryType: MoneyСategoryType
-    var valute: Valute
-    let description: String?
-    var nameForImage: String {
-        categoryType.rawValue
-    }
-}
-
-extension MoneyCategory {
-    static func getMoneyCategoryes() -> [MoneyCategory] {
-        var moneyCategoryes = [MoneyCategory]()
-        MoneyСategoryType.allCases.forEach { (moneyСategoryType)  in
-            switch moneyСategoryType {
-            case .cash:
-                moneyCategoryes.append(MoneyCategory(categoryType: .cash,
-                                                     valute: Valute(money: 0.0, valuteCategory: .ruble),
-                                                     description: nil))
-            case .bankAccount:
-                moneyCategoryes.append(MoneyCategory(categoryType: moneyСategoryType ,
-                                                     valute: Valute(money: 0.0, valuteCategory: .ruble),
-                                                     description: nil))
-            case .totalScore:
-                moneyCategoryes.append(MoneyCategory(categoryType: moneyСategoryType ,
-                                                     valute: Valute(money: 0.0, valuteCategory: .ruble),
-                                                     description: nil))
-            case .marks:
-                moneyCategoryes.append(MoneyCategory(categoryType: moneyСategoryType ,
-                                                     valute: Valute(money: 0.0, valuteCategory: .ruble),
-                                                     description: nil))
-                
-                
-            }
+import RealmSwift
+class MoneyCategory: Object {
+    @objc dynamic var name = ""
+    var income = List<Income>()
+    var moneyCount: Double {
+       var sum = 0.0
+        income.forEach { (income) in
+            sum += income.moneyCount
         }
-        return moneyCategoryes
+        return sum
     }
+    
 }
 
-enum MoneyСategoryType: String, CaseIterable {
-    case cash = "Cash"
-    case bankAccount = "Bank Account"
-    case totalScore  = "Total Score"
-    case marks = "Marks"
+class Income: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var date = Date()
+    @objc dynamic var moneyCount = 0.0
+    @objc dynamic var descriptions: String?
+    
 }
+
+
+
+
+
 
 
 

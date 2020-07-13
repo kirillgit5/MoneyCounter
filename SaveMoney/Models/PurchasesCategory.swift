@@ -7,40 +7,27 @@
 //
 
 import Foundation
-
-struct  PurchasesCategory {
-    let typeOfPurchases: TypeOfPurchases
-    var valute: Valute
-    var nameForImage: String {
-        typeOfPurchases.rawValue
-    }
-    var purchases: [Purchases]
-}
-
-extension PurchasesCategory {
-    static func getPurchasesCategoryes() -> [PurchasesCategory] {
-        var purchasesCategory = [PurchasesCategory]()
-        TypeOfPurchases.allCases.forEach { (typeOfPurchases)  in
-            let category = PurchasesCategory(typeOfPurchases: typeOfPurchases,
-                                             valute: Valute(money: 0.0, valuteCategory: .ruble) ,
-                                             purchases: [Purchases]())
-            purchasesCategory.append(category)
+import RealmSwift
+class PurchasesCategory: Object {
+    @objc dynamic var name = ""
+    var purchases = List<Purchases>()
+    var moneyCount: Double {
+       var sum = 0.0
+        purchases.forEach { (purchases) in
+            sum += purchases.moneyCount
         }
-        return purchasesCategory
+        return sum
     }
 }
 
-
-enum TypeOfPurchases: String, CaseIterable {
-    case food = "Food"
-    case streetFood = "Street Food"
-    case transport = "Transport"
-    case clothing = "Clothing"
-    case entertainment = "Entertainment"
-    case services = "Service"
-    case medicine = "Medicine"
-    case householdProducts = "Household products"
+class Purchases: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var date = Date()
+    @objc dynamic var moneyCount = 0.0
+    @objc dynamic var descriptions: String?
 }
+
+
 
 
 

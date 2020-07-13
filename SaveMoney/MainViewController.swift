@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
+import RealmSwift
 class MainViewController: UIViewController {
     
-    private let addMoneyCategoryCellIdentifier = "addMoneyCategoryCellIdentifier"
-   
+   // MARK: - Private Property
+    var moneyCategories: Results<MoneyCategory>!
+    var purchasesCategories: Results<PurchasesCategory>!
     
     //MARK : - IB Outlets
     @IBOutlet var moneyCategoryCollectionView: UICollectionView!
@@ -26,8 +27,18 @@ class MainViewController: UIViewController {
                                              forCellWithReuseIdentifier: MoneyCategoryCollectionViewCell.identifier)
         moneyCategoryCollectionView.delegate = self
         moneyCategoryCollectionView.dataSource = self
+        purchasesCategoryCollectionView.delegate = self
+        purchasesCategoryCollectionView.dataSource = self
         purchasesCategoryCollectionView.register(PurchasesCategoryCollectionViewCell.nib(),
                                                  forCellWithReuseIdentifier: PurchasesCategoryCollectionViewCell.identifier)
+        moneyCategories = StorageManager.shared.realm.objects(MoneyCategory.self)
+        purchasesCategories = StorageManager.shared.realm.objects(PurchasesCategory.self)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationBar.setBalance(moneyCatigories: moneyCategories)
+        navigationBar.setExpense(purchasesCatigories: purchasesCategories)
     }
 }
 //MARK: - MainNavigationBarDelegate
@@ -63,33 +74,23 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  collectionView == purchasesCategoryCollectionView ? DataManager.shared.purchasesCategory.count + 1 : DataManager.shared.moneyCategoryes.count + 1
+        return collectionView === moneyCategoryCollectionView ? moneyCategories.count : purchasesCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item ==  DataManager.shared.moneyCategoryes.count && collectionView == moneyCategoryCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifire.addMoneyCategoryCellIdentifier.rawValue,                                               for: indexPath)
+        if collectionView === moneyCategoryCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoneyCategoryCollectionViewCell.identifier,
+                                                          for: indexPath) as! MoneyCategoryCollectionViewCell
+            cell.setupCell(moneyCategory: moneyCategories[indexPath.item])
+            return cell
+            
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PurchasesCategoryCollectionViewCell.identifier,
+                                                          for: indexPath) as! PurchasesCategoryCollectionViewCell
+            cell.setupCell(purchasesCategory: purchasesCategories[indexPath.item])
             return cell
         }
-        
-        if indexPath.item == DataManager.shared.purchasesCategory.count && collectionView == purchasesCategoryCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifire.addPurchasesCategoryCollectionView.rawValue,                                           for: indexPath)
-            return cell
-        }
-        
-        if collectionView == purchasesCategoryCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PurchasesCategoryCollectionViewCell.identifier, for: indexPath) as! PurchasesCategoryCollectionViewCell
-            cell.setupCell(image: UIImage(named: DataManager.shared.purchasesCategory[indexPath.item].nameForImage),                                  nameCategory: DataManager.shared.purchasesCategory[indexPath.item].typeOfPurchases.rawValue,
-                           valute: DataManager.shared.purchasesCategory[indexPath.item].valute)
-            return cell
-        }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoneyCategoryCollectionViewCell.identifier, for: indexPath) as! MoneyCategoryCollectionViewCell
-        cell.setupCell(image: UIImage(named: DataManager.shared.moneyCategoryes[indexPath.item].categoryType.rawValue),                               nameCategory: DataManager.shared.moneyCategoryes[indexPath.item].categoryType.rawValue,
-                       valute: DataManager.shared.moneyCategoryes[indexPath.item].valute)
-        return cell
     }
-    
 }
 
 

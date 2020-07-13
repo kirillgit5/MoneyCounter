@@ -32,10 +32,9 @@ class MoneyCategoryCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK : - Public Methods
-    func setupCell(image: UIImage?, nameCategory: String, valute: Valute) {
-        nameCategoryLabel.text = nameCategory
-        moneyCountLabel.text = valute.moneyWithValuteCategory
-        categoryImageView.image = image ?? UIImage(named: "default")!
-        colorView.layer.cornerRadius = colorView.bounds.width/2
+    func setupCell(moneyCategory: MoneyCategory) {
+        nameCategoryLabel.text = moneyCategory.name
+        moneyCountLabel.text = "\(moneyCategory.moneyCount) ₽"
+        categoryImageView.image = UIImage(named: moneyCategory.name) ?? UIImage(named: "default")!
     }
 }

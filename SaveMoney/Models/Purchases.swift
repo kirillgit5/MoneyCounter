@@ -8,12 +8,5 @@
 
 import Foundation
 
-struct Purchases {
-    let category : TypeOfPurchases
-    let cost: Double
-    let name: String
-    let necessity: Int?
-    let date: Date?
-}
 
 
