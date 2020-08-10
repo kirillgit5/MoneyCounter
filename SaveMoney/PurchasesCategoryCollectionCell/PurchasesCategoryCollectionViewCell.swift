@@ -34,8 +34,8 @@ class PurchasesCategoryCollectionViewCell: UICollectionViewCell {
     //MARK : - Public Methods
     func setupCell(purchasesCategory: PurchasesCategory) {
         nameCategoryLabel.text = purchasesCategory.name
-        moneyCountLabel.text =  "\(purchasesCategory.moneyCount) ₽"
         categoryImageView.image = UIImage(named: purchasesCategory.name) ?? UIImage(named: "default")!
+        moneyCountLabel.text =  "\(purchasesCategory.moneyCount) ₽"
         
     }
     

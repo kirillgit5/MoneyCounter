@@ -7,15 +7,30 @@
 //
 
 import UIKit
-
+import RealmSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let config = Realm.Configuration(
+            schemaVersion: 3,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 3) {
+                }
+            })
+        Realm.Configuration.defaultConfiguration = config
+        loadDefaultData()
         return true
+    }
+    
+    // MARK: Private Methods
+    private func loadDefaultData() {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if !launchedBefore {
+            StorageManager.shared.createStandartDataMoneyCategory()
+            StorageManager.shared.createStandartDataPurchasesCategory()
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
     }
 
     // MARK: UISceneSession Lifecycle

@@ -8,13 +8,22 @@
 
 import UIKit
 import RealmSwift
+
+@objc protocol MainNavigationBarDelegate: class {
+    @objc optional func watchBalance()
+    @objc optional func watchExpense()
+    @objc optional func watchPlan()
+    @objc optional func addMoney()
+    @objc optional func addExpense()
+}
+
 @IBDesignable class MainNavigationBar: UINavigationBar {
     
     //MARK: - IB Outlets
     @IBOutlet var contentView: UIView!
     
     @IBOutlet var purseButton: UIButton!
-    @IBOutlet var menuButtton: UIButton!
+    @IBOutlet var addExpenseButtton: UIButton!
     
     @IBOutlet var balanceCountLabel: UILabel!
     @IBOutlet var expensesCountLabel: UILabel!
@@ -51,8 +60,8 @@ import RealmSwift
         delegat?.addMoney?()
     }
     
-    @IBAction func showMenu() {
-        delegat?.showMenu?()
+    @IBAction func addExpense() {
+        delegat?.addExpense?()
     }
     
     // MARK : - Public Methods
@@ -81,10 +90,4 @@ import RealmSwift
     
 }
 
-@objc protocol MainNavigationBarDelegate: class {
-    @objc optional func watchBalance()
-    @objc optional func watchExpense()
-    @objc optional func watchPlan()
-    @objc optional func addMoney()
-    @objc optional func showMenu()
-}
+

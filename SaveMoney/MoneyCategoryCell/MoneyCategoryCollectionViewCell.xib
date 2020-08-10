@@ -28,7 +28,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13414" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-3H-IPV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-3H-IPV">
                                 <rect key="frame" x="0.0" y="91.5" width="110" height="13.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13.5" id="2TE-0I-2rB"/>
@@ -81,6 +81,7 @@
             <connections>
                 <outlet property="categoryImageView" destination="UFW-zM-O2r" id="98K-yI-k8V"/>
                 <outlet property="colorView" destination="adL-0F-Wvp" id="GJY-ZQ-5yZ"/>
+                <outlet property="mainView" destination="MVf-Yj-gqC" id="lbh-Fg-c5V"/>
                 <outlet property="moneyCountLabel" destination="jmI-3H-IPV" id="U7T-OP-o4M"/>
                 <outlet property="nameCategoryLabel" destination="Zwl-fQ-1fu" id="Iak-cm-wO3"/>
             </connections>

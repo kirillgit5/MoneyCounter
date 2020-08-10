@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2972930C9310D2B2FCC3E5D0 /* Pods_SaveMoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673CF28F2CEE3E899DAAB31D /* Pods_SaveMoney.framework */; };
+		EE08EB1524C6EFF600626AEB /* AddMoneyActionNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE08EB1424C6EFF600626AEB /* AddMoneyActionNavigationBar.swift */; };
+		EE3930DC24D98C80001B49D6 /* Extension + Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3930DB24D98C80001B49D6 /* Extension + Double.swift */; };
+		EE40732824CDDE8900F52FE1 /* CalculaterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40732724CDDE8900F52FE1 /* CalculaterScreen.swift */; };
+		EE40732A24CDDEA500F52FE1 /* CalculaterScreenIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE40732924CDDEA500F52FE1 /* CalculaterScreenIB.xib */; };
 		EE51957924A39BD200F71F5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957824A39BD200F71F5C /* AppDelegate.swift */; };
 		EE51957B24A39BD200F71F5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957A24A39BD200F71F5C /* SceneDelegate.swift */; };
 		EE51957D24A39BD200F71F5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957C24A39BD200F71F5C /* MainViewController.swift */; };
@@ -17,18 +21,38 @@
 		EE51958F24A39DBC00F71F5C /* MoneyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51958E24A39DBC00F71F5C /* MoneyCategory.swift */; };
 		EE51959624A3B40D00F71F5C /* MainNavigationBarIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE51959524A3B40D00F71F5C /* MainNavigationBarIB.xib */; };
 		EE51959924A3CDDB00F71F5C /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */; };
+		EE6EB2C724C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6EB2C624C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib */; };
+		EE6EB2CB24C86EDF00409A79 /* CalculateViewIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6EB2CA24C86EDF00409A79 /* CalculateViewIB.xib */; };
 		EE93DB3124A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */; };
 		EE93DB3224A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */; };
+		EECBE07A24DDC04900513DD8 /* DateChooseViewIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECBE07924DDC04900513DD8 /* DateChooseViewIB.xib */; };
+		EECBE07C24DDC46C00513DD8 /* DateChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE07B24DDC46C00513DD8 /* DateChooseView.swift */; };
+		EECBE07F24DEEAD400513DD8 /* Extension + UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE07E24DEEAD400513DD8 /* Extension + UIAlertController.swift */; };
+		EECBE08124DF003900513DD8 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE08024DF003900513DD8 /* DatePickerViewController.swift */; };
+		EECBE08324E05F8A00513DD8 /* DetailCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECBE08224E05F8A00513DD8 /* DetailCategoryTableViewCell.xib */; };
+		EECBE08624E1903A00513DD8 /* DetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE08524E1903A00513DD8 /* DetailCategoryTableViewCell.swift */; };
+		EEF3EA3C24CB22DC00C1B4DF /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF3EA3B24CB22DC00C1B4DF /* CalculateView.swift */; };
 		EEF7AB1C24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */; };
 		EEF7AB1D24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */; };
 		EEF813FD24A48C63003C7F0C /* PurchasesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF813FC24A48C63003C7F0C /* PurchasesCategory.swift */; };
 		EEF81E4124BC74AC00C96B67 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4024BC74AC00C96B67 /* StorageManager.swift */; };
+		EEF81E4624BCAAF500C96B67 /* DetailCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4524BCAAF500C96B67 /* DetailCategoryTableViewController.swift */; };
+		EEF81E4824BCB6ED00C96B67 /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4724BCB6ED00C96B67 /* SortManager.swift */; };
+		EEF81E4A24BF2C9800C96B67 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4924BF2C9800C96B67 /* DateManager.swift */; };
+		EEF81E4F24C0A02A00C96B67 /* AddMoneyActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4E24C0A02A00C96B67 /* AddMoneyActionViewController.swift */; };
+		EEF81E5124C435F600C96B67 /* CreateMoneyActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E5024C435F600C96B67 /* CreateMoneyActionViewController.swift */; };
+		EEF81E5324C4389A00C96B67 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E5224C4389A00C96B67 /* Enums.swift */; };
+		EEF81E5724C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E5624C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D9D56ED2A7D73F2ED84DBAF /* Pods-SaveMoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMoney.release.xcconfig"; path = "Target Support Files/Pods-SaveMoney/Pods-SaveMoney.release.xcconfig"; sourceTree = "<group>"; };
 		673CF28F2CEE3E899DAAB31D /* Pods_SaveMoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaveMoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D24931120901F55B565C193 /* Pods-SaveMoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMoney.debug.xcconfig"; path = "Target Support Files/Pods-SaveMoney/Pods-SaveMoney.debug.xcconfig"; sourceTree = "<group>"; };
+		EE08EB1424C6EFF600626AEB /* AddMoneyActionNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyActionNavigationBar.swift; sourceTree = "<group>"; };
+		EE3930DB24D98C80001B49D6 /* Extension + Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Double.swift"; sourceTree = "<group>"; };
+		EE40732724CDDE8900F52FE1 /* CalculaterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculaterScreen.swift; sourceTree = "<group>"; };
+		EE40732924CDDEA500F52FE1 /* CalculaterScreenIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculaterScreenIB.xib; sourceTree = "<group>"; };
 		EE51957524A39BD200F71F5C /* SaveMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE51957824A39BD200F71F5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE51957A24A39BD200F71F5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,12 +64,28 @@
 		EE51958E24A39DBC00F71F5C /* MoneyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCategory.swift; sourceTree = "<group>"; };
 		EE51959524A3B40D00F71F5C /* MainNavigationBarIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationBarIB.xib; sourceTree = "<group>"; };
 		EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
+		EE6EB2C624C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMoneyActionNavigationBarIB.xib; sourceTree = "<group>"; };
+		EE6EB2CA24C86EDF00409A79 /* CalculateViewIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculateViewIB.xib; sourceTree = "<group>"; };
 		EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasesCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		EECBE07924DDC04900513DD8 /* DateChooseViewIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateChooseViewIB.xib; sourceTree = "<group>"; };
+		EECBE07B24DDC46C00513DD8 /* DateChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateChooseView.swift; sourceTree = "<group>"; };
+		EECBE07E24DEEAD400513DD8 /* Extension + UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIAlertController.swift"; sourceTree = "<group>"; };
+		EECBE08024DF003900513DD8 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		EECBE08224E05F8A00513DD8 /* DetailCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		EECBE08524E1903A00513DD8 /* DetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		EEF3EA3B24CB22DC00C1B4DF /* CalculateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		EEF813FC24A48C63003C7F0C /* PurchasesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesCategory.swift; sourceTree = "<group>"; };
 		EEF81E4024BC74AC00C96B67 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		EEF81E4524BCAAF500C96B67 /* DetailCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryTableViewController.swift; sourceTree = "<group>"; };
+		EEF81E4724BCB6ED00C96B67 /* SortManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortManager.swift; sourceTree = "<group>"; };
+		EEF81E4924BF2C9800C96B67 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		EEF81E4E24C0A02A00C96B67 /* AddMoneyActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyActionViewController.swift; sourceTree = "<group>"; };
+		EEF81E5024C435F600C96B67 /* CreateMoneyActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMoneyActionViewController.swift; sourceTree = "<group>"; };
+		EEF81E5224C4389A00C96B67 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		EEF81E5624C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMoneyCategoryCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +117,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EE08EB1624C6F02200626AEB /* AddMoneyActionNavBar */ = {
+			isa = PBXGroup;
+			children = (
+				EE08EB1424C6EFF600626AEB /* AddMoneyActionNavigationBar.swift */,
+				EE6EB2C624C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib */,
+			);
+			path = AddMoneyActionNavBar;
+			sourceTree = "<group>";
+		};
+		EE40732B24CDDEB600F52FE1 /* CalculateScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EE40732724CDDE8900F52FE1 /* CalculaterScreen.swift */,
+				EE40732924CDDEA500F52FE1 /* CalculaterScreenIB.xib */,
+			);
+			path = CalculateScreen;
+			sourceTree = "<group>";
+		};
 		EE51956C24A39BD200F71F5C = {
 			isa = PBXGroup;
 			children = (
@@ -98,18 +156,26 @@
 		EE51957724A39BD200F71F5C /* SaveMoney */ = {
 			isa = PBXGroup;
 			children = (
+				EECBE08024DF003900513DD8 /* DatePickerViewController.swift */,
 				EE51957824A39BD200F71F5C /* AppDelegate.swift */,
+				EECBE07D24DDC48000513DD8 /* DateChooseView */,
 				EE51957A24A39BD200F71F5C /* SceneDelegate.swift */,
-				EE51957C24A39BD200F71F5C /* MainViewController.swift */,
+				EEF81E4B24C0689400C96B67 /* Managers */,
+				EEF81E4424BCA91600C96B67 /* ViewControllers */,
 				EE51959024A39F5B00F71F5C /* Models */,
 				EE51957E24A39BD200F71F5C /* Main.storyboard */,
+				EE08EB1624C6F02200626AEB /* AddMoneyActionNavBar */,
 				EE93DB3324A8FE17003F01DA /* PurchasesCategoryCollectionCell */,
 				EE51959724A3B41C00F71F5C /* MainNavigationControoler */,
 				EE51958124A39BD500F71F5C /* Assets.xcassets */,
 				EEF7AB1E24A4F9AD00FE5694 /* MoneyCategoryCell */,
 				EE51958324A39BD500F71F5C /* LaunchScreen.storyboard */,
 				EE51958624A39BD500F71F5C /* Info.plist */,
-				EEF81E4024BC74AC00C96B67 /* StorageManager.swift */,
+				EEF81E5224C4389A00C96B67 /* Enums.swift */,
+				EEF3EA3D24CB242200C1B4DF /* Calculate */,
+				EE40732B24CDDEB600F52FE1 /* CalculateScreen */,
+				EECBE08724E192A700513DD8 /* Extensions */,
+				EECBE08424E18FE000513DD8 /* DetailMoneyCategoryCell */,
 			);
 			path = SaveMoney;
 			sourceTree = "<group>";
@@ -141,6 +207,42 @@
 			path = PurchasesCategoryCollectionCell;
 			sourceTree = "<group>";
 		};
+		EECBE07D24DDC48000513DD8 /* DateChooseView */ = {
+			isa = PBXGroup;
+			children = (
+				EECBE07924DDC04900513DD8 /* DateChooseViewIB.xib */,
+				EECBE07B24DDC46C00513DD8 /* DateChooseView.swift */,
+			);
+			path = DateChooseView;
+			sourceTree = "<group>";
+		};
+		EECBE08424E18FE000513DD8 /* DetailMoneyCategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				EECBE08224E05F8A00513DD8 /* DetailCategoryTableViewCell.xib */,
+				EECBE08524E1903A00513DD8 /* DetailCategoryTableViewCell.swift */,
+			);
+			path = DetailMoneyCategoryCell;
+			sourceTree = "<group>";
+		};
+		EECBE08724E192A700513DD8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EE3930DB24D98C80001B49D6 /* Extension + Double.swift */,
+				EECBE07E24DEEAD400513DD8 /* Extension + UIAlertController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EEF3EA3D24CB242200C1B4DF /* Calculate */ = {
+			isa = PBXGroup;
+			children = (
+				EE6EB2CA24C86EDF00409A79 /* CalculateViewIB.xib */,
+				EEF3EA3B24CB22DC00C1B4DF /* CalculateView.swift */,
+			);
+			path = Calculate;
+			sourceTree = "<group>";
+		};
 		EEF7AB1E24A4F9AD00FE5694 /* MoneyCategoryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +250,28 @@
 				EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */,
 			);
 			path = MoneyCategoryCell;
+			sourceTree = "<group>";
+		};
+		EEF81E4424BCA91600C96B67 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE51957C24A39BD200F71F5C /* MainViewController.swift */,
+				EEF81E4E24C0A02A00C96B67 /* AddMoneyActionViewController.swift */,
+				EEF81E4524BCAAF500C96B67 /* DetailCategoryTableViewController.swift */,
+				EEF81E5024C435F600C96B67 /* CreateMoneyActionViewController.swift */,
+				EEF81E5624C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EEF81E4B24C0689400C96B67 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				EEF81E4024BC74AC00C96B67 /* StorageManager.swift */,
+				EEF81E4724BCB6ED00C96B67 /* SortManager.swift */,
+				EEF81E4924BF2C9800C96B67 /* DateManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,11 +334,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6EB2CB24C86EDF00409A79 /* CalculateViewIB.xib in Resources */,
 				EE51958524A39BD500F71F5C /* LaunchScreen.storyboard in Resources */,
 				EEF7AB1D24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib in Resources */,
+				EECBE07A24DDC04900513DD8 /* DateChooseViewIB.xib in Resources */,
 				EE51958224A39BD500F71F5C /* Assets.xcassets in Resources */,
 				EE93DB3224A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib in Resources */,
+				EECBE08324E05F8A00513DD8 /* DetailCategoryTableViewCell.xib in Resources */,
 				EE51959624A3B40D00F71F5C /* MainNavigationBarIB.xib in Resources */,
+				EE40732A24CDDEA500F52FE1 /* CalculaterScreenIB.xib in Resources */,
+				EE6EB2C724C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib in Resources */,
 				EE51958024A39BD200F71F5C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,14 +397,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECBE08624E1903A00513DD8 /* DetailCategoryTableViewCell.swift in Sources */,
 				EE51957D24A39BD200F71F5C /* MainViewController.swift in Sources */,
+				EEF81E4A24BF2C9800C96B67 /* DateManager.swift in Sources */,
 				EE51957924A39BD200F71F5C /* AppDelegate.swift in Sources */,
+				EEF81E5124C435F600C96B67 /* CreateMoneyActionViewController.swift in Sources */,
+				EEF81E4824BCB6ED00C96B67 /* SortManager.swift in Sources */,
 				EE51959924A3CDDB00F71F5C /* MainNavigationBar.swift in Sources */,
 				EEF81E4124BC74AC00C96B67 /* StorageManager.swift in Sources */,
+				EEF81E5324C4389A00C96B67 /* Enums.swift in Sources */,
 				EE93DB3124A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift in Sources */,
+				EECBE07C24DDC46C00513DD8 /* DateChooseView.swift in Sources */,
 				EE51958F24A39DBC00F71F5C /* MoneyCategory.swift in Sources */,
+				EE3930DC24D98C80001B49D6 /* Extension + Double.swift in Sources */,
 				EEF813FD24A48C63003C7F0C /* PurchasesCategory.swift in Sources */,
+				EE40732824CDDE8900F52FE1 /* CalculaterScreen.swift in Sources */,
+				EECBE07F24DEEAD400513DD8 /* Extension + UIAlertController.swift in Sources */,
+				EEF81E4624BCAAF500C96B67 /* DetailCategoryTableViewController.swift in Sources */,
+				EE08EB1524C6EFF600626AEB /* AddMoneyActionNavigationBar.swift in Sources */,
+				EEF3EA3C24CB22DC00C1B4DF /* CalculateView.swift in Sources */,
+				EEF81E4F24C0A02A00C96B67 /* AddMoneyActionViewController.swift in Sources */,
 				EE51957B24A39BD200F71F5C /* SceneDelegate.swift in Sources */,
+				EECBE08124DF003900513DD8 /* DatePickerViewController.swift in Sources */,
+				EEF81E5724C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift in Sources */,
 				EEF7AB1C24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
