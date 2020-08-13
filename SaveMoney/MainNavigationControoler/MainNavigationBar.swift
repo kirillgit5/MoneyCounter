@@ -68,15 +68,15 @@ import RealmSwift
     func setBalance(moneyCatigories: Results<MoneyCategory>) {
         var sum = 0.0
         moneyCatigories.forEach { sum += $0.moneyCount }
-        balanceCountLabel.text = "\(sum) ₽"
+        balanceCountLabel.text = "\(forTrailingZero(temp: sum)) ₽"
     }
     
     func setExpense(purchasesCatigories: Results<PurchasesCategory>) {
         var sum = 0.0
         purchasesCatigories.forEach { sum += $0.moneyCount }
-        expensesCountLabel.text = "\(sum) ₽"
+        expensesCountLabel.text = "\(forTrailingZero(temp: sum)) ₽"
     }
-
+    
     
     //MARK : - Private Methods
     private func commonInit() {
@@ -86,6 +86,11 @@ import RealmSwift
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
+    }
+    
+    private func forTrailingZero(temp: Double) -> String {
+        let tempVar = String(format: "%g", temp)
+        return tempVar
     }
     
 }

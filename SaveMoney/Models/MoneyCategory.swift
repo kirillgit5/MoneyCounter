@@ -8,31 +8,66 @@
 
 import Foundation
 import RealmSwift
-class MoneyCategory: Object {
-    @objc dynamic var name = ""
-    var income = List<Income>()
-    var moneyCount: Double {
-       var sum = 0.0
-        income.forEach { (income) in
-            sum += income.moneyCount
-        }
-        return sum
-    }
-    
+
+class Category: Object {
+     @objc dynamic var name = ""
 }
 
-class Income: Object {
+
+class MoneyAction: Object {
     @objc dynamic var name = ""
     @objc dynamic var date = Date()
     @objc dynamic var moneyCount = 0.0
-    @objc dynamic var descriptions: String?
+}
+
+
+class MoneyCategory: Category {
     
+   var incomes = List<Income>()
+   var purchases = List<Purchases>()
+    
+    var allActions: [MoneyAction] {
+        var actions = [MoneyAction]()
+        incomes.forEach { actions.append($0) }
+        purchases.forEach{ actions.append($0) }
+        return actions
+    }
+    
+    var moneyCount: Double {
+        var moneyCount = 0.0
+        incomes.forEach { (incomes) in
+            moneyCount += incomes.moneyCount
+        }
+        purchases.forEach { (purchases) in
+            moneyCount -= purchases.moneyCount
+        }
+        return moneyCount
+    }
 }
 
 
 
+class PurchasesCategory:  Category {
+    
+  var purchases = List<Purchases>()
+    
+  var moneyCount: Double {
+     var sum = 0.0
+      purchases.forEach { (purchases) in
+          sum += purchases.moneyCount
+      }
+      return sum
+  }
+}
 
 
+class Purchases:  MoneyAction {
+    let purchasesCategory = LinkingObjects(fromType: PurchasesCategory.self, property: "purchases")
+}
+
+class Income: MoneyAction {
+   
+}
 
 
 

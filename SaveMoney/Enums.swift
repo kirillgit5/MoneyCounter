@@ -8,12 +8,13 @@
 
 import Foundation
 
-enum segueIndentifire: String {
+enum SegueIndentifire: String {
     case showDetailCategory
     case addMoneyAction
     case createIncome
     case chooseMoneyCategory
     case createPurchases
+    case editMoneyAction
 }
 
 enum CalculateAction: String {
@@ -51,6 +52,10 @@ enum NumberedMonthsRus : Int {
     case январь = 1, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь
 }
 
+enum WeekDays: Int {
+    case пн = 1, вт, ср, чт, пят, суб, вс
+}
+
 enum MoneyСategoryType: String, CaseIterable {
     case cash = "Cash"
     case bankAccount = "Bank Account"
@@ -68,4 +73,12 @@ enum TypeOfPurchases: String, CaseIterable {
     case services = "Service"
     case medicine = "Medicine"
     case householdProducts = "Household products"
+}
+
+enum ChangeMoneyActionType {
+    case reloadSection
+    case moveSection
+    case moveRow
+    case removeSection
+    case reloadData
 }

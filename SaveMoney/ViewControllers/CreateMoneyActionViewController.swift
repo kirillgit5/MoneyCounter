@@ -8,6 +8,11 @@
 
 import UIKit
 import RealmSwift
+
+protocol UpdateTableViewDateDelegate {
+    func changeIndexPath(date: Date)
+}
+
 class CreateMoneyActionViewController: UIViewController {
     
     // MARK : IB Outlets
@@ -42,6 +47,8 @@ class CreateMoneyActionViewController: UIViewController {
     // MARK : Public Property
     var categoryForAdd: Category!
     var categoryForBuy: MoneyCategory?
+    var editMoneyAction: MoneyAction?
+    var updateTableViewDelegate: UpdateTableViewDateDelegate?
     
     // MARK : Private Property
     private var actionName: String?
@@ -54,7 +61,16 @@ class CreateMoneyActionViewController: UIViewController {
     // MARK : Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNaigationBar()
+        if editMoneyAction != nil {
+            navigationController?.isNavigationBarHidden = true
+            navigationBar.title.text = "Редактирование"
+            navigationBar.setupNavBarSecondType()
+            actionDate = editMoneyAction!.date
+            actionName = editMoneyAction!.name
+            calculateScreen.calculateLabel.text = editMoneyAction!.moneyCount.toString()
+        } else {
+            setupNaigationBarForChoose()
+        }
         navigationBar.delegat = self
         textView.delegate = self
         dateChooseView.delegate = self
@@ -63,14 +79,32 @@ class CreateMoneyActionViewController: UIViewController {
         setupCalculatorViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if editMoneyAction != nil {
+            
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if editMoneyAction != nil {
+            navigationController?.isNavigationBarHidden = false
+        }
+        super.viewWillDisappear(true)
+    }
+    
     // MARK : Private Methods
-    private func setupNaigationBar() {
+    private func setupNaigationBarForChoose() {
         if categoryForBuy != nil {
             navigationBar.title.text = "\(categoryForBuy!.name) -> \(categoryForAdd.name)"
         } else {
             navigationBar.title.text = "Получен доход в \(categoryForAdd.name)"
         }
         navigationBar.setupNavBarSecondType()
+    }
+    
+    private func setupNavigationBarForChange() {
+        
     }
     private func setupCalculatorViews() {
         nameView.delegate = self
@@ -102,11 +136,6 @@ class CreateMoneyActionViewController: UIViewController {
         return persentNumber * number
     }
     
-    private func forTrailingZero(temp: Double) -> String {
-        let tempVar = String(format: "%g", temp)
-        return tempVar
-    }
-    
     private func showAlert(title: String, message: String){
         let alert = UIAlertController(title: title,
                                       message: message,
@@ -127,10 +156,6 @@ class CreateMoneyActionViewController: UIViewController {
         textView.inputAccessoryView = bar
     }
     
-    func saveIncome(name: String, moneyCount: Double , date: Date, category: MoneyCategory) {
-        let income = Income(value: ["name" : name, "date" : date, "moneyCount" : moneyCount])
-        category.incomes.append(income)
-    }
     
     @objc func closeKeyBoard() {
         textView.resignFirstResponder()
@@ -159,18 +184,29 @@ extension CreateMoneyActionViewController: AddMoneyActionNavigationBarDelegate {
     }
     
     func addMoneyCategory() {
+        
         if let text = calculateScreen.calculateLabel.text, !text.isEmpty , let moneyCount = Double(text), let name = actionName, currentAction == .noAction {
-            if categoryForBuy == nil {
+            if editMoneyAction != nil {
+                if !DateManager.shared.isEqualDates(firstDate: actionDate, secondDate: editMoneyAction!.date) {
+                updateTableViewDelegate?.changeIndexPath(date: actionDate)
+                }
+                StorageManager.shared.changeMoneyAction(action: editMoneyAction!, name: name, date: actionDate, moneyCount: moneyCount)
+                navigationController?.popViewController(animated: true)
+                
+            } else if categoryForBuy == nil {
                 guard let moneyCategory = categoryForAdd as? MoneyCategory else { return }
                 let income = Income(value: ["name": name, "date": actionDate, "moneyCount": moneyCount])
                 StorageManager.shared.saveIncomeInMoneyCategory(moneyCategory: moneyCategory, income: income)
+                
             } else {
                 guard let purchasesCategory = categoryForAdd as? PurchasesCategory else { return }
                 guard let moneyCategory = categoryForBuy else { return }
                 let purchases = Purchases(value: ["name": name, "date": actionDate, "moneyCount": moneyCount])
                 StorageManager.shared.savePurchase(purchases: purchases, purchasesCategory: purchasesCategory, moneyCategory: moneyCategory)
             }
+            
             dismiss(animated: true)
+            
         } else {
             actionName == nil ?
                 showAlert(title: "Внимание!", message: "Напишите название \(categoryForBuy == nil ? "дохода" : "покупки")") :
@@ -252,7 +288,7 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
         if let text = calculateScreen.calculateLabel.text, !text.isEmpty , let secondNumber = Double(text) , currentAction != CalculateAction.noAction , let firstNumber = firstNumber {
             switch currentAction {
             case .doAddition:
-                calculateScreen.calculateLabel.text = forTrailingZero(temp:firstNumber + secondNumber)
+                calculateScreen.calculateLabel.text = (firstNumber + secondNumber).toString()
                 self.firstNumber = firstNumber + secondNumber
                 
             case .doDivision:
@@ -261,12 +297,12 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
                     self.firstNumber = 0
                     
                 } else {
-                    calculateScreen.calculateLabel.text = forTrailingZero(temp:firstNumber / secondNumber)
+                    calculateScreen.calculateLabel.text = (firstNumber / secondNumber).toString()
                     self.firstNumber = firstNumber / secondNumber
                 }
                 
             case .doMultiplication:
-                calculateScreen.calculateLabel.text = forTrailingZero(temp:firstNumber * secondNumber)
+                calculateScreen.calculateLabel.text = (firstNumber * secondNumber).toString()
                 self.firstNumber = firstNumber * secondNumber
                 
             case .doSubtraction:
@@ -274,11 +310,11 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
                     calculateScreen.calculateLabel.text = ""
                     self.firstNumber = 0
                 } else {
-                    calculateScreen.calculateLabel.text = forTrailingZero(temp:firstNumber - secondNumber)
+                    calculateScreen.calculateLabel.text = (firstNumber - secondNumber).toString()
                     self.firstNumber = firstNumber - secondNumber
                 }
             case .doPersent:
-                calculateScreen.calculateLabel.text = "\(forTrailingZero(temp: calculatePercentageOfTheNumber(number: secondNumber)))"
+                calculateScreen.calculateLabel.text =  calculatePercentageOfTheNumber(number: secondNumber).toString()
                 self.firstNumber = calculatePercentageOfTheNumber(number: secondNumber)
                 
             default:
@@ -303,7 +339,8 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
     func writeActionName() {
         calculateView.isHidden = true
         textView.isHidden  = false
-        self.textView.becomeFirstResponder()
+        textView.becomeFirstResponder()
+        textView.text = actionName
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
             self.textView.frame.origin.y = self.calculateScreen.frame.maxY + 8
@@ -335,5 +372,7 @@ extension CreateMoneyActionViewController: DateChooseViewDelegate {
         alert.show(animated: true, vibrate: false, viewController: self)
     }
 }
+
+
 
 

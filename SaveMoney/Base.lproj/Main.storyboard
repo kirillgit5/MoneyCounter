@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -211,26 +211,19 @@
         <scene sceneID="dNv-oy-jh7">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="RJQ-pS-fCU" customClass="DetailCategoryTableViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zm4-n8-uIc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zm4-n8-uIc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Z6A-Dh-PFo">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z6A-Dh-PFo" id="qL9-8B-DFz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="RJQ-pS-fCU" id="OGT-KO-F5L"/>
                             <outlet property="delegate" destination="RJQ-pS-fCU" id="hzP-28-LVI"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Sd6-fV-BbF"/>
+                    <connections>
+                        <segue destination="CYf-oW-9tj" kind="show" identifier="editMoneyAction" id="Bi1-sf-ABT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISR-il-Te2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -263,20 +256,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJr-aS-KQ3" customClass="AddMoneyActionNavigationBar" customModule="SaveMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="63"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tp-En-C2b">
-                                <rect key="frame" x="0.0" y="242" width="414" height="620"/>
+                                <rect key="frame" x="0.0" y="286" width="414" height="576"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1OR-yj-jEv">
-                                        <rect key="frame" x="4" y="5" width="406" height="574"/>
+                                        <rect key="frame" x="4" y="5" width="406" height="530"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cEY-K9-6oy">
-                                                <rect key="frame" x="0.0" y="0.0" width="406" height="113.33333333333333"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="406" height="104.33333333333333"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFf-gK-aZ9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="113.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="в"/>
@@ -285,7 +278,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq7-rY-heP" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="113.33333333333333"/>
+                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="AC"/>
@@ -294,7 +287,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1X-3c-s2e" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="113.33333333333333"/>
+                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="%"/>
@@ -303,7 +296,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-J7-iU9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="113.33333333333333"/>
+                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="+"/>
@@ -314,10 +307,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SKo-GI-jwy">
-                                                <rect key="frame" x="0.0" y="115.33333333333331" width="406" height="113"/>
+                                                <rect key="frame" x="0.0" y="106.33333333333331" width="406" height="104.66666666666669"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATv-W1-X1j" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="113"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.66666666666667"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
@@ -325,7 +318,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMf-K1-BeL" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="113"/>
+                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.66666666666667"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="2"/>
@@ -333,7 +326,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejZ-5c-G7t" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="113"/>
+                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.66666666666667"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="3"/>
@@ -341,7 +334,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnW-bN-GuP" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="113"/>
+                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.66666666666667"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="-"/>
@@ -352,10 +345,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HX1-1G-PLR">
-                                                <rect key="frame" x="0.0" y="230.33333333333334" width="406" height="113.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="213.00000000000003" width="406" height="104.33333333333334"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NI1-xz-Cj7" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="113.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="4"/>
@@ -363,7 +356,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLW-6X-zGq" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="113.33333333333333"/>
+                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="5"/>
@@ -371,7 +364,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1d-S5-aDJ" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="113.33333333333333"/>
+                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="6"/>
@@ -379,7 +372,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xaf-q0-Dpp" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="113.33333333333333"/>
+                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="×"/>
@@ -390,10 +383,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="N00-xG-bqp">
-                                                <rect key="frame" x="0.0" y="345.66666666666663" width="406" height="113"/>
+                                                <rect key="frame" x="0.0" y="319.33333333333337" width="406" height="104.33333333333331"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-XO-Iho" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="113"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="7"/>
@@ -401,7 +394,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfM-4z-2dT" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="113"/>
+                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="8"/>
@@ -409,7 +402,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEf-hN-hzD" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="113"/>
+                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="9"/>
@@ -417,7 +410,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfG-HS-XE9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="113"/>
+                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="÷"/>
@@ -428,10 +421,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="F7e-zD-vqo">
-                                                <rect key="frame" x="0.0" y="460.66666666666657" width="406" height="113.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="425.66666666666663" width="406" height="104.33333333333337"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wp-Tc-A7D" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="113.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value=","/>
@@ -439,7 +432,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-YD-2QN" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="113.33333333333333"/>
+                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="0"/>
@@ -447,7 +440,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfY-6O-gzF" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="113.33333333333333"/>
+                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="⌫"/>
@@ -455,7 +448,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo8-pw-e57" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="113.33333333333333"/>
+                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="="/>
@@ -468,14 +461,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nio-RB-YIN">
-                                        <rect key="frame" x="0.0" y="579" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="535" width="414" height="1"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="TBo-LS-f7Q"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWn-Vm-kES" customClass="DateChooseView" customModule="SaveMoney" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="580" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="536" width="414" height="40"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Smf-xw-ktO"/>
@@ -497,11 +490,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqN-sQ-05D" customClass="CalculaterScreen" customModule="SaveMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="107" width="414" height="135"/>
+                                <rect key="frame" x="0.0" y="151" width="414" height="135"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21c-BZ-1dB">
-                                <rect key="frame" x="4" y="422" width="406" height="221"/>
+                                <rect key="frame" x="4" y="466" width="406" height="221"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -529,7 +522,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U1c-AZ-Bd3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jCR-9R-0d4">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="jCR-9R-0d4">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="add" id="rOb-MY-qGv">
                             <connections>
                                 <action selector="createMoneyAction:" destination="CYf-oW-9tj" id="9R2-ax-gZh"/>
@@ -588,7 +581,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MKg-6s-iwX"/>
+        <segue reference="Bi1-sf-ABT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="64" height="64"/>

@@ -52,7 +52,7 @@ class ChooseMoneyCategoryCollectionViewController: UIViewController {
 // MARK : CollectionViewDelegate
 extension ChooseMoneyCategoryCollectionViewController  : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: segueIndentifire.createPurchases.rawValue, sender: nil)
+        performSegue(withIdentifier: SegueIndentifire.createPurchases.rawValue, sender: nil)
     }
 }
 

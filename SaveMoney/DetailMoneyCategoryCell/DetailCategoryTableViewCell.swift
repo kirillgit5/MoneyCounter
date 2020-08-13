@@ -8,31 +8,39 @@
 
 import UIKit
 import RealmSwift
+
 class DetailCategoryTableViewCell: UITableViewCell {
     
     static let identifier = "DetailCategoryTableViewCell"
-    
     static func nib() -> UINib {
         return UINib(nibName: "DetailCategoryTableViewCell",
                      bundle: nil)
     }
     
-    @IBOutlet var mainView: UIView!
+    @IBOutlet var colorView: UIView!
     @IBOutlet var categoryImageView: UIImageView!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var nameActionLabel: UILabel!
     
-    func setCell(action: MoneyAction) {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutIfNeeded()
+        colorView.layer.cornerRadius = colorView.frame.width/2
+    }
+    
+    func setupCellForMoneyCategory(action: MoneyAction) {
         nameActionLabel.text = action.name
-        amountLabel.text = "\(action.moneyCount)"
         if action is Income {
-            amountLabel.textColor = .green
+            amountLabel.textColor = .systemGreen
             categoryImageView.image = UIImage(named: "purse")
+            amountLabel.text = "+ \(action.moneyCount.toString()) ₽"
+            colorView.backgroundColor = .systemYellow
         } else {
             guard let action = action as? Purchases, let categoryName = action.purchasesCategory.first?.name else { return }
             amountLabel.textColor = .systemRed
+            colorView.backgroundColor = .systemGreen
             categoryImageView.image = UIImage(named: categoryName)
+            amountLabel.text = "- \(action.moneyCount.toString()) ₽"
         }
     }
-    
 }

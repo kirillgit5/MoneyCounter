@@ -14,25 +14,26 @@ class SortManager {
     private init() {}
     
     // MARK: - Public Methods
-    func sortIncomesByDate( incomes:  List<Income>) -> [[MoneyAction]] {
-        let incomsSort = incomes.sorted { $0.date < $1.date }
+    func sortMoneyActionsByDate( moneyActions:  [MoneyAction]) -> [[MoneyAction]] {
+        let actionsSort = moneyActions.sorted { $0.date > $1.date }
         let calendar = Calendar.current
-        var sortedIncoms = [[MoneyAction]]()
-        var incomsGroup = [MoneyAction]()
-        var lastDate = incomsSort.first?.date
-        for incom in incomsSort {
-            let currentDate = incom.date
-            let difference = calendar.dateComponents([.year, .month, .day], from: lastDate!, to: currentDate)
-            if difference.year! > 0 || difference.month! > 0 || difference.day! > 0 {
+        var sortedActions = [[MoneyAction]]()
+        var actionsGroup = [MoneyAction]()
+        guard let date = actionsSort.first?.date else { return sortedActions }
+        var lastDate = calendar.startOfDay(for: date)
+        for action in actionsSort {
+            let currentDate = calendar.startOfDay(for: action.date)
+            let difference = calendar.dateComponents([.year, .month, .day], from: currentDate, to: lastDate)
+            if difference.day! != 0 || difference.month! != 0 || difference.year != 0 {
                 lastDate = currentDate
-                sortedIncoms.append(incomsGroup)
-                incomsGroup = [incom]
+                sortedActions.append(actionsGroup)
+                actionsGroup = [action]
             } else {
-                incomsGroup.append(incom)
+                actionsGroup.append(action)
             }
         }
-        sortedIncoms.append(incomsGroup)
-        return sortedIncoms
+        sortedActions.append(actionsGroup)
+        return sortedActions
     }
     
     func sortPurshasesByDate( purshase: List<Purchases>) -> [[MoneyAction]] {
@@ -53,7 +54,7 @@ class SortManager {
                 purchasesGroup.append(incom)
             }
         }
-        print(sortedPurchases.reversed())
+        sortedPurchases.append(purchasesGroup)
         return sortedPurchases.reversed()
     }
 }

@@ -26,7 +26,7 @@ class AddMoneyActionViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIndentifire.createIncome.rawValue {
+        if segue.identifier == SegueIndentifire.createIncome.rawValue {
             guard let indexPath = categoryCollectionView.indexPathsForSelectedItems?.first else { return }
             let createVC = segue.destination as! CreateMoneyActionViewController
             createVC.categoryForAdd = categories[indexPath.item]
@@ -73,10 +73,10 @@ extension AddMoneyActionViewController: UICollectionViewDataSource {
 extension AddMoneyActionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if categories[indexPath.item] is PurchasesCategory {
-            performSegue(withIdentifier: segueIndentifire.chooseMoneyCategory.rawValue, sender: nil)
+            performSegue(withIdentifier: SegueIndentifire.chooseMoneyCategory.rawValue, sender: nil)
             
         } else {
-            performSegue(withIdentifier: segueIndentifire.createIncome.rawValue, sender: nil)
+            performSegue(withIdentifier: SegueIndentifire.createIncome.rawValue, sender: nil)
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 extension Double {
     func toString() -> String {
-        var tempVar = String(format: "%g", self)
+        let tempVar = String(format: "%g", self)
         return tempVar
     }
 }

@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueIndentifire.addMoneyAction.rawValue {
+        if segue.identifier == SegueIndentifire.addMoneyAction.rawValue {
             guard let navController = segue.destination as? UINavigationController else { return }
             guard let addVC = navController.topViewController as? AddMoneyActionViewController else { return }
             if let moneyCategory = sender as?  [MoneyCategory] {
@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
             }
             
         }
-        if segue.identifier == segueIndentifire.showDetailCategory.rawValue {
+        if segue.identifier == SegueIndentifire.showDetailCategory.rawValue {
             guard let collectionView = sender as? UICollectionView else { return }
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
             let navController = segue.destination as! UINavigationController
@@ -81,10 +81,10 @@ extension MainViewController: MainNavigationBarDelegate {
         print("watchPlan")
     }
     func addMoney() {
-        performSegue(withIdentifier: segueIndentifire.addMoneyAction.rawValue, sender:Array(moneyCategories))
+        performSegue(withIdentifier: SegueIndentifire.addMoneyAction.rawValue, sender:Array(moneyCategories))
     }
     func addExpense() {
-        performSegue(withIdentifier: segueIndentifire.addMoneyAction.rawValue , sender: Array(purchasesCategories))
+        performSegue(withIdentifier: SegueIndentifire.addMoneyAction.rawValue , sender: Array(purchasesCategories))
     }
 }
 
@@ -101,9 +101,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == moneyCategoryCollectionView {
-            performSegue(withIdentifier: segueIndentifire.showDetailCategory.rawValue, sender: moneyCategoryCollectionView)
+            performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: moneyCategoryCollectionView)
         } else {
-            performSegue(withIdentifier: segueIndentifire.showDetailCategory.rawValue, sender: purchasesCategoryCollectionView)
+            performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: purchasesCategoryCollectionView)
         }
     }
 }

@@ -36,7 +36,7 @@ class MoneyCategoryCollectionViewCell: UICollectionViewCell {
     func setupCell(category: Category) {
         if let moneyCategory = category as? MoneyCategory {
         nameCategoryLabel.text = moneyCategory.name
-        moneyCountLabel.text = "\(moneyCategory.moneyCount) ₽"
+            moneyCountLabel.text = "\(moneyCategory.moneyCount.toString()) ₽"
         categoryImageView.image = UIImage(named: moneyCategory.name) ?? UIImage(named: "default")!
             if moneyCategory.moneyCount < 0 {
                 moneyCountLabel.textColor = .systemRed
@@ -45,7 +45,7 @@ class MoneyCategoryCollectionViewCell: UICollectionViewCell {
             }
         } else if let purchasesCategory = category as?  PurchasesCategory {
             nameCategoryLabel.text = purchasesCategory.name
-            moneyCountLabel.text = "\(purchasesCategory.moneyCount) ₽"
+            moneyCountLabel.text = "\(purchasesCategory.moneyCount.toString()) ₽"
             categoryImageView.image = UIImage(named: purchasesCategory.name) ?? UIImage(named: "default")!
             mainView.backgroundColor = .white
             colorView.backgroundColor = .systemGreen
@@ -63,9 +63,10 @@ class MoneyCategoryCollectionViewCell: UICollectionViewCell {
         nameCategoryLabel.text = moneyCategory.name
         categoryImageView.image = UIImage(named: moneyCategory.name) ?? UIImage(named: "default")!
         mainView.backgroundColor = .white
-        moneyCountLabel.text = "\(moneyCategory.moneyCount) ₽"
+        moneyCountLabel.text = "\(moneyCategory.moneyCount.toString()) ₽"
         if moneyCategory.moneyCount < 0 {
             moneyCountLabel.textColor = .systemRed
         }
     }
 }
+

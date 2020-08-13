@@ -23,14 +23,17 @@
 		EE51959924A3CDDB00F71F5C /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */; };
 		EE6EB2C724C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6EB2C624C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib */; };
 		EE6EB2CB24C86EDF00409A79 /* CalculateViewIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6EB2CA24C86EDF00409A79 /* CalculateViewIB.xib */; };
+		EE7EB15824E3193600A10D5D /* DetailPurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EB15624E3193600A10D5D /* DetailPurchasesTableViewCell.swift */; };
+		EE7EB15924E3193600A10D5D /* DetailPurchasesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE7EB15724E3193600A10D5D /* DetailPurchasesTableViewCell.xib */; };
 		EE93DB3124A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */; };
 		EE93DB3224A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */; };
 		EECBE07A24DDC04900513DD8 /* DateChooseViewIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECBE07924DDC04900513DD8 /* DateChooseViewIB.xib */; };
 		EECBE07C24DDC46C00513DD8 /* DateChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE07B24DDC46C00513DD8 /* DateChooseView.swift */; };
 		EECBE07F24DEEAD400513DD8 /* Extension + UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE07E24DEEAD400513DD8 /* Extension + UIAlertController.swift */; };
 		EECBE08124DF003900513DD8 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE08024DF003900513DD8 /* DatePickerViewController.swift */; };
-		EECBE08324E05F8A00513DD8 /* DetailCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECBE08224E05F8A00513DD8 /* DetailCategoryTableViewCell.xib */; };
-		EECBE08624E1903A00513DD8 /* DetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE08524E1903A00513DD8 /* DetailCategoryTableViewCell.swift */; };
+		EECBE08A24E1ABFB00513DD8 /* DetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE08824E1ABFB00513DD8 /* DetailCategoryTableViewCell.swift */; };
+		EECBE08B24E1ABFB00513DD8 /* DetailCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECBE08924E1ABFB00513DD8 /* DetailCategoryTableViewCell.xib */; };
+		EECBE08D24E1C34700513DD8 /* DetailCategoryFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECBE08C24E1C34700513DD8 /* DetailCategoryFooter.swift */; };
 		EEF3EA3C24CB22DC00C1B4DF /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF3EA3B24CB22DC00C1B4DF /* CalculateView.swift */; };
 		EEF7AB1C24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */; };
 		EEF7AB1D24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */; };
@@ -66,14 +69,17 @@
 		EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
 		EE6EB2C624C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMoneyActionNavigationBarIB.xib; sourceTree = "<group>"; };
 		EE6EB2CA24C86EDF00409A79 /* CalculateViewIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculateViewIB.xib; sourceTree = "<group>"; };
+		EE7EB15624E3193600A10D5D /* DetailPurchasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPurchasesTableViewCell.swift; sourceTree = "<group>"; };
+		EE7EB15724E3193600A10D5D /* DetailPurchasesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPurchasesTableViewCell.xib; sourceTree = "<group>"; };
 		EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasesCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		EECBE07924DDC04900513DD8 /* DateChooseViewIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateChooseViewIB.xib; sourceTree = "<group>"; };
 		EECBE07B24DDC46C00513DD8 /* DateChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateChooseView.swift; sourceTree = "<group>"; };
 		EECBE07E24DEEAD400513DD8 /* Extension + UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIAlertController.swift"; sourceTree = "<group>"; };
 		EECBE08024DF003900513DD8 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
-		EECBE08224E05F8A00513DD8 /* DetailCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCategoryTableViewCell.xib; sourceTree = "<group>"; };
-		EECBE08524E1903A00513DD8 /* DetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		EECBE08824E1ABFB00513DD8 /* DetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		EECBE08924E1ABFB00513DD8 /* DetailCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		EECBE08C24E1C34700513DD8 /* DetailCategoryFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryFooter.swift; sourceTree = "<group>"; };
 		EEF3EA3B24CB22DC00C1B4DF /* CalculateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -176,6 +182,8 @@
 				EE40732B24CDDEB600F52FE1 /* CalculateScreen */,
 				EECBE08724E192A700513DD8 /* Extensions */,
 				EECBE08424E18FE000513DD8 /* DetailMoneyCategoryCell */,
+				EECBE08C24E1C34700513DD8 /* DetailCategoryFooter.swift */,
+				EE7EB15A24E31D3C00A10D5D /* DetailPurchasesTableViewCell */,
 			);
 			path = SaveMoney;
 			sourceTree = "<group>";
@@ -196,6 +204,15 @@
 				EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */,
 			);
 			path = MainNavigationControoler;
+			sourceTree = "<group>";
+		};
+		EE7EB15A24E31D3C00A10D5D /* DetailPurchasesTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE7EB15724E3193600A10D5D /* DetailPurchasesTableViewCell.xib */,
+				EE7EB15624E3193600A10D5D /* DetailPurchasesTableViewCell.swift */,
+			);
+			path = DetailPurchasesTableViewCell;
 			sourceTree = "<group>";
 		};
 		EE93DB3324A8FE17003F01DA /* PurchasesCategoryCollectionCell */ = {
@@ -219,8 +236,8 @@
 		EECBE08424E18FE000513DD8 /* DetailMoneyCategoryCell */ = {
 			isa = PBXGroup;
 			children = (
-				EECBE08224E05F8A00513DD8 /* DetailCategoryTableViewCell.xib */,
-				EECBE08524E1903A00513DD8 /* DetailCategoryTableViewCell.swift */,
+				EECBE08824E1ABFB00513DD8 /* DetailCategoryTableViewCell.swift */,
+				EECBE08924E1ABFB00513DD8 /* DetailCategoryTableViewCell.xib */,
 			);
 			path = DetailMoneyCategoryCell;
 			sourceTree = "<group>";
@@ -336,11 +353,12 @@
 			files = (
 				EE6EB2CB24C86EDF00409A79 /* CalculateViewIB.xib in Resources */,
 				EE51958524A39BD500F71F5C /* LaunchScreen.storyboard in Resources */,
+				EECBE08B24E1ABFB00513DD8 /* DetailCategoryTableViewCell.xib in Resources */,
 				EEF7AB1D24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib in Resources */,
 				EECBE07A24DDC04900513DD8 /* DateChooseViewIB.xib in Resources */,
 				EE51958224A39BD500F71F5C /* Assets.xcassets in Resources */,
+				EE7EB15924E3193600A10D5D /* DetailPurchasesTableViewCell.xib in Resources */,
 				EE93DB3224A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib in Resources */,
-				EECBE08324E05F8A00513DD8 /* DetailCategoryTableViewCell.xib in Resources */,
 				EE51959624A3B40D00F71F5C /* MainNavigationBarIB.xib in Resources */,
 				EE40732A24CDDEA500F52FE1 /* CalculaterScreenIB.xib in Resources */,
 				EE6EB2C724C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib in Resources */,
@@ -397,7 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EECBE08624E1903A00513DD8 /* DetailCategoryTableViewCell.swift in Sources */,
+				EECBE08A24E1ABFB00513DD8 /* DetailCategoryTableViewCell.swift in Sources */,
 				EE51957D24A39BD200F71F5C /* MainViewController.swift in Sources */,
 				EEF81E4A24BF2C9800C96B67 /* DateManager.swift in Sources */,
 				EE51957924A39BD200F71F5C /* AppDelegate.swift in Sources */,
@@ -408,6 +426,7 @@
 				EEF81E5324C4389A00C96B67 /* Enums.swift in Sources */,
 				EE93DB3124A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift in Sources */,
 				EECBE07C24DDC46C00513DD8 /* DateChooseView.swift in Sources */,
+				EECBE08D24E1C34700513DD8 /* DetailCategoryFooter.swift in Sources */,
 				EE51958F24A39DBC00F71F5C /* MoneyCategory.swift in Sources */,
 				EE3930DC24D98C80001B49D6 /* Extension + Double.swift in Sources */,
 				EEF813FD24A48C63003C7F0C /* PurchasesCategory.swift in Sources */,
@@ -421,6 +440,7 @@
 				EECBE08124DF003900513DD8 /* DatePickerViewController.swift in Sources */,
 				EEF81E5724C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift in Sources */,
 				EEF7AB1C24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift in Sources */,
+				EE7EB15824E3193600A10D5D /* DetailPurchasesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

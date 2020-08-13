@@ -57,11 +57,33 @@ class StorageManager {
         }
     }
     
+    func delete(action: MoneyAction) {
+        do {
+            try realm.write {
+                realm.delete(action)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func changeMoneyAction(action: MoneyAction, name: String, date: Date, moneyCount: Double) {
+        do {
+            try realm.write {
+                action.name = name
+                action.date = date
+                action.moneyCount = moneyCount
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     
     func createStandartDataMoneyCategory() {
         let mc1 = MoneyCategory(value: ["name": "Cash"])
         let mc2 = MoneyCategory(value: ["name": "Bank Account"])
-        var mc3 = MoneyCategory(value: ["name": "Marks"])
+        let mc3 = MoneyCategory(value: ["name": "Marks"])
         save(moneyCategory: mc1,mc2,mc3)
     }
     
