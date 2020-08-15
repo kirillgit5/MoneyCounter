@@ -53,7 +53,7 @@ enum NumberedMonthsRus : Int {
 }
 
 enum WeekDays: Int {
-    case пн = 1, вт, ср, чт, пят, суб, вс
+    case  вс = 1, пон, вт, ср, чт, пят, суб
 }
 
 enum MoneyСategoryType: String, CaseIterable {
@@ -80,5 +80,6 @@ enum ChangeMoneyActionType {
     case moveSection
     case moveRow
     case removeSection
-    case reloadData
+    case noAction
+    case createSection
 }

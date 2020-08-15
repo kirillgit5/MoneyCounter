@@ -187,12 +187,12 @@ extension CreateMoneyActionViewController: AddMoneyActionNavigationBarDelegate {
         
         if let text = calculateScreen.calculateLabel.text, !text.isEmpty , let moneyCount = Double(text), let name = actionName, currentAction == .noAction {
             if editMoneyAction != nil {
-                if !DateManager.shared.isEqualDates(firstDate: actionDate, secondDate: editMoneyAction!.date) {
-                updateTableViewDelegate?.changeIndexPath(date: actionDate)
-                }
-                StorageManager.shared.changeMoneyAction(action: editMoneyAction!, name: name, date: actionDate, moneyCount: moneyCount)
-                navigationController?.popViewController(animated: true)
                 
+                if editMoneyAction!.name != actionName || editMoneyAction!.moneyCount != moneyCount || !DateManager.shared.isEqualDates(firstDate: editMoneyAction!.date, secondDate: actionDate) {
+                    updateTableViewDelegate?.changeIndexPath(date:  actionDate)
+                    StorageManager.shared.changeMoneyAction(action: editMoneyAction!, name: name, date: actionDate, moneyCount: moneyCount)
+                }
+                navigationController?.popViewController(animated: true)
             } else if categoryForBuy == nil {
                 guard let moneyCategory = categoryForAdd as? MoneyCategory else { return }
                 let income = Income(value: ["name": name, "date": actionDate, "moneyCount": moneyCount])

@@ -35,26 +35,4 @@ class SortManager {
         sortedActions.append(actionsGroup)
         return sortedActions
     }
-    
-    func sortPurshasesByDate( purshase: List<Purchases>) -> [[MoneyAction]] {
-        let purshaseSort = purshase
-        let calendar = Calendar.current
-        var sortedPurchases = [[MoneyAction]]()
-        var purchasesGroup = [MoneyAction]()
-        var lastDate = purshaseSort.first?.date
-        for incom in purshaseSort {
-            let currentDate = incom.date
-            let difference = calendar.dateComponents([.year, .month, .day], from: lastDate!, to: currentDate)
-            if difference.year! > 0 || difference.month! > 0 || difference.day! > 0 {
-                lastDate = currentDate
-                purchasesGroup.reverse()
-                sortedPurchases.append(purchasesGroup)
-                purchasesGroup = [incom]
-            } else {
-                purchasesGroup.append(incom)
-            }
-        }
-        sortedPurchases.append(purchasesGroup)
-        return sortedPurchases.reversed()
-    }
 }

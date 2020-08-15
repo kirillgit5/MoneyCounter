@@ -27,7 +27,8 @@ class DetailCategoryTableViewController: UITableViewController {
         return dates
     }
     
-    private var changeMoneyActionType = ChangeMoneyActionType.reloadSection
+    private var newIndexPath: IndexPath?
+    private var changeMoneyActionType = ChangeMoneyActionType.noAction
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class DetailCategoryTableViewController: UITableViewController {
         if let moneyCategory = category as? MoneyCategory {
             sortedMoneyAction = SortManager.shared.sortMoneyActionsByDate(moneyActions: moneyCategory.allActions)
         } else if let purchasesCategory = category as? PurchasesCategory {
-            sortedMoneyAction = SortManager.shared.sortPurshasesByDate(purshase: purchasesCategory.purchases)
+            sortedMoneyAction = SortManager.shared.sortMoneyActionsByDate(moneyActions: Array(purchasesCategory.purchases))
         }
         tableView.register(DetailCategoryFooter.self, forHeaderFooterViewReuseIdentifier: DetailCategoryFooter.identifier)
         if category is MoneyCategory {
@@ -45,42 +46,86 @@ class DetailCategoryTableViewController: UITableViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         guard let indexPath = editIndexPath else { return }
         let newDate = sortedMoneyAction[indexPath.section][indexPath.row].date
+        let indexSetForOldSection = IndexSet(arrayLiteral: indexPath.section)
         
-        print(changeMoneyActionType)
         switch changeMoneyActionType {
         case .moveSection:
+            
             if let newSectionIndex = searchNewIndexForSection(date: newDate) {
-                let actions = sortedMoneyAction[indexPath.section]
+                let action = sortedMoneyAction[indexPath.section]
                 sortedMoneyAction.remove(at: indexPath.section)
-                sortedMoneyAction.insert(actions, at: newSectionIndex)
-                tableView.moveSection(indexPath.section, toSection: newSectionIndex)
+                sortedMoneyAction.insert(action, at: newSectionIndex)
                 let indexSet = IndexSet(arrayLiteral: newSectionIndex)
+                tableView.moveSection(indexPath.section, toSection: newSectionIndex)
+                tableView.beginUpdates()
                 tableView.reloadSections(indexSet, with: .automatic)
+                tableView.endUpdates()
+            } else {
+                reloadData()
             }
         case .moveRow:
-             let action = sortedMoneyAction[indexPath.section][indexPath.row]
-             sortedMoneyAction[indexPath.section].remove(at: indexPath.row)
+            let action = sortedMoneyAction[indexPath.section][indexPath.row]
+            sortedMoneyAction[indexPath.section].remove(at: indexPath.row)
             if var newIndexPath = searchNewIndexPathForRow(date: newDate) {
                 sortedMoneyAction[newIndexPath.section].insert(action, at: newIndexPath.item)
                 newIndexPath.item -= 1
+                let indexSetForNewSection = IndexSet(arrayLiteral: newIndexPath.section)
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                tableView.reloadSections(indexSetForNewSection, with: .automatic)
+                tableView.reloadSections(indexSetForOldSection, with: .automatic)
                 tableView.endUpdates()
+            } else {
+                reloadData()
             }
         case .removeSection:
-            print("removeSection")
+            if  newIndexPath != nil  {
+                let action = sortedMoneyAction[indexPath.section][indexPath.row]
+                sortedMoneyAction[newIndexPath!.section].insert(action, at: newIndexPath!.row)
+                sortedMoneyAction.remove(at: indexPath.section)
+                newIndexPath!.item -= 1
+                let indexSetForNewSection = IndexSet(arrayLiteral: newIndexPath!.section)
+                tableView.beginUpdates()
+                tableView.reloadSections(indexSetForNewSection, with: .automatic)
+                tableView.deleteSections(indexSetForOldSection, with: .automatic)
+                tableView.endUpdates()
+                newIndexPath = nil
+            } else {
+                reloadData()
+            }
+            
         case .reloadSection:
-            let indexSet = IndexSet(arrayLiteral: indexPath.section)
-            tableView.reloadSections(indexSet, with: .automatic)
-        case .reloadData:
+            tableView.beginUpdates()
+            tableView.reloadSections(indexSetForOldSection, with: .automatic)
+            tableView.endUpdates()
+            
+        case .noAction:
             break
+        case .createSection:
+            let action = sortedMoneyAction[indexPath.section][indexPath.row]
+            sortedMoneyAction[indexPath.section].remove(at: indexPath.row)
+            if let index = searchNewIndexForSection(date: newDate) {
+                sortedMoneyAction.insert([action], at: index)
+                
+                let indexSetForNewSection = IndexSet(arrayLiteral: index)
+                let indexSetForOldSection = IndexSet(arrayLiteral: indexPath.section)
+                
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.insertSections(indexSetForNewSection, with: .automatic)
+                tableView.reloadSections(indexSetForOldSection, with: .automatic)
+                tableView.endUpdates()
+            } else {
+                reloadData()
+            }
         }
+        changeMoneyActionType = .noAction
         editIndexPath = nil
     }
     
@@ -141,18 +186,19 @@ class DetailCategoryTableViewController: UITableViewController {
             guard let self = self else { return }
             StorageManager.shared.delete(action: self.sortedMoneyAction[indexPath.section][indexPath.row])
             self.sortedMoneyAction[indexPath.section].remove(at: indexPath.row)
-            tableView.beginUpdates()
             if self.sortedMoneyAction[indexPath.section].isEmpty {
                 let indexSet = IndexSet(arrayLiteral: indexPath.section)
-                tableView.deleteSections(indexSet, with: .automatic)
                 self.sortedMoneyAction.remove(at: indexPath.section)
+                tableView.beginUpdates()
+                tableView.deleteSections(indexSet, with: .automatic)
+                tableView.endUpdates()
             } else {
                 let indexSet = IndexSet(arrayLiteral: indexPath.section)
+                tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.reloadSections(indexSet, with: .automatic)
+                tableView.endUpdates()
             }
-            tableView.endUpdates()
-            
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -184,13 +230,33 @@ class DetailCategoryTableViewController: UITableViewController {
         return index
     }
     
+    private func searchNewIndexForRow(date: Date) -> Int? {
+        guard let indexPath = editIndexPath else { return nil }
+        var dates = allDates
+        dates.remove(at: indexPath.section)
+        dates.append(date)
+        dates.sort{ $0 > $1 }
+        guard let index = dates.firstIndex(of: date) else { return nil }
+        return index
+    }
+    
     private func searchNewIndexPathForRow(date: Date) -> IndexPath? {
         guard  let section = DateManager.shared.firstIndex(dates: allDates, date: date) else { return nil }
-        let dates = sortedMoneyAction[section].map { $0.date }
-        guard let item = DateManager.shared.firstIndex(dates: dates, date: date) else { return nil }
+        var dates = sortedMoneyAction[section].map { $0.date }
+        dates.append(date)
+        dates.sort { $0 > $1 }
+        guard let item = dates.firstIndex(of: date) else { return nil }
         return IndexPath(item: item, section: section)
     }
     
+    private func reloadData() {
+        if let moneyCategory = category as? MoneyCategory {
+            sortedMoneyAction = SortManager.shared.sortMoneyActionsByDate(moneyActions: moneyCategory.allActions)
+        } else if let purchasesCategory = category as? PurchasesCategory {
+            sortedMoneyAction = SortManager.shared.sortMoneyActionsByDate(moneyActions: Array(purchasesCategory.purchases))
+        }
+        tableView.reloadData()
+    }
     // MARK : Selector
     @objc func back() {
         dismiss(animated: true)
@@ -201,13 +267,19 @@ extension DetailCategoryTableViewController: UpdateTableViewDateDelegate {
     
     func changeIndexPath(date: Date) {
         guard let indexPath = editIndexPath else { return }
-        if DateManager.shared.isDatesContainsDate(dates: allDates, date: date)  {
+        if  !DateManager.shared.isEqualDates(firstDate: sortedMoneyAction[indexPath.section][indexPath.row].date, secondDate: date) && DateManager.shared.isDatesContainsDate(dates: allDates, date: date)  {
             changeMoneyActionType = sortedMoneyAction[indexPath.section].count == 1 ? .removeSection : .moveRow
-        } else if let index = searchNewIndexForSection(date: date), index - indexPath.section != 0 {
+            if changeMoneyActionType == .removeSection {
+                newIndexPath = searchNewIndexPathForRow(date: date)
+            }
+        } else if sortedMoneyAction[indexPath.section].count == 1, let index = searchNewIndexForRow(date: date), index - indexPath.section != 0 {
             changeMoneyActionType = .moveSection
+        } else if sortedMoneyAction[indexPath.section].count > 1 && !DateManager.shared.isEqualDates(firstDate: sortedMoneyAction[indexPath.section][indexPath.row].date, secondDate: date) {
+            changeMoneyActionType = .createSection
         } else {
             changeMoneyActionType = .reloadSection
         }
     }
 }
+
 
