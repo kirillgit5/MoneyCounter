@@ -67,6 +67,7 @@ extension AddMoneyActionViewController: UICollectionViewDataSource {
         cell.setupForAddMoneyCategoryViewController(category: categories[indexPath.item])
         return cell
     }
+    
 }
 
 //MARK : CollectionViewDelegate

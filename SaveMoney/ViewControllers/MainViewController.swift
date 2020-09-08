@@ -10,16 +10,18 @@ import UIKit
 import RealmSwift
 class MainViewController: UIViewController {
     
-    // MARK: - Private Property
-    var moneyCategories: Results<MoneyCategory>!
-    var purchasesCategories: Results<PurchasesCategory>!
-    
-    //MARK : - IB Outlets
+    //MARK: - IB Outlets
     @IBOutlet var moneyCategoryCollectionView: UICollectionView!
     @IBOutlet var navigationBar: MainNavigationBar!
     @IBOutlet var purchasesCategoryCollectionView: UICollectionView!
     
+    // MARK: - Private Property
+    private var moneyCategories: Results<MoneyCategory>!
+    private var purchasesCategories: Results<PurchasesCategory>!
+    private let addMoneyCategoryCellIdentifire = "addMoneyCategory"
+    private let addPurchasesCategoryCellIdentifire = "addPurchasesCategory"
     
+    //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.delegat = self
@@ -54,8 +56,13 @@ class MainViewController: UIViewController {
                 addVC.categories = sender as! [PurchasesCategory]
             }
             
-        }
-        if segue.identifier == SegueIndentifire.showDetailCategory.rawValue {
+        } else  if segue.identifier == SegueIndentifire.detailAllCategories.rawValue {
+            guard let categoryType = sender as? CategoriesType else { return }
+            guard let navController = segue.destination as? UINavigationController else { return }
+            guard let addVC = navController.topViewController as? DetailAllCategoriesTableViewController else { return }
+            addVC.categoriesType = categoryType
+            
+        } else if segue.identifier == SegueIndentifire.showDetailCategory.rawValue {
             guard let collectionView = sender as? UICollectionView else { return }
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
             let navController = segue.destination as! UINavigationController
@@ -65,20 +72,28 @@ class MainViewController: UIViewController {
             } else {
                 detailCategoryVC.category = purchasesCategories[indexPath.item]
             }
-            
+        } else if segue.identifier == SegueIndentifire.addCategory.rawValue {
+            guard let collectionView = sender as? UICollectionView else { return }
+            let createCategoryVC = segue.destination as! CreateCategoryViewController
+            if collectionView === moneyCategoryCollectionView {
+                createCategoryVC.categoriesType  = .moneyCategory
+            } else {
+                createCategoryVC.categoriesType = .purchasesCategory
+            }
         }
     }
 }
+
 //MARK: - MainNavigationBarDelegate
 extension MainViewController: MainNavigationBarDelegate {
     func watchBalance() {
-        print("watchBalanceStatistic")
+        performSegue(withIdentifier: SegueIndentifire.detailAllCategories.rawValue, sender: CategoriesType.moneyCategory)
     }
     func watchExpense() {
-        print("watchExpenseStatistic")
+        performSegue(withIdentifier: SegueIndentifire.detailAllCategories.rawValue, sender: CategoriesType.purchasesCategory)
     }
     func watchPlan() {
-        print("watchPlan")
+//        performSegue(withIdentifier: SegueIndentifire.showTaskList.rawValue, sender: nil)
     }
     func addMoney() {
         performSegue(withIdentifier: SegueIndentifire.addMoneyAction.rawValue, sender:Array(moneyCategories))
@@ -88,12 +103,12 @@ extension MainViewController: MainNavigationBarDelegate {
     }
 }
 
-//MARK : - UICollectionViewDelegate
+//MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     
 }
 
-//MARK : - UICollectionFlowDelegate
+//MARK: - UICollectionFlowDelegate
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: (moneyCategoryCollectionView.bounds.width - 30)/3, height: (moneyCategoryCollectionView.bounds.width - 30)/3)
@@ -101,29 +116,49 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == moneyCategoryCollectionView {
-            performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: moneyCategoryCollectionView)
+            if indexPath.row < moneyCategories.count {
+                performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: moneyCategoryCollectionView)
+            } else {
+                performSegue(withIdentifier: SegueIndentifire.addCategory.rawValue, sender: moneyCategoryCollectionView)
+            }
         } else {
-            performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: purchasesCategoryCollectionView)
+            if indexPath.row < purchasesCategories.count {
+                performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: purchasesCategoryCollectionView)
+            } else {
+                performSegue(withIdentifier: SegueIndentifire.addCategory.rawValue, sender: purchasesCategoryCollectionView)
+            }
         }
     }
 }
+
+//MARK: - extension UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView === moneyCategoryCollectionView ? moneyCategories.count : purchasesCategories.count
+        return collectionView === moneyCategoryCollectionView ? moneyCategories.count + 1 : purchasesCategories.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === moneyCategoryCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoneyCategoryCollectionViewCell.identifier,
-                                                          for: indexPath) as! MoneyCategoryCollectionViewCell
-            cell.setupCell(category: moneyCategories[indexPath.item])
-            return cell
+            if indexPath.row < moneyCategories.count {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoneyCategoryCollectionViewCell.identifier,
+                                                              for: indexPath) as! MoneyCategoryCollectionViewCell
+                cell.setupCell(category: moneyCategories[indexPath.item])
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addMoneyCategoryCellIdentifire, for: indexPath)
+                return cell
+            }
             
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoneyCategoryCollectionViewCell.identifier,
-                                                          for: indexPath) as! MoneyCategoryCollectionViewCell
-            cell.setupCell(category: purchasesCategories[indexPath.item])
-            return cell
+            if indexPath.row < purchasesCategories.count {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoneyCategoryCollectionViewCell.identifier,
+                                                              for: indexPath) as! MoneyCategoryCollectionViewCell
+                cell.setupCell(category: purchasesCategories[indexPath.item])
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addPurchasesCategoryCellIdentifire, for: indexPath)
+                return cell
+            }
         }
     }
 }

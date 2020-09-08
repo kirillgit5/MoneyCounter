@@ -1,40 +1,222 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Create Category View Controller-->
+        <scene sceneID="t9l-hL-etQ">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="7Il-To-ed4" customClass="CreateCategoryViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aoB-PT-JQ2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEW-XG-cVx">
+                                <rect key="frame" x="272" y="6" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="J1I-X9-Fb0"/>
+                                    <constraint firstAttribute="width" secondItem="UEW-XG-cVx" secondAttribute="height" multiplier="1:1" id="ozW-4E-TfW"/>
+                                </constraints>
+                                <state key="normal" image="add"/>
+                                <connections>
+                                    <action selector="addCategory" destination="7Il-To-ed4" eventType="touchUpInside" id="4Ia-dF-cJl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAn-wE-Tpz">
+                                <rect key="frame" x="8" y="6" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="D0G-IC-pEu"/>
+                                    <constraint firstAttribute="width" secondItem="nAn-wE-Tpz" secondAttribute="height" multiplier="1:1" id="Ny4-Op-Q6D"/>
+                                </constraints>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="cancel" destination="7Il-To-ed4" eventType="touchUpInside" id="KNa-yb-ecZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="qbD-5C-trX">
+                                <rect key="frame" x="16" y="86" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите название" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F4c-ik-v1V">
+                                <rect key="frame" x="8" y="247" width="304" height="24.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxh-aP-uPS">
+                                <rect key="frame" x="8" y="281.5" width="304" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="aWl-ae-lKr"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите сумму" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rnF-u3-Kep">
+                                <rect key="frame" x="8" y="292.5" width="304" height="24.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nj9-4i-shW">
+                                <rect key="frame" x="8" y="236" width="304" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="WHi-Ga-jFl"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hU-32-VMX">
+                                <rect key="frame" x="130" y="136" width="60" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLn-AR-8nf">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <connections>
+                                            <action selector="chooseIconForCategoryName" destination="7Il-To-ed4" eventType="touchUpInside" id="SrS-6R-g4F"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Entertainment" translatesAutoresizingMaskIntoConstraints="NO" id="Msn-9b-Chx">
+                                        <rect key="frame" x="20" y="20" width="20" height="20"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5hU-32-VMX" secondAttribute="height" multiplier="1:1" id="HYJ-Ws-UgR"/>
+                                    <constraint firstItem="Msn-9b-Chx" firstAttribute="top" secondItem="5hU-32-VMX" secondAttribute="top" constant="20" id="ax0-4a-2he"/>
+                                    <constraint firstAttribute="bottom" secondItem="Msn-9b-Chx" secondAttribute="bottom" constant="20" id="cpQ-LB-QIb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Msn-9b-Chx" secondAttribute="trailing" constant="20" id="eOe-WQ-CxP"/>
+                                    <constraint firstAttribute="trailing" secondItem="CLn-AR-8nf" secondAttribute="trailing" id="nbm-jQ-6S8"/>
+                                    <constraint firstItem="CLn-AR-8nf" firstAttribute="leading" secondItem="5hU-32-VMX" secondAttribute="leading" id="ndv-Lu-CCu"/>
+                                    <constraint firstAttribute="bottom" secondItem="CLn-AR-8nf" secondAttribute="bottom" id="niK-jk-Qz2"/>
+                                    <constraint firstItem="CLn-AR-8nf" firstAttribute="top" secondItem="5hU-32-VMX" secondAttribute="top" id="sm0-Z5-niZ"/>
+                                    <constraint firstItem="Msn-9b-Chx" firstAttribute="leading" secondItem="5hU-32-VMX" secondAttribute="leading" constant="20" id="xpZ-SJ-tmK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5hU-32-VMX" firstAttribute="height" secondItem="aoB-PT-JQ2" secondAttribute="height" multiplier="0.105634" id="2dJ-BC-SNJ"/>
+                            <constraint firstItem="5hU-32-VMX" firstAttribute="top" secondItem="qbD-5C-trX" secondAttribute="bottom" constant="20" id="3bw-DJ-qU1"/>
+                            <constraint firstItem="hPa-g7-CdF" firstAttribute="trailing" secondItem="qbD-5C-trX" secondAttribute="trailing" constant="16" id="4mp-nz-9cp"/>
+                            <constraint firstItem="Nj9-4i-shW" firstAttribute="top" secondItem="5hU-32-VMX" secondAttribute="bottom" constant="40" id="6K7-Q8-AXk"/>
+                            <constraint firstItem="UEW-XG-cVx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nAn-wE-Tpz" secondAttribute="trailing" constant="8" symbolic="YES" id="DUI-my-qKt"/>
+                            <constraint firstItem="nAn-wE-Tpz" firstAttribute="top" secondItem="hPa-g7-CdF" secondAttribute="top" constant="6" id="PFv-rA-quU"/>
+                            <constraint firstItem="rnF-u3-Kep" firstAttribute="leading" secondItem="hPa-g7-CdF" secondAttribute="leading" constant="8" id="RiT-nY-7ME"/>
+                            <constraint firstItem="hPa-g7-CdF" firstAttribute="trailing" secondItem="Nj9-4i-shW" secondAttribute="trailing" constant="8" id="SnO-ck-PaL"/>
+                            <constraint firstItem="qbD-5C-trX" firstAttribute="leading" secondItem="hPa-g7-CdF" secondAttribute="leading" constant="16" id="T3e-Mr-R7C"/>
+                            <constraint firstItem="vxh-aP-uPS" firstAttribute="leading" secondItem="hPa-g7-CdF" secondAttribute="leading" constant="8" id="YqF-af-uiV"/>
+                            <constraint firstItem="UEW-XG-cVx" firstAttribute="top" secondItem="hPa-g7-CdF" secondAttribute="top" constant="6" id="Zv8-9h-8la"/>
+                            <constraint firstItem="nAn-wE-Tpz" firstAttribute="leading" secondItem="hPa-g7-CdF" secondAttribute="leading" constant="8" id="acz-Ap-1KQ"/>
+                            <constraint firstItem="5hU-32-VMX" firstAttribute="centerX" secondItem="hPa-g7-CdF" secondAttribute="centerX" id="dAm-QO-rKy"/>
+                            <constraint firstItem="Nj9-4i-shW" firstAttribute="leading" secondItem="hPa-g7-CdF" secondAttribute="leading" constant="8" id="du9-KZ-xIm"/>
+                            <constraint firstItem="qbD-5C-trX" firstAttribute="top" secondItem="nAn-wE-Tpz" secondAttribute="bottom" constant="40" id="iqc-BO-edC"/>
+                            <constraint firstItem="qbD-5C-trX" firstAttribute="centerX" secondItem="hPa-g7-CdF" secondAttribute="centerX" id="kVK-Rm-FVs"/>
+                            <constraint firstItem="vxh-aP-uPS" firstAttribute="top" secondItem="F4c-ik-v1V" secondAttribute="bottom" constant="10" id="kgy-gh-GBj"/>
+                            <constraint firstItem="F4c-ik-v1V" firstAttribute="top" secondItem="Nj9-4i-shW" secondAttribute="bottom" constant="10" id="kz5-sZ-YL5"/>
+                            <constraint firstItem="hPa-g7-CdF" firstAttribute="trailing" secondItem="F4c-ik-v1V" secondAttribute="trailing" constant="8" id="lL8-BU-mew"/>
+                            <constraint firstItem="hPa-g7-CdF" firstAttribute="trailing" secondItem="rnF-u3-Kep" secondAttribute="trailing" constant="8" id="lpJ-1j-FE7"/>
+                            <constraint firstItem="rnF-u3-Kep" firstAttribute="top" secondItem="vxh-aP-uPS" secondAttribute="bottom" constant="10" id="mxy-up-wlh"/>
+                            <constraint firstItem="F4c-ik-v1V" firstAttribute="leading" secondItem="hPa-g7-CdF" secondAttribute="leading" constant="8" id="tVM-AH-stU"/>
+                            <constraint firstItem="hPa-g7-CdF" firstAttribute="trailing" secondItem="UEW-XG-cVx" secondAttribute="trailing" constant="8" id="x9t-WT-1Pk"/>
+                            <constraint firstItem="hPa-g7-CdF" firstAttribute="trailing" secondItem="vxh-aP-uPS" secondAttribute="trailing" constant="8" id="yIx-Ry-UOC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hPa-g7-CdF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rk6-gG-qDj"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="rnF-u3-Kep" id="x3x-EW-Qa2"/>
+                        <outlet property="borderView" destination="vxh-aP-uPS" id="bkv-KI-iUr"/>
+                        <outlet property="colorView" destination="5hU-32-VMX" id="Hoa-T0-XCT"/>
+                        <outlet property="iconButton" destination="CLn-AR-8nf" id="CaO-E3-lhk"/>
+                        <outlet property="iconImageView" destination="Msn-9b-Chx" id="XyX-db-EX9"/>
+                        <outlet property="infoLabel" destination="qbD-5C-trX" id="uWY-wB-ZVS"/>
+                        <outlet property="nameTextField" destination="F4c-ik-v1V" id="tyk-Rv-HDI"/>
+                        <segue destination="63d-5q-E7J" kind="presentation" identifier="chooseIconForCategory" id="OtA-KI-nSR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7r-ZO-BMq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="-1538"/>
+        </scene>
+        <!--Choose Icon Collection View Controller-->
+        <scene sceneID="sJ0-7T-aDc">
+            <objects>
+                <collectionViewController id="63d-5q-E7J" customClass="ChooseIconCollectionViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="xo9-Qt-dYi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="mn9-OA-Ccu">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="63d-5q-E7J" id="KBP-RP-sP6"/>
+                            <outlet property="delegate" destination="63d-5q-E7J" id="TxB-2m-Ayw"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QNF-qR-PuL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="-1537"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="MainViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vE-cS-YV6" customClass="MainNavigationBar" customModule="SaveMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="iSb-44-CIP"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Woz-QF-4R8">
-                                <rect key="frame" x="0.0" y="114" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="95"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="61x-hC-2A2">
-                                    <size key="itemSize" width="110" height="100"/>
+                                    <size key="itemSize" width="123" height="119"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addMoneyCategory" id="3y0-Ek-njA">
+                                        <rect key="frame" x="5" y="-12" width="123" height="119"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KnT-se-4sa">
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="119"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addCategory" translatesAutoresizingMaskIntoConstraints="NO" id="dZg-sC-EsK">
+                                                    <rect key="frame" x="24" y="22" width="75" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="dZg-sC-EsK" secondAttribute="height" multiplier="68:69" constant="1" id="bIh-lV-Fbg"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="dZg-sC-EsK" secondAttribute="bottom" constant="22" id="Dpn-sg-M9O"/>
+                                                <constraint firstItem="dZg-sC-EsK" firstAttribute="top" secondItem="KnT-se-4sa" secondAttribute="top" constant="22" id="EcI-RI-abw"/>
+                                                <constraint firstItem="dZg-sC-EsK" firstAttribute="centerY" secondItem="KnT-se-4sa" secondAttribute="centerY" id="QI7-oI-mQr"/>
+                                                <constraint firstItem="dZg-sC-EsK" firstAttribute="centerX" secondItem="KnT-se-4sa" secondAttribute="centerX" id="uLC-lw-99l"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="123" height="119"/>
+                                    </collectionViewCell>
+                                </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bXt-kp-tp8">
-                                <rect key="frame" x="0.0" y="264" width="414" height="598"/>
+                                <rect key="frame" x="0.0" y="165" width="320" height="403"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sBd-lz-8HZ">
                                     <size key="itemSize" width="110" height="110"/>
@@ -42,7 +224,31 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addPurchasesCategory" id="Skq-hy-6zy">
+                                        <rect key="frame" x="5" y="5" width="123" height="119"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="UrQ-FN-CPN">
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="119"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addCategory" translatesAutoresizingMaskIntoConstraints="NO" id="iSO-QA-E79">
+                                                    <rect key="frame" x="24" y="22" width="75" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="iSO-QA-E79" secondAttribute="height" multiplier="68:69" constant="1" id="Dx5-sK-d3w"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iSO-QA-E79" firstAttribute="top" secondItem="UrQ-FN-CPN" secondAttribute="top" constant="22" id="UTY-Rt-AU7"/>
+                                                <constraint firstAttribute="bottom" secondItem="iSO-QA-E79" secondAttribute="bottom" constant="22" id="ZRg-oR-Ap8"/>
+                                                <constraint firstItem="iSO-QA-E79" firstAttribute="centerY" secondItem="UrQ-FN-CPN" secondAttribute="centerY" id="vkm-py-3Bn"/>
+                                                <constraint firstItem="iSO-QA-E79" firstAttribute="centerX" secondItem="UrQ-FN-CPN" secondAttribute="centerX" id="xG6-sS-1iy"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="123" height="119"/>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="c8g-po-fJX"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Rn3-jm-POQ"/>
@@ -72,32 +278,34 @@
                         <outlet property="purchasesCategoryCollectionView" destination="bXt-kp-tp8" id="Opp-Wf-0mC"/>
                         <segue destination="UgO-sA-n5l" kind="show" identifier="showDetailCategory" id="5QJ-tB-j2t"/>
                         <segue destination="wJh-ZK-Xuh" kind="show" identifier="addMoneyAction" id="zQQ-4y-bP7"/>
+                        <segue destination="Ao2-Xf-7Bx" kind="show" identifier="detailAllCategories" id="FaF-Q0-Plj"/>
+                        <segue destination="7Il-To-ed4" kind="show" identifier="addCategory" id="99h-gh-1vd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="763.125" y="163.73239436619718"/>
+            <point key="canvasLocation" x="-1626" y="464"/>
         </scene>
         <!--Add Money Action View Controller-->
         <scene sceneID="9a5-Ki-e9u">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="ZU7-6b-mih" customClass="AddMoneyActionViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9q1-wh-uLZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8n-ph-7Hw" customClass="AddMoneyActionNavigationBar" customModule="SaveMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iFb-Ck-KXd">
-                                <rect key="frame" x="8" y="107" width="398" height="49"/>
+                                <rect key="frame" x="8" y="40" width="304" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GAu-Mk-FT2">
-                                <rect key="frame" x="0.0" y="156" width="414" height="706"/>
+                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lbe-0X-eip">
                                     <size key="itemSize" width="128" height="128"/>
@@ -142,28 +350,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B06-DZ-Jog" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2874.375" y="701.4084507042254"/>
+            <point key="canvasLocation" x="1307" y="1625"/>
         </scene>
         <!--Choose Money Category Collection View Controller-->
         <scene sceneID="LH6-s8-No5">
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="8TK-A1-ROB" customClass="ChooseMoneyCategoryCollectionViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nao-fr-fx2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iek-Nq-a4d" customClass="AddMoneyActionNavigationBar" customModule="SaveMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9k-US-xOQ">
-                                <rect key="frame" x="8" y="107" width="398" height="49"/>
+                                <rect key="frame" x="8" y="40" width="304" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JiO-Ie-LRO">
-                                <rect key="frame" x="0.0" y="156" width="414" height="706"/>
+                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1QY-cQ-jhc">
                                     <size key="itemSize" width="128" height="128"/>
@@ -205,14 +413,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLZ-aN-icI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2646" y="1502"/>
+            <point key="canvasLocation" x="2769" y="1625"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="dNv-oy-jh7">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="RJQ-pS-fCU" customClass="DetailCategoryTableViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zm4-n8-uIc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <connections>
@@ -227,7 +435,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISR-il-Te2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2696" y="-388"/>
+            <point key="canvasLocation" x="1307" y="-749"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PP6-ke-ES5">
@@ -235,8 +443,8 @@
                 <navigationController modalPresentationStyle="fullScreen" id="UgO-sA-n5l" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="JoD-Hx-Nao"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ckY-Us-FWu">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ckY-Us-FWu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -245,31 +453,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1w-ca-M0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1684" y="-387"/>
+            <point key="canvasLocation" x="141" y="-748"/>
         </scene>
         <!--Create Money Action View Controller-->
         <scene sceneID="hPY-KB-aIP">
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="CYf-oW-9tj" customClass="CreateMoneyActionViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Je0-BO-trd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJr-aS-KQ3" customClass="AddMoneyActionNavigationBar" customModule="SaveMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tp-En-C2b">
-                                <rect key="frame" x="0.0" y="286" width="414" height="576"/>
+                                <rect key="frame" x="0.0" y="125.5" width="320" height="442.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1OR-yj-jEv">
-                                        <rect key="frame" x="4" y="5" width="406" height="530"/>
+                                        <rect key="frame" x="4" y="5" width="312" height="396.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cEY-K9-6oy">
-                                                <rect key="frame" x="0.0" y="0.0" width="406" height="104.33333333333333"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="312" height="78"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFf-gK-aZ9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="в"/>
@@ -278,7 +486,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dq7-rY-heP" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="AC"/>
@@ -287,7 +495,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1X-3c-s2e" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="%"/>
@@ -296,7 +504,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-J7-iU9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="+"/>
@@ -307,10 +515,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SKo-GI-jwy">
-                                                <rect key="frame" x="0.0" y="106.33333333333331" width="406" height="104.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="80" width="312" height="77.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATv-W1-X1j" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.66666666666667"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
@@ -318,7 +526,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMf-K1-BeL" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.66666666666667"/>
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="2"/>
@@ -326,7 +534,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejZ-5c-G7t" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.66666666666667"/>
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="3"/>
@@ -334,7 +542,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnW-bN-GuP" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.66666666666667"/>
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="-"/>
@@ -345,10 +553,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HX1-1G-PLR">
-                                                <rect key="frame" x="0.0" y="213.00000000000003" width="406" height="104.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="159.5" width="312" height="77.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NI1-xz-Cj7" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="4"/>
@@ -356,7 +564,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLW-6X-zGq" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="5"/>
@@ -364,7 +572,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1d-S5-aDJ" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="6"/>
@@ -372,7 +580,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xaf-q0-Dpp" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="×"/>
@@ -383,10 +591,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="N00-xG-bqp">
-                                                <rect key="frame" x="0.0" y="319.33333333333337" width="406" height="104.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="239" width="312" height="78"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y10-XO-Iho" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="7"/>
@@ -394,7 +602,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PfM-4z-2dT" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="8"/>
@@ -402,7 +610,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEf-hN-hzD" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="9"/>
@@ -410,7 +618,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfG-HS-XE9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="78"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="÷"/>
@@ -421,10 +629,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="F7e-zD-vqo">
-                                                <rect key="frame" x="0.0" y="425.66666666666663" width="406" height="104.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="319" width="312" height="77.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wp-Tc-A7D" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="104.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value=","/>
@@ -432,7 +640,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-YD-2QN" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="101.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="0"/>
@@ -440,7 +648,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfY-6O-gzF" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="203" y="0.0" width="101.66666666666669" height="104.33333333333333"/>
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="⌫"/>
@@ -448,7 +656,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo8-pw-e57" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
-                                                        <rect key="frame" x="304.66666666666669" y="0.0" width="101.33333333333331" height="104.33333333333333"/>
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="77.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="="/>
@@ -461,14 +669,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nio-RB-YIN">
-                                        <rect key="frame" x="0.0" y="535" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="401.5" width="320" height="1"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="TBo-LS-f7Q"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWn-Vm-kES" customClass="DateChooseView" customModule="SaveMoney" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="536" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="402.5" width="320" height="40"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Smf-xw-ktO"/>
@@ -490,11 +698,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqN-sQ-05D" customClass="CalculaterScreen" customModule="SaveMoney" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="151" width="414" height="135"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="85.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21c-BZ-1dB">
-                                <rect key="frame" x="4" y="466" width="406" height="221"/>
+                                <rect key="frame" x="4" y="305.5" width="312" height="140"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -559,7 +767,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qg4-X6-pky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4451.25" y="724.64788732394368"/>
+            <point key="canvasLocation" x="4149" y="438"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="A8a-GZ-Gb3">
+            <objects>
+                <tableViewController modalPresentationStyle="fullScreen" id="cBA-jS-JrR" customClass="DetailAllCategoriesTableViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dFW-ko-vVp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="cBA-jS-JrR" id="xCN-W0-0W7"/>
+                            <outlet property="delegate" destination="cBA-jS-JrR" id="H9w-eE-efl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="zK5-FV-FS8"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="CYf-oW-9tj" kind="show" identifier="editMoneyActionForAllCategories" id="0LT-h9-li5"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sF9-jg-XTy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="438"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gs2-NK-FI4">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="Ao2-Xf-7Bx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="j09-xo-wgO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="O4F-M8-peH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cBA-jS-JrR" kind="relationship" relationship="rootViewController" id="NWl-jY-89B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vmL-IB-Wdu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="439"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="M9k-t4-4T0">
@@ -577,13 +825,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UKM-8u-Hbh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876.875" y="701.4084507042254"/>
+            <point key="canvasLocation" x="141" y="1663"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bi1-sf-ABT"/>
+        <segue reference="Gqy-8J-Hrx"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="add" width="64" height="64"/>
+        <image name="Entertainment" width="64" height="64"/>
+        <image name="add" width="100" height="100"/>
+        <image name="addCategory" width="128" height="128"/>
+        <image name="cancel" width="100" height="100"/>
     </resources>
 </document>

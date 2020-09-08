@@ -131,6 +131,7 @@ class CreateMoneyActionViewController: UIViewController {
     
     // MARK : Private Methods
     
+    
     private func  calculatePercentageOfTheNumber(number: Double) -> Double {
         let persentNumber = firstNumber!/100
         return persentNumber * number
@@ -195,6 +196,7 @@ extension CreateMoneyActionViewController: AddMoneyActionNavigationBarDelegate {
                 navigationController?.popViewController(animated: true)
             } else if categoryForBuy == nil {
                 guard let moneyCategory = categoryForAdd as? MoneyCategory else { return }
+               
                 let income = Income(value: ["name": name, "date": actionDate, "moneyCount": moneyCount])
                 StorageManager.shared.saveIncomeInMoneyCategory(moneyCategory: moneyCategory, income: income)
                 
@@ -224,6 +226,9 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
     }
     
     func writeSymbol(symbol: Character) {
+        if let text = calculateScreen.calculateLabel.text, text.count > 10 {
+            return
+        }
         if symbol == ".", let lastCharacter = calculateScreen.calculateLabel.text?.last, lastCharacter == "."  {
             return
         }
@@ -288,34 +293,59 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
         if let text = calculateScreen.calculateLabel.text, !text.isEmpty , let secondNumber = Double(text) , currentAction != CalculateAction.noAction , let firstNumber = firstNumber {
             switch currentAction {
             case .doAddition:
-                calculateScreen.calculateLabel.text = (firstNumber + secondNumber).toString()
-                self.firstNumber = firstNumber + secondNumber
+                let resultText = (firstNumber + secondNumber).toString()
+                if  resultText.count < 11 {
+                    calculateScreen.calculateLabel.text = resultText
+                    self.firstNumber = firstNumber + secondNumber
+                } else {
+                    showAlert(title: "Внимание !", message: "Это слишком большое число")
+                    calculateScreen.calculateLabel.text = firstNumber.toString()
+                }
                 
             case .doDivision:
                 if secondNumber == 0.0 {
                     calculateScreen.calculateLabel.text = ""
                     self.firstNumber = 0
                     
-                } else {
-                    calculateScreen.calculateLabel.text = (firstNumber / secondNumber).toString()
+                } else if (firstNumber / secondNumber).toString().count < 11 {
+                    calculateScreen.calculateLabel.text = (firstNumber / secondNumber).rounded(toPlaces: 3).toString()
                     self.firstNumber = firstNumber / secondNumber
+                } else {
+                    showAlert(title: "Внимание !", message: "Это слишком большое число")
+                    calculateScreen.calculateLabel.text = firstNumber.toString()
                 }
                 
             case .doMultiplication:
-                calculateScreen.calculateLabel.text = (firstNumber * secondNumber).toString()
-                self.firstNumber = firstNumber * secondNumber
+                let resultText = (firstNumber * secondNumber).toString()
+                if resultText.count < 11 {
+                    calculateScreen.calculateLabel.text = resultText
+                    self.firstNumber = firstNumber * secondNumber
+                } else {
+                    
+                    showAlert(title: "Внимание !", message: "Это слишком большое число")
+                    calculateScreen.calculateLabel.text = firstNumber.toString()
+                }
                 
             case .doSubtraction:
                 if secondNumber > firstNumber {
                     calculateScreen.calculateLabel.text = ""
                     self.firstNumber = 0
-                } else {
+                } else if (firstNumber - secondNumber).toString().count < 11 {
                     calculateScreen.calculateLabel.text = (firstNumber - secondNumber).toString()
                     self.firstNumber = firstNumber - secondNumber
+                } else {
+                    showAlert(title: "Внимание !", message: "Это слишком большое число")
+                    calculateScreen.calculateLabel.text = firstNumber.toString()
                 }
             case .doPersent:
-                calculateScreen.calculateLabel.text =  calculatePercentageOfTheNumber(number: secondNumber).toString()
-                self.firstNumber = calculatePercentageOfTheNumber(number: secondNumber)
+                let resultText = calculatePercentageOfTheNumber(number: secondNumber).toString()
+                if resultText.count < 11 {
+                    calculateScreen.calculateLabel.text = resultText
+                    self.firstNumber = calculatePercentageOfTheNumber(number: secondNumber)
+                } else {
+                    showAlert(title: "Внимание !", message: "Это слишком большое число")
+                    calculateScreen.calculateLabel.text = firstNumber.toString()
+                }
                 
             default:
                 break

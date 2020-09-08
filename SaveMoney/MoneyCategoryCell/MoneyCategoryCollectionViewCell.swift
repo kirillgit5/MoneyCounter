@@ -36,8 +36,8 @@ class MoneyCategoryCollectionViewCell: UICollectionViewCell {
     func setupCell(category: Category) {
         if let moneyCategory = category as? MoneyCategory {
         nameCategoryLabel.text = moneyCategory.name
-            moneyCountLabel.text = "\(moneyCategory.moneyCount.toString()) ₽"
-        categoryImageView.image = UIImage(named: moneyCategory.name) ?? UIImage(named: "default")!
+            moneyCountLabel.text = moneyCategory.moneyCount.formatToShow()
+        categoryImageView.image = UIImage(named: moneyCategory.iconName)
             if moneyCategory.moneyCount < 0 {
                 moneyCountLabel.textColor = .systemRed
             } else {
@@ -45,8 +45,8 @@ class MoneyCategoryCollectionViewCell: UICollectionViewCell {
             }
         } else if let purchasesCategory = category as?  PurchasesCategory {
             nameCategoryLabel.text = purchasesCategory.name
-            moneyCountLabel.text = "\(purchasesCategory.moneyCount.toString()) ₽"
-            categoryImageView.image = UIImage(named: purchasesCategory.name) ?? UIImage(named: "default")!
+            moneyCountLabel.text = purchasesCategory.moneyCount.formatToShow()
+            categoryImageView.image = UIImage(named: purchasesCategory.iconName)
             mainView.backgroundColor = .white
             colorView.backgroundColor = .systemGreen
         }
@@ -54,16 +54,16 @@ class MoneyCategoryCollectionViewCell: UICollectionViewCell {
     
     func setupForAddMoneyCategoryViewController(category: Category) {
          nameCategoryLabel.text = category.name
-         categoryImageView.image = UIImage(named: category.name) ?? UIImage(named: "default")!
+         categoryImageView.image = UIImage(named: category.iconName)
          mainView.backgroundColor = .white
         colorView.backgroundColor = category is MoneyCategory ? UIColor.systemYellow : UIColor.systemGreen
     }
     
     func setupForChooseMoneyVC(moneyCategory: MoneyCategory) {
         nameCategoryLabel.text = moneyCategory.name
-        categoryImageView.image = UIImage(named: moneyCategory.name) ?? UIImage(named: "default")!
+        categoryImageView.image = UIImage(named: moneyCategory.iconName) 
         mainView.backgroundColor = .white
-        moneyCountLabel.text = "\(moneyCategory.moneyCount.toString()) ₽"
+        moneyCountLabel.text = moneyCategory.moneyCount.formatToShow()
         if moneyCategory.moneyCount < 0 {
             moneyCountLabel.textColor = .systemRed
         }

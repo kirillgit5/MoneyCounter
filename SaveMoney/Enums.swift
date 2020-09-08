@@ -15,6 +15,11 @@ enum SegueIndentifire: String {
     case chooseMoneyCategory
     case createPurchases
     case editMoneyAction
+    case detailAllCategories
+    case editMoneyActionForAllCategories
+    case addCategory
+    case chooseIconForCategory
+    case showTaskList
 }
 
 enum CalculateAction: String {
@@ -82,4 +87,14 @@ enum ChangeMoneyActionType {
     case removeSection
     case noAction
     case createSection
+}
+
+enum CategoriesType {
+    case moneyCategory
+    case purchasesCategory
+}
+
+enum MoneyActionType {
+    case income
+    case purchases
 }

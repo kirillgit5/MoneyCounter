@@ -68,13 +68,13 @@ import RealmSwift
     func setBalance(moneyCatigories: Results<MoneyCategory>) {
         var sum = 0.0
         moneyCatigories.forEach { sum += $0.moneyCount }
-        balanceCountLabel.text = "\(forTrailingZero(temp: sum)) ₽"
+        balanceCountLabel.text = sum.formatToShow()
     }
     
     func setExpense(purchasesCatigories: Results<PurchasesCategory>) {
         var sum = 0.0
         purchasesCatigories.forEach { sum += $0.moneyCount }
-        expensesCountLabel.text = "\(forTrailingZero(temp: sum)) ₽"
+        expensesCountLabel.text = sum.formatToShow()
     }
     
     
@@ -87,12 +87,6 @@ import RealmSwift
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
     }
-    
-    private func forTrailingZero(temp: Double) -> String {
-        let tempVar = String(format: "%g", temp)
-        return tempVar
-    }
-    
 }
 
 

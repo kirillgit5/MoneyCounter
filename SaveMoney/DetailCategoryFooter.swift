@@ -58,11 +58,23 @@ class DetailCategoryFooter: UITableViewHeaderFooterView {
             }
             amountLabel.textColor = .systemRed
         }
-        amountLabel.text = "\(forTrailingZero(temp: sum)) ₽"
+        amountLabel.text = sum.formatToShow()
     }
     
-    private func forTrailingZero(temp: Double) -> String {
-        let tempVar = String(format: "%g", temp)
-        return tempVar
+    func setupAmountLabelForAllCategories(moneyActions: [MoneyAction], categoryType: CategoriesType) {
+        var sum = 0.0
+        switch categoryType {
+        case .moneyCategory:
+            moneyActions.forEach { action in
+                sum += action is Income ? action.moneyCount : -action.moneyCount
+            }
+            amountLabel.textColor = sum >= 0 ? .systemGreen : .systemRed
+        case .purchasesCategory:
+            moneyActions.forEach { action in
+                sum += action.moneyCount
+            }
+            amountLabel.textColor = .systemRed
+        }
+        amountLabel.text = sum.formatToShow()
     }
 }

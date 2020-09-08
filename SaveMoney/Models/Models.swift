@@ -9,8 +9,11 @@
 import Foundation
 import RealmSwift
 
+
+
 class Category: Object {
-     @objc dynamic var name = ""
+    @objc dynamic var name = ""
+    @objc dynamic var iconName = ""
 }
 
 
@@ -22,9 +25,9 @@ class MoneyAction: Object {
 
 
 class MoneyCategory: Category {
-    
-   var incomes = List<Income>()
-   var purchases = List<Purchases>()
+    @objc dynamic var startAmount = 0.0
+    var incomes = List<Income>()
+    var purchases = List<Purchases>()
     
     var allActions: [MoneyAction] {
         var actions = [MoneyAction]()
@@ -41,6 +44,7 @@ class MoneyCategory: Category {
         purchases.forEach { (purchases) in
             moneyCount -= purchases.moneyCount
         }
+        moneyCount += startAmount
         return moneyCount
     }
 }
@@ -49,15 +53,15 @@ class MoneyCategory: Category {
 
 class PurchasesCategory:  Category {
     
-  var purchases = List<Purchases>()
+    var purchases = List<Purchases>()
     
-  var moneyCount: Double {
-     var sum = 0.0
-      purchases.forEach { (purchases) in
-          sum += purchases.moneyCount
-      }
-      return sum
-  }
+    var moneyCount: Double {
+        var sum = 0.0
+        purchases.forEach { (purchases) in
+            sum += purchases.moneyCount
+        }
+        return sum
+    }
 }
 
 
@@ -66,7 +70,7 @@ class Purchases:  MoneyAction {
 }
 
 class Income: MoneyAction {
-   
+    let moneyCategory = LinkingObjects(fromType: MoneyCategory.self, property: "incomes")
 }
 
 
