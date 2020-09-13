@@ -19,13 +19,24 @@
 		EE40732A24CDDEA500F52FE1 /* CalculaterScreenIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE40732924CDDEA500F52FE1 /* CalculaterScreenIB.xib */; };
 		EE51957924A39BD200F71F5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957824A39BD200F71F5C /* AppDelegate.swift */; };
 		EE51957B24A39BD200F71F5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957A24A39BD200F71F5C /* SceneDelegate.swift */; };
-		EE51957D24A39BD200F71F5C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957C24A39BD200F71F5C /* MainViewController.swift */; };
+		EE51957D24A39BD200F71F5C /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51957C24A39BD200F71F5C /* MainMenuViewController.swift */; };
 		EE51958024A39BD200F71F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE51957E24A39BD200F71F5C /* Main.storyboard */; };
 		EE51958224A39BD500F71F5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE51958124A39BD500F71F5C /* Assets.xcassets */; };
 		EE51958524A39BD500F71F5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE51958324A39BD500F71F5C /* LaunchScreen.storyboard */; };
 		EE51958F24A39DBC00F71F5C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51958E24A39DBC00F71F5C /* Models.swift */; };
 		EE51959624A3B40D00F71F5C /* MainNavigationBarIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE51959524A3B40D00F71F5C /* MainNavigationBarIB.xib */; };
 		EE51959924A3CDDB00F71F5C /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */; };
+		EE68ACA32509197D00E95BE2 /* ChooseMoneyCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE68ACA22509197D00E95BE2 /* ChooseMoneyCategoryViewModel.swift */; };
+		EE68ACA5250920D800E95BE2 /* MoneyCategoryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE68ACA4250920D800E95BE2 /* MoneyCategoryCollectionViewCellViewModel.swift */; };
+		EE68ACA8250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE68ACA6250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.swift */; };
+		EE68ACA9250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE68ACA7250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.xib */; };
+		EE68ACAC2509319A00E95BE2 /* AddMoneyActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE68ACAB2509319A00E95BE2 /* AddMoneyActionViewModel.swift */; };
+		EE68ACAE25094CEE00E95BE2 /* PurchasesCategoryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE68ACAD25094CEE00E95BE2 /* PurchasesCategoryCollectionViewCellViewModel.swift */; };
+		EE68ACB0250969D500E95BE2 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE68ACAF250969D500E95BE2 /* AddIncomeViewController.swift */; };
+		EE68ACB325096A0300E95BE2 /* AddIncomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE68ACB225096A0300E95BE2 /* AddIncomeViewModel.swift */; };
+		EE6CB972250D1230004A1FAA /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6CB971250D1230004A1FAA /* MainMenuViewModel.swift */; };
+		EE6CB975250D2472004A1FAA /* CreateMoneyActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6CB974250D2472004A1FAA /* CreateMoneyActionViewModel.swift */; };
+		EE6CB977250D5315004A1FAA /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6CB976250D5315004A1FAA /* Boxing.swift */; };
 		EE6EB2C724C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6EB2C624C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib */; };
 		EE6EB2CB24C86EDF00409A79 /* CalculateViewIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6EB2CA24C86EDF00409A79 /* CalculateViewIB.xib */; };
 		EE7EB15824E3193600A10D5D /* DetailPurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EB15624E3193600A10D5D /* DetailPurchasesTableViewCell.swift */; };
@@ -54,7 +65,7 @@
 		EEF81E4624BCAAF500C96B67 /* DetailCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4524BCAAF500C96B67 /* DetailCategoryTableViewController.swift */; };
 		EEF81E4824BCB6ED00C96B67 /* SortManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4724BCB6ED00C96B67 /* SortManager.swift */; };
 		EEF81E4A24BF2C9800C96B67 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4924BF2C9800C96B67 /* DateManager.swift */; };
-		EEF81E4F24C0A02A00C96B67 /* AddMoneyActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4E24C0A02A00C96B67 /* AddMoneyActionViewController.swift */; };
+		EEF81E4F24C0A02A00C96B67 /* AddPurshasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E4E24C0A02A00C96B67 /* AddPurshasesViewController.swift */; };
 		EEF81E5124C435F600C96B67 /* CreateMoneyActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E5024C435F600C96B67 /* CreateMoneyActionViewController.swift */; };
 		EEF81E5324C4389A00C96B67 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E5224C4389A00C96B67 /* Enums.swift */; };
 		EEF81E5724C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF81E5624C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift */; };
@@ -76,7 +87,7 @@
 		EE51957524A39BD200F71F5C /* SaveMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE51957824A39BD200F71F5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE51957A24A39BD200F71F5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EE51957C24A39BD200F71F5C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		EE51957C24A39BD200F71F5C /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		EE51957F24A39BD200F71F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE51958124A39BD500F71F5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE51958424A39BD500F71F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,6 +95,17 @@
 		EE51958E24A39DBC00F71F5C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		EE51959524A3B40D00F71F5C /* MainNavigationBarIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationBarIB.xib; sourceTree = "<group>"; };
 		EE51959824A3CDDB00F71F5C /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
+		EE68ACA22509197D00E95BE2 /* ChooseMoneyCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMoneyCategoryViewModel.swift; sourceTree = "<group>"; };
+		EE68ACA4250920D800E95BE2 /* MoneyCategoryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCategoryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		EE68ACA6250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaMoneyCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE68ACA7250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BetaMoneyCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		EE68ACAB2509319A00E95BE2 /* AddMoneyActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyActionViewModel.swift; sourceTree = "<group>"; };
+		EE68ACAD25094CEE00E95BE2 /* PurchasesCategoryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesCategoryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		EE68ACAF250969D500E95BE2 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
+		EE68ACB225096A0300E95BE2 /* AddIncomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewModel.swift; sourceTree = "<group>"; };
+		EE6CB971250D1230004A1FAA /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
+		EE6CB974250D2472004A1FAA /* CreateMoneyActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMoneyActionViewModel.swift; sourceTree = "<group>"; };
+		EE6CB976250D5315004A1FAA /* Boxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boxing.swift; sourceTree = "<group>"; };
 		EE6EB2C624C71C3000409A79 /* AddMoneyActionNavigationBarIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMoneyActionNavigationBarIB.xib; sourceTree = "<group>"; };
 		EE6EB2CA24C86EDF00409A79 /* CalculateViewIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculateViewIB.xib; sourceTree = "<group>"; };
 		EE7EB15624E3193600A10D5D /* DetailPurchasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPurchasesTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,7 +134,7 @@
 		EEF81E4524BCAAF500C96B67 /* DetailCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCategoryTableViewController.swift; sourceTree = "<group>"; };
 		EEF81E4724BCB6ED00C96B67 /* SortManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortManager.swift; sourceTree = "<group>"; };
 		EEF81E4924BF2C9800C96B67 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
-		EEF81E4E24C0A02A00C96B67 /* AddMoneyActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyActionViewController.swift; sourceTree = "<group>"; };
+		EEF81E4E24C0A02A00C96B67 /* AddPurshasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurshasesViewController.swift; sourceTree = "<group>"; };
 		EEF81E5024C435F600C96B67 /* CreateMoneyActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMoneyActionViewController.swift; sourceTree = "<group>"; };
 		EEF81E5224C4389A00C96B67 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		EEF81E5624C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMoneyCategoryCollectionViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +263,52 @@
 			path = MainNavigationControoler;
 			sourceTree = "<group>";
 		};
+		EE68ACA12509193A00E95BE2 /* ChooseMoneyCategoryCollection */ = {
+			isa = PBXGroup;
+			children = (
+				EEF81E5624C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift */,
+				EE68ACA22509197D00E95BE2 /* ChooseMoneyCategoryViewModel.swift */,
+			);
+			path = ChooseMoneyCategoryCollection;
+			sourceTree = "<group>";
+		};
+		EE68ACAA2509314700E95BE2 /* AddPuchases */ = {
+			isa = PBXGroup;
+			children = (
+				EEF81E4E24C0A02A00C96B67 /* AddPurshasesViewController.swift */,
+				EE68ACAB2509319A00E95BE2 /* AddMoneyActionViewModel.swift */,
+			);
+			path = AddPuchases;
+			sourceTree = "<group>";
+		};
+		EE68ACB1250969DB00E95BE2 /* AddIncome */ = {
+			isa = PBXGroup;
+			children = (
+				EE68ACAF250969D500E95BE2 /* AddIncomeViewController.swift */,
+				EE68ACB225096A0300E95BE2 /* AddIncomeViewModel.swift */,
+			);
+			path = AddIncome;
+			sourceTree = "<group>";
+		};
+		EE6CB970250D11FE004A1FAA /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				EE51957C24A39BD200F71F5C /* MainMenuViewController.swift */,
+				EE6CB971250D1230004A1FAA /* MainMenuViewModel.swift */,
+			);
+			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		EE6CB973250D242A004A1FAA /* CreateMoneyAction */ = {
+			isa = PBXGroup;
+			children = (
+				EEF81E5024C435F600C96B67 /* CreateMoneyActionViewController.swift */,
+				EE6CB974250D2472004A1FAA /* CreateMoneyActionViewModel.swift */,
+				EE6CB976250D5315004A1FAA /* Boxing.swift */,
+			);
+			path = CreateMoneyAction;
+			sourceTree = "<group>";
+		};
 		EE7EB15A24E31D3C00A10D5D /* DetailPurchasesTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +323,7 @@
 			children = (
 				EE93DB2F24A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift */,
 				EE93DB3024A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.xib */,
+				EE68ACAD25094CEE00E95BE2 /* PurchasesCategoryCollectionViewCellViewModel.swift */,
 			);
 			path = PurchasesCategoryCollectionCell;
 			sourceTree = "<group>";
@@ -299,8 +368,11 @@
 		EEF7AB1E24A4F9AD00FE5694 /* MoneyCategoryCell */ = {
 			isa = PBXGroup;
 			children = (
+				EE68ACA4250920D800E95BE2 /* MoneyCategoryCollectionViewCellViewModel.swift */,
 				EEF7AB1A24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift */,
 				EEF7AB1B24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib */,
+				EE68ACA6250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.swift */,
+				EE68ACA7250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.xib */,
 			);
 			path = MoneyCategoryCell;
 			sourceTree = "<group>";
@@ -308,16 +380,17 @@
 		EEF81E4424BCA91600C96B67 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EE51957C24A39BD200F71F5C /* MainViewController.swift */,
-				EEF81E4E24C0A02A00C96B67 /* AddMoneyActionViewController.swift */,
+				EE6CB970250D11FE004A1FAA /* MainMenu */,
+				EE68ACAA2509314700E95BE2 /* AddPuchases */,
 				EE7EB15B24E956D600A10D5D /* DetailAllCategoriesTableViewController.swift */,
 				EEF81E4524BCAAF500C96B67 /* DetailCategoryTableViewController.swift */,
-				EEF81E5024C435F600C96B67 /* CreateMoneyActionViewController.swift */,
-				EEF81E5624C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift */,
+				EE6CB973250D242A004A1FAA /* CreateMoneyAction */,
+				EE68ACA12509193A00E95BE2 /* ChooseMoneyCategoryCollection */,
 				EE27C9CE24EBE369004130C9 /* CreateCategoryViewController.swift */,
 				EE27C9D024EC225B004130C9 /* ChooseIconCollectionViewController.swift */,
 				EEE2EC7524F7E02800644F8C /* TaskListViewController.swift */,
 				EEE2EC7924F7E18B00644F8C /* TaskViewController.swift */,
+				EE68ACB1250969DB00E95BE2 /* AddIncome */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -400,6 +473,7 @@
 				EECBE08B24E1ABFB00513DD8 /* DetailCategoryTableViewCell.xib in Resources */,
 				EE27C9D724ED6670004130C9 /* IconCollectionViewCellIB.xib in Resources */,
 				EEF7AB1D24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.xib in Resources */,
+				EE68ACA9250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.xib in Resources */,
 				EECBE07A24DDC04900513DD8 /* DateChooseViewIB.xib in Resources */,
 				EE51958224A39BD500F71F5C /* Assets.xcassets in Resources */,
 				EE7EB15924E3193600A10D5D /* DetailPurchasesTableViewCell.xib in Resources */,
@@ -462,39 +536,49 @@
 			files = (
 				EE27C9D324EC23B8004130C9 /* DataManager.swift in Sources */,
 				EECBE08A24E1ABFB00513DD8 /* DetailCategoryTableViewCell.swift in Sources */,
-				EE51957D24A39BD200F71F5C /* MainViewController.swift in Sources */,
+				EE51957D24A39BD200F71F5C /* MainMenuViewController.swift in Sources */,
 				EEF81E4A24BF2C9800C96B67 /* DateManager.swift in Sources */,
+				EE6CB977250D5315004A1FAA /* Boxing.swift in Sources */,
 				EE51957924A39BD200F71F5C /* AppDelegate.swift in Sources */,
 				EEF81E5124C435F600C96B67 /* CreateMoneyActionViewController.swift in Sources */,
 				EEF81E4824BCB6ED00C96B67 /* SortManager.swift in Sources */,
 				EE51959924A3CDDB00F71F5C /* MainNavigationBar.swift in Sources */,
+				EE68ACAC2509319A00E95BE2 /* AddMoneyActionViewModel.swift in Sources */,
 				EEE2EC7824F7E09200644F8C /* AlertController.swift in Sources */,
 				EEF81E4124BC74AC00C96B67 /* StorageManager.swift in Sources */,
 				EEF81E5324C4389A00C96B67 /* Enums.swift in Sources */,
 				EE93DB3124A8FE11003F01DA /* PurchasesCategoryCollectionViewCell.swift in Sources */,
 				EE27C9D624ED6670004130C9 /* IconCollectionViewCell.swift in Sources */,
+				EE68ACA8250925D100E95BE2 /* BetaMoneyCategoryCollectionViewCell.swift in Sources */,
 				EECBE07C24DDC46C00513DD8 /* DateChooseView.swift in Sources */,
 				EEE2EC7C24F93F7600644F8C /* CategoryCreaterProtocol.swift in Sources */,
+				EE6CB972250D1230004A1FAA /* MainMenuViewModel.swift in Sources */,
 				EECBE08D24E1C34700513DD8 /* DetailCategoryFooter.swift in Sources */,
+				EE68ACAE25094CEE00E95BE2 /* PurchasesCategoryCollectionViewCellViewModel.swift in Sources */,
+				EE6CB975250D2472004A1FAA /* CreateMoneyActionViewModel.swift in Sources */,
 				EE51958F24A39DBC00F71F5C /* Models.swift in Sources */,
 				EEE2EC7424F7DFB600644F8C /* Extension + UITableViewCell.swift in Sources */,
 				EE3930DC24D98C80001B49D6 /* Extension + Double.swift in Sources */,
 				EEE2EC7E24F94B5600644F8C /* MoneyActionFabricMethod.swift in Sources */,
+				EE68ACA32509197D00E95BE2 /* ChooseMoneyCategoryViewModel.swift in Sources */,
 				EE40732824CDDE8900F52FE1 /* CalculaterScreen.swift in Sources */,
 				EECBE07F24DEEAD400513DD8 /* Extension + UIAlertController.swift in Sources */,
 				EEF81E4624BCAAF500C96B67 /* DetailCategoryTableViewController.swift in Sources */,
 				EE7EB15C24E956D600A10D5D /* DetailAllCategoriesTableViewController.swift in Sources */,
 				EEE2EC7A24F7E18B00644F8C /* TaskViewController.swift in Sources */,
+				EE68ACA5250920D800E95BE2 /* MoneyCategoryCollectionViewCellViewModel.swift in Sources */,
 				EE08EB1524C6EFF600626AEB /* AddMoneyActionNavigationBar.swift in Sources */,
+				EE68ACB325096A0300E95BE2 /* AddIncomeViewModel.swift in Sources */,
 				EEF3EA3C24CB22DC00C1B4DF /* CalculateView.swift in Sources */,
 				EEE2EC7624F7E02800644F8C /* TaskListViewController.swift in Sources */,
 				EEE2EC7224F7DE0800644F8C /* Task.swift in Sources */,
 				EE27C9D124EC225B004130C9 /* ChooseIconCollectionViewController.swift in Sources */,
-				EEF81E4F24C0A02A00C96B67 /* AddMoneyActionViewController.swift in Sources */,
+				EEF81E4F24C0A02A00C96B67 /* AddPurshasesViewController.swift in Sources */,
 				EE51957B24A39BD200F71F5C /* SceneDelegate.swift in Sources */,
 				EECBE08124DF003900513DD8 /* DatePickerViewController.swift in Sources */,
 				EEF81E5724C442D600C96B67 /* ChooseMoneyCategoryCollectionViewController.swift in Sources */,
 				EE27C9CF24EBE369004130C9 /* CreateCategoryViewController.swift in Sources */,
+				EE68ACB0250969D500E95BE2 /* AddIncomeViewController.swift in Sources */,
 				EEF7AB1C24A4F9A800FE5694 /* MoneyCategoryCollectionViewCell.swift in Sources */,
 				EE7EB15824E3193600A10D5D /* DetailPurchasesTableViewCell.swift in Sources */,
 			);

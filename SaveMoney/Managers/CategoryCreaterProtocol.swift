@@ -11,9 +11,19 @@ import RealmSwift
 
 protocol CategoryCreatorProtocol {
     func createCategory(categoryType: CategoriesType, name: String, iconName: String, startAmount: Double?) -> Category
+    func createIncome(name: String, amount: Double, date: Date) -> Income
+    func createPurchases(name: String, amount: Double, date: Date) -> Purchases
 }
 
 final class CategoryCreator: CategoryCreatorProtocol {
+    func createIncome(name: String, amount: Double, date: Date) -> Income {
+        Income(value: ["name": name, "moneyCount": amount, "date": date])
+    }
+    
+    func createPurchases(name: String, amount: Double, date: Date) -> Purchases {
+        Purchases(value: ["name": name, "moneyCount": amount, "date": date])
+    }
+    
     
     static let shared = CategoryCreator()
     

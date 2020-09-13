@@ -10,7 +10,7 @@ import Foundation
 
 enum SegueIndentifire: String {
     case showDetailCategory
-    case addMoneyAction
+    case addPurchases
     case createIncome
     case chooseMoneyCategory
     case createPurchases
@@ -20,6 +20,34 @@ enum SegueIndentifire: String {
     case addCategory
     case chooseIconForCategory
     case showTaskList
+    case addIncome
+}
+
+enum CalculateActionWithNumber: String {
+    case writeNull
+    case writeOne
+    case writeTwo
+    case writeThree
+    case writeFour
+    case writeFive
+    case writeSix
+    case writeSeven
+    case writeEight
+    case writeNine
+    case delete
+    case writePoint
+    
+    
+}
+
+enum CalculateActionWithOperate: String {
+    case doAddition = "+"
+    case doSubtraction = "-"
+    case doMultiplication = "×"
+    case doDivision = "÷"
+    case doPersent = "%"
+    case noAction = ""
+    case deleteAction
 }
 
 enum CalculateAction: String {
@@ -32,19 +60,18 @@ enum CalculateAction: String {
     case writeSix
     case writeSeven
     case writeEight
-    case writeNine
-    case writeActionName
+    case writeNine 
+    case delete
+    case writePoint
     case doAddition
     case doSubtraction
     case doMultiplication
     case doDivision
-    case result
-    case delete
     case doPersent
-    case unknow
-    case writePoint
-    case noAction
+    case noAction 
     case deleteAction
+    case writeActionName
+    case calculateResult
 }
 
 enum NumberedMonthsEng : Int {
@@ -97,4 +124,8 @@ enum CategoriesType {
 enum MoneyActionType {
     case income
     case purchases
+}
+
+enum StyleMoneyCategoryCell {
+    
 }

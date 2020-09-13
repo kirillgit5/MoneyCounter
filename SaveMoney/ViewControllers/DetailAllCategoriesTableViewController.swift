@@ -128,7 +128,7 @@ class DetailAllCategoriesTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         editIndexPath = indexPath
         let createVC = segue.destination as! CreateMoneyActionViewController
-        createVC.editMoneyAction = sortedMoneyAction[indexPath.section][indexPath.row]
+//        createVC.editMoneyAction = sortedMoneyAction[indexPath.section][indexPath.row]
         createVC.updateTableViewDelegate = self
     }
     

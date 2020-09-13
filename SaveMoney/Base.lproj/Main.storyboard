@@ -165,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="1307" y="-1537"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Main Menu View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="MainViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="MainMenuViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -277,19 +277,20 @@
                         <outlet property="navigationBar" destination="6vE-cS-YV6" id="dXR-kc-EBR"/>
                         <outlet property="purchasesCategoryCollectionView" destination="bXt-kp-tp8" id="Opp-Wf-0mC"/>
                         <segue destination="UgO-sA-n5l" kind="show" identifier="showDetailCategory" id="5QJ-tB-j2t"/>
-                        <segue destination="wJh-ZK-Xuh" kind="show" identifier="addMoneyAction" id="zQQ-4y-bP7"/>
+                        <segue destination="wJh-ZK-Xuh" kind="show" identifier="addPurchases" id="zQQ-4y-bP7"/>
                         <segue destination="Ao2-Xf-7Bx" kind="show" identifier="detailAllCategories" id="FaF-Q0-Plj"/>
                         <segue destination="7Il-To-ed4" kind="show" identifier="addCategory" id="99h-gh-1vd"/>
+                        <segue destination="gP2-3K-5wj" kind="show" identifier="addIncome" id="CFn-f1-dMk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1626" y="464"/>
         </scene>
-        <!--Add Money Action View Controller-->
+        <!--Add Purshases View Controller-->
         <scene sceneID="9a5-Ki-e9u">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="ZU7-6b-mih" customClass="AddMoneyActionViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ZU7-6b-mih" customClass="AddPurshasesViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9q1-wh-uLZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -345,7 +346,6 @@
                         <outlet property="infoLabel" destination="iFb-Ck-KXd" id="bJm-q5-65P"/>
                         <outlet property="navigationBar" destination="g8n-ph-7Hw" id="APA-fE-Xq3"/>
                         <segue destination="8TK-A1-ROB" kind="show" identifier="chooseMoneyCategory" id="K9D-KQ-OjX"/>
-                        <segue destination="CYf-oW-9tj" kind="show" identifier="createIncome" id="Gqy-8J-Hrx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B06-DZ-Jog" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -661,7 +661,7 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="text" value="="/>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="result"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="calculateResult"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
@@ -827,9 +827,92 @@
             </objects>
             <point key="canvasLocation" x="141" y="1663"/>
         </scene>
+        <!--Add Income View Controller-->
+        <scene sceneID="u3a-89-Njp">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="K0w-ZD-Yjw" customClass="AddIncomeViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cva-YI-Six">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ht4-we-lW7" customClass="AddMoneyActionNavigationBar" customModule="SaveMoney" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TZ4-5t-XUB">
+                                <rect key="frame" x="8" y="40" width="304" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vId-g9-AHP">
+                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2oA-6L-KH1">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="K0w-ZD-Yjw" id="qwI-y7-aYg"/>
+                                    <outlet property="delegate" destination="K0w-ZD-Yjw" id="xME-vQ-ona"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vId-g9-AHP" firstAttribute="top" secondItem="TZ4-5t-XUB" secondAttribute="bottom" id="2Km-WX-FPh"/>
+                            <constraint firstItem="TZ4-5t-XUB" firstAttribute="leading" secondItem="z8r-Fb-ab7" secondAttribute="leading" constant="8" id="36w-BE-KmS"/>
+                            <constraint firstItem="z8r-Fb-ab7" firstAttribute="trailing" secondItem="TZ4-5t-XUB" secondAttribute="trailing" constant="8" id="54t-p1-886"/>
+                            <constraint firstItem="TZ4-5t-XUB" firstAttribute="top" secondItem="Ht4-we-lW7" secondAttribute="bottom" id="H2Z-OK-psQ"/>
+                            <constraint firstItem="Ht4-we-lW7" firstAttribute="top" secondItem="z8r-Fb-ab7" secondAttribute="top" id="PVH-hf-V8A"/>
+                            <constraint firstItem="Ht4-we-lW7" firstAttribute="leading" secondItem="z8r-Fb-ab7" secondAttribute="leading" id="Rln-3T-Qvg"/>
+                            <constraint firstItem="vId-g9-AHP" firstAttribute="leading" secondItem="z8r-Fb-ab7" secondAttribute="leading" id="Z1L-wB-FYQ"/>
+                            <constraint firstItem="z8r-Fb-ab7" firstAttribute="trailing" secondItem="Ht4-we-lW7" secondAttribute="trailing" id="bYG-K7-Fdu"/>
+                            <constraint firstItem="z8r-Fb-ab7" firstAttribute="trailing" secondItem="vId-g9-AHP" secondAttribute="trailing" id="pc4-Pa-P5p"/>
+                            <constraint firstItem="Ht4-we-lW7" firstAttribute="height" secondItem="Cva-YI-Six" secondAttribute="height" multiplier="0.0704225" id="urR-Cg-2qW"/>
+                            <constraint firstItem="z8r-Fb-ab7" firstAttribute="bottom" secondItem="vId-g9-AHP" secondAttribute="bottom" id="vYl-34-CBe"/>
+                            <constraint firstItem="TZ4-5t-XUB" firstAttribute="height" secondItem="Cva-YI-Six" secondAttribute="height" multiplier="0.0546875" id="x3u-fP-qYj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z8r-Fb-ab7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yWm-Nm-Fgg"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="vId-g9-AHP" id="qgw-zZ-6rE"/>
+                        <outlet property="infoLabel" destination="TZ4-5t-XUB" id="Nlt-vc-sLA"/>
+                        <outlet property="navigationBar" destination="Ht4-we-lW7" id="QuW-VF-aVr"/>
+                        <segue destination="CYf-oW-9tj" kind="show" identifier="createIncome" id="uuf-D3-C4P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Yc-DR-6k7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2719" y="2734"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rac-xc-iPf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="gP2-3K-5wj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="tqM-Kk-x1e"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lQq-kX-Mkr">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="K0w-ZD-Yjw" kind="relationship" relationship="rootViewController" id="DFg-cB-AUD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PeF-uD-DNF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="2734"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gqy-8J-Hrx"/>
+        <segue reference="uuf-D3-C4P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Entertainment" width="64" height="64"/>

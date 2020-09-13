@@ -13,26 +13,24 @@ class ChooseMoneyCategoryCollectionViewController: UIViewController {
     @IBOutlet var navigationBar: AddMoneyActionNavigationBar!
     @IBOutlet var infoLabel: UILabel!
     @IBOutlet var categoryCollectionView: UICollectionView!
-    // MARK : Private Property
-    var purchaseCategory: PurchasesCategory!
-    var moneyCategories: Results<MoneyCategory>!
     
-    // MARL : Override Properties
+    //MARK: Private Property
+    var viewModel: ChooseMoneyCategoryViewModelProtocol!
+    
+    //MARK: - Override Properties
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryCollectionView.register(MoneyCategoryCollectionViewCell.nib(), forCellWithReuseIdentifier: MoneyCategoryCollectionViewCell.identifier)
-        moneyCategories = StorageManager.shared.realm.objects(MoneyCategory.self)
-        infoLabel.text = "Выберите счет"
-        navigationBar.title.text = "Добавление расхода"
+        categoryCollectionView.register(BetaMoneyCategoryCollectionViewCell.nib(), forCellWithReuseIdentifier: BetaMoneyCategoryCollectionViewCell.identifier)
+        infoLabel.text = viewModel.getInfoText()
+        navigationBar.title.text = viewModel.getNavigationBarTitle()
         navigationBar.delegat = self
         navigationBar.setupNavBarSecondType()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = categoryCollectionView.indexPathsForSelectedItems?.first else { return }
+        guard let viewModelForSegue = sender as? CreateMoneyActionViewModelProtocol else { return }
         let createVC = segue.destination as! CreateMoneyActionViewController
-        createVC.categoryForAdd = purchaseCategory
-        createVC.categoryForBuy = moneyCategories[indexPath.item]
+        createVC.viewModel = viewModelForSegue
     }
     
     //MARK: Private Methods
@@ -49,26 +47,29 @@ class ChooseMoneyCategoryCollectionViewController: UIViewController {
     
 }
 
-// MARK : CollectionViewDelegate
+// MARK: - CollectionViewDelegate
 extension ChooseMoneyCategoryCollectionViewController  : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueIndentifire.createPurchases.rawValue, sender: nil)
+        collectionView.deselectItem(at: indexPath, animated: true)
+        viewModel.selectItem(at: indexPath)
+        let viewModelForSegue = viewModel.viewModelForCreateVC()
+        performSegue(withIdentifier: SegueIndentifire.createPurchases.rawValue, sender: viewModelForSegue)
     }
 }
 
-// MARK : CollectionViewDataSourse
+// MARK: - CollectionViewDataSourse
 extension ChooseMoneyCategoryCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        moneyCategories.count
+        viewModel.numberOfRows()
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoneyCategoryCollectionViewCell.identifier, for: indexPath) as! MoneyCategoryCollectionViewCell
-        cell.setupForChooseMoneyVC(moneyCategory: moneyCategories[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BetaMoneyCategoryCollectionViewCell.identifier, for: indexPath) as! BetaMoneyCategoryCollectionViewCell
+        cell.viewModel = viewModel.cellViewModal(for: indexPath)
         return cell
     }
     
 }
-// MARK : CollectionViewDelegateFlowLayout
+// MARK: - CollectionViewDelegateFlowLayout
 extension ChooseMoneyCategoryCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.bounds.width - 30)/3, height: (collectionView.bounds.width  - 30)/3)
@@ -76,7 +77,7 @@ extension ChooseMoneyCategoryCollectionViewController: UICollectionViewDelegateF
 }
 
 extension ChooseMoneyCategoryCollectionViewController: AddMoneyActionNavigationBarDelegate{
-    func addMoneyCategory() {
+    func createMoneyAction() {
         showAlert()
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-class MainViewController: UIViewController {
+class MainMenuViewController: UIViewController {
     
     //MARK: - IB Outlets
     @IBOutlet var moneyCategoryCollectionView: UICollectionView!
@@ -18,9 +18,8 @@ class MainViewController: UIViewController {
     // MARK: - Private Property
     private var moneyCategories: Results<MoneyCategory>!
     private var purchasesCategories: Results<PurchasesCategory>!
-    private let addMoneyCategoryCellIdentifire = "addMoneyCategory"
-    private let addPurchasesCategoryCellIdentifire = "addPurchasesCategory"
     
+    private let viewModel = MainMenuViewModel()
     //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +46,16 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIndentifire.addMoneyAction.rawValue {
+        if segue.identifier == SegueIndentifire.addIncome.rawValue {
+            guard let viewModel = sender as? AddIncomeViewModelProtocol else { return }
             guard let navController = segue.destination as? UINavigationController else { return }
-            guard let addVC = navController.topViewController as? AddMoneyActionViewController else { return }
-            if let moneyCategory = sender as?  [MoneyCategory] {
-                addVC.categories = moneyCategory
-            } else {
-                addVC.categories = sender as! [PurchasesCategory]
-            }
+            guard let vc = navController.topViewController as? AddIncomeViewController else { return }
+            vc.viewModel = viewModel
+        } else if segue.identifier == SegueIndentifire.addPurchases.rawValue {
+            guard let viewModel = sender as? AddPurshaeseViewModelProtocol else { return }
+            guard let navController = segue.destination as? UINavigationController else { return }
+            guard let vc = navController.topViewController as? AddPurshasesViewController else { return }
+            vc.viewModel = viewModel
             
         } else  if segue.identifier == SegueIndentifire.detailAllCategories.rawValue {
             guard let categoryType = sender as? CategoriesType else { return }
@@ -85,7 +86,7 @@ class MainViewController: UIViewController {
 }
 
 //MARK: - MainNavigationBarDelegate
-extension MainViewController: MainNavigationBarDelegate {
+extension MainMenuViewController: MainNavigationBarDelegate {
     func watchBalance() {
         performSegue(withIdentifier: SegueIndentifire.detailAllCategories.rawValue, sender: CategoriesType.moneyCategory)
     }
@@ -93,28 +94,31 @@ extension MainViewController: MainNavigationBarDelegate {
         performSegue(withIdentifier: SegueIndentifire.detailAllCategories.rawValue, sender: CategoriesType.purchasesCategory)
     }
     func watchPlan() {
-//        performSegue(withIdentifier: SegueIndentifire.showTaskList.rawValue, sender: nil)
+        //        performSegue(withIdentifier: SegueIndentifire.showTaskList.rawValue, sender: nil)
     }
     func addMoney() {
-        performSegue(withIdentifier: SegueIndentifire.addMoneyAction.rawValue, sender:Array(moneyCategories))
+        let incomeViewModel = viewModel.getAddIncomeViewModel()
+        performSegue(withIdentifier: SegueIndentifire.addIncome.rawValue, sender: incomeViewModel)
     }
     func addExpense() {
-        performSegue(withIdentifier: SegueIndentifire.addMoneyAction.rawValue , sender: Array(purchasesCategories))
+        let purchasesViewModel = viewModel.getAddPurshasesViewModel()
+        performSegue(withIdentifier: SegueIndentifire.addPurchases.rawValue , sender: purchasesViewModel)
     }
 }
 
 //MARK: - UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {
+extension MainMenuViewController: UICollectionViewDelegate {
     
 }
 
 //MARK: - UICollectionFlowDelegate
-extension MainViewController: UICollectionViewDelegateFlowLayout {
+extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: (moneyCategoryCollectionView.bounds.width - 30)/3, height: (moneyCategoryCollectionView.bounds.width - 30)/3)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if collectionView == moneyCategoryCollectionView {
             if indexPath.row < moneyCategories.count {
                 performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: moneyCategoryCollectionView)
@@ -132,7 +136,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - extension UICollectionViewDataSource
-extension MainViewController: UICollectionViewDataSource {
+extension MainMenuViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionView === moneyCategoryCollectionView ? moneyCategories.count + 1 : purchasesCategories.count + 1
     }
@@ -145,7 +149,7 @@ extension MainViewController: UICollectionViewDataSource {
                 cell.setupCell(category: moneyCategories[indexPath.item])
                 return cell
             } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addMoneyCategoryCellIdentifire, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.getAddMoneyCategoryCellIdentifire(), for: indexPath)
                 return cell
             }
             
@@ -156,7 +160,7 @@ extension MainViewController: UICollectionViewDataSource {
                 cell.setupCell(category: purchasesCategories[indexPath.item])
                 return cell
             } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addPurchasesCategoryCellIdentifire, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.getAddPurchasesCategoryCellIdentifire(), for: indexPath)
                 return cell
             }
         }

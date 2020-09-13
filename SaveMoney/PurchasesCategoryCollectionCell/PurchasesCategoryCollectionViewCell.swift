@@ -17,6 +17,14 @@ class PurchasesCategoryCollectionViewCell: UICollectionViewCell {
         return UINib(nibName: "PurchasesCategoryCollectionViewCell",
                      bundle: nil)
     }
+    
+    var viewModel: PurchasesCategoryCollectionViewCellViewModelProtocol! {
+        didSet {
+            nameCategoryLabel.text = viewModel.getCategoryName()
+            moneyCountLabel.text = viewModel.getMoneyCount()
+            categoryImageView.image = UIImage(named: viewModel.getImageName())
+        }
+    }
     //MARK: - IB Outlets
     @IBOutlet var colorView: UIView!
     @IBOutlet var categoryImageView: UIImageView!
@@ -29,14 +37,4 @@ class PurchasesCategoryCollectionViewCell: UICollectionViewCell {
         layoutIfNeeded()
         colorView.layer.cornerRadius = colorView.frame.width/2
     }
-
-    
-    //MARK : - Public Methods
-    func setupCell(purchasesCategory: PurchasesCategory) {
-        nameCategoryLabel.text = purchasesCategory.name
-        categoryImageView.image = UIImage(named: purchasesCategory.name) ?? UIImage(named: "default")!
-        moneyCountLabel.text =  "\(purchasesCategory.moneyCount) ₽"
-        
-    }
-    
 }

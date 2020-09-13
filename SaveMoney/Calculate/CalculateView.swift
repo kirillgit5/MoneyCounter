@@ -9,16 +9,10 @@
 import UIKit
 
 protocol CalculateViewDelegate: class {
-    func writeSymbol(symbol: Character)
-    func delete()
-    func subtraction()
-    func multiplication()
-    func division()
-    func addition()
+    func writeSymbol(action: CalculateActionWithNumber)
+    func doOperate(operate: CalculateActionWithOperate)
     func writeResult()
-    func percent()
     func writeActionName()
-    func deleteAction()
 }
 
 @IBDesignable  class CalculateView: UIView {
@@ -42,14 +36,14 @@ protocol CalculateViewDelegate: class {
     
     @IBInspectable var typeAdapter: String {
         get { type.rawValue  }
-        set { type = CalculateAction(rawValue: newValue) ?? .unknow }
+        set { type = CalculateAction(rawValue: newValue) ?? .noAction }
     }
     
-    private var type: CalculateAction = .unknow
+    private var type: CalculateAction = .noAction
     
     
     //MARK : Public Proiperty
-    var delegate: CalculateViewDelegate?
+    weak var delegate: CalculateViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,50 +84,49 @@ protocol CalculateViewDelegate: class {
     @IBAction func action() {
         switch type {
         case .writeNull:
-            delegate?.writeSymbol(symbol: "0")
+            delegate?.writeSymbol(action: .writeNull)
         case .writeOne:
-            delegate?.writeSymbol(symbol: "1")
+            delegate?.writeSymbol(action: .writeOne)
         case .writeTwo:
-            delegate?.writeSymbol(symbol: "2")
+            delegate?.writeSymbol(action: .writeTwo)
         case .writeThree:
-            delegate?.writeSymbol(symbol: "3")
+            delegate?.writeSymbol(action: .writeThree)
         case .writeFour:
-            delegate?.writeSymbol(symbol: "4")
+            delegate?.writeSymbol(action: .writeFour)
         case .writeFive:
-            delegate?.writeSymbol(symbol: "5")
+            delegate?.writeSymbol(action: .writeFive)
         case .writeSix:
-            delegate?.writeSymbol(symbol: "6")
+            delegate?.writeSymbol(action: .writeSix)
         case .writeSeven:
-            delegate?.writeSymbol(symbol: "7")
+            delegate?.writeSymbol(action: .writeSeven)
         case .writeEight:
-            delegate?.writeSymbol(symbol: "8")
+            delegate?.writeSymbol(action: .writeEight)
         case .writeNine:
-            delegate?.writeSymbol(symbol: "9")
+            delegate?.writeSymbol(action: .writeNine)
         case .writeActionName:
             delegate?.writeActionName()
         case .doAddition:
-            delegate?.addition()
+            delegate?.doOperate(operate: .doAddition)
         case .doSubtraction:
-            delegate?.subtraction()
+            delegate?.doOperate(operate: .doSubtraction)
         case .doMultiplication:
-            delegate?.multiplication()
+            delegate?.doOperate(operate: .doMultiplication)
         case .doDivision:
-            delegate?.division()
-        case .result:
+            delegate?.doOperate(operate: .doDivision)
+        case .calculateResult:
             delegate?.writeResult()
         case .delete:
-            delegate?.delete()
+            delegate?.writeSymbol(action: .delete)
         case .doPersent:
-            delegate?.percent()
+            delegate?.doOperate(operate: .doPersent)
             
         case .writePoint:
-            delegate?.writeSymbol(symbol: ".")
-        case .unknow:
-            break
+            delegate?.writeSymbol(action: .writePoint)
+        
         case .noAction:
             break
         case .deleteAction:
-            delegate?.deleteAction()
+            delegate?.doOperate(operate: .deleteAction)
         }
         
     }

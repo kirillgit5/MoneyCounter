@@ -10,7 +10,7 @@ import UIKit
 
 protocol AddMoneyActionNavigationBarDelegate: class {
     func back()
-    func addMoneyCategory()
+    func createMoneyAction()
 }
 
 @IBDesignable class AddMoneyActionNavigationBar: UINavigationBar {
@@ -66,7 +66,7 @@ protocol AddMoneyActionNavigationBarDelegate: class {
     
     
     @IBAction func addMoneyAction() {
-        delegat?.addMoneyCategory()
+        delegat?.createMoneyAction()
     }
     
 }
