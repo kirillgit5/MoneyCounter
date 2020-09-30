@@ -430,7 +430,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Sd6-fV-BbF"/>
                     <connections>
-                        <segue destination="CYf-oW-9tj" kind="show" identifier="editMoneyAction" id="Bi1-sf-ABT"/>
+                        <segue destination="avI-O1-HQf" kind="show" identifier="editMoneyAction" id="D3Q-zy-6AQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISR-il-Te2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -767,7 +767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qg4-X6-pky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4149" y="438"/>
+            <point key="canvasLocation" x="4209" y="514"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="A8a-GZ-Gb3">
@@ -785,7 +785,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="zK5-FV-FS8"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="CYf-oW-9tj" kind="show" identifier="editMoneyActionForAllCategories" id="0LT-h9-li5"/>
+                        <segue destination="Vpx-9a-ulN" kind="show" identifier="editMoneyAction" id="SeB-Nd-9hF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sF9-jg-XTy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -909,6 +909,634 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PeF-uD-DNF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141" y="2734"/>
+        </scene>
+        <!--Edit Money Action View Controller-->
+        <scene sceneID="DyD-Um-YJH">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="Vpx-9a-ulN" customClass="EditMoneyActionViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tUh-nM-fK9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hS-ch-e8m" customClass="AddMoneyActionNavigationBar" customModule="SaveMoney" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="320" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGB-DQ-dEd">
+                                <rect key="frame" x="0.0" y="169.5" width="320" height="398.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wWD-ci-PjX">
+                                        <rect key="frame" x="4" y="5" width="312" height="352.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CEa-zs-cZ5">
+                                                <rect key="frame" x="0.0" y="0.0" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GB-er-8cO" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="в"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeActionName"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qba-QG-I3L" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="AC"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="deleteAction"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KN-CT-udH" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="%"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doPersent"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9P-JV-aa7" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="+"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doAddition"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6zY-Nw-AUv">
+                                                <rect key="frame" x="0.0" y="71" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fwp-rc-lZt" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeOne"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-z6-jSa" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="2"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeTwo"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGs-8a-Vf9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="3"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeThree"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w31-cG-3nc" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="-"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doSubtraction"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IHq-Mb-Pqu">
+                                                <rect key="frame" x="0.0" y="142" width="312" height="68.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEo-5b-FZs" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="4"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeFour"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7M-bZ-kmb" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="5"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeFive"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U85-IB-ZAA" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeSix"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kma-Nm-jjY" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="×"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doMultiplication"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-QW-N3R">
+                                                <rect key="frame" x="0.0" y="212.5" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTe-Jl-FOJ" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="7"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeSeven"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVO-pK-bWi" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="8"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeEight"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BI9-1f-j69" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="9"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeNine"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4j3-Vi-hOi" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="÷"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doDivision"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QnD-Ht-3y7">
+                                                <rect key="frame" x="0.0" y="283.5" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgd-SC-Xq7" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value=","/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writePoint"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPc-gK-c5m" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="0"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeNull"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Pf-lY-Qbw" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="⌫"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="delete"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmh-zX-mlm" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="="/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="calculateResult"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2c8-gs-Auy">
+                                        <rect key="frame" x="0.0" y="357.5" width="320" height="1"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="SoU-Qa-fpy"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI6-1A-PdB" customClass="DateChooseView" customModule="SaveMoney" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="358.5" width="320" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FnJ-9k-z9e"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="2c8-gs-Auy" firstAttribute="top" secondItem="wWD-ci-PjX" secondAttribute="bottom" id="92R-K0-pxC"/>
+                                    <constraint firstAttribute="trailing" secondItem="wWD-ci-PjX" secondAttribute="trailing" constant="4" id="Z1g-Hi-xpK"/>
+                                    <constraint firstAttribute="trailing" secondItem="2c8-gs-Auy" secondAttribute="trailing" id="cHw-aa-E8i"/>
+                                    <constraint firstItem="wWD-ci-PjX" firstAttribute="top" secondItem="CGB-DQ-dEd" secondAttribute="top" constant="5" id="dW6-lN-5hN"/>
+                                    <constraint firstItem="wWD-ci-PjX" firstAttribute="leading" secondItem="CGB-DQ-dEd" secondAttribute="leading" constant="4" id="fiA-od-4gg"/>
+                                    <constraint firstItem="2c8-gs-Auy" firstAttribute="leading" secondItem="CGB-DQ-dEd" secondAttribute="leading" id="h0w-sH-7wN"/>
+                                    <constraint firstAttribute="bottom" secondItem="hI6-1A-PdB" secondAttribute="bottom" id="nlI-oB-1F3"/>
+                                    <constraint firstAttribute="trailing" secondItem="hI6-1A-PdB" secondAttribute="trailing" id="nxj-bY-6Io"/>
+                                    <constraint firstItem="hI6-1A-PdB" firstAttribute="leading" secondItem="CGB-DQ-dEd" secondAttribute="leading" id="qA1-qI-HLI"/>
+                                    <constraint firstItem="hI6-1A-PdB" firstAttribute="top" secondItem="2c8-gs-Auy" secondAttribute="bottom" id="qQT-C7-UYI"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zn2-w7-9Ng" customClass="CalculaterScreen" customModule="SaveMoney" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="320" height="85.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIa-Jf-kDG">
+                                <rect key="frame" x="4" y="349.5" width="312" height="140"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Zn2-w7-9Ng" firstAttribute="height" secondItem="tUh-nM-fK9" secondAttribute="height" multiplier="0.15067" id="018-Zy-sSj"/>
+                            <constraint firstItem="CGB-DQ-dEd" firstAttribute="leading" secondItem="0Tg-3v-PdC" secondAttribute="leading" id="4e9-K8-PTV"/>
+                            <constraint firstItem="Zn2-w7-9Ng" firstAttribute="leading" secondItem="0Tg-3v-PdC" secondAttribute="leading" id="532-a9-9ny"/>
+                            <constraint firstItem="0hS-ch-e8m" firstAttribute="leading" secondItem="0Tg-3v-PdC" secondAttribute="leading" id="6Z9-tr-UFZ"/>
+                            <constraint firstItem="OIa-Jf-kDG" firstAttribute="top" secondItem="Zn2-w7-9Ng" secondAttribute="bottom" constant="180" id="85w-bX-rX7"/>
+                            <constraint firstItem="0Tg-3v-PdC" firstAttribute="trailing" secondItem="Zn2-w7-9Ng" secondAttribute="trailing" id="Bzn-K8-IYZ"/>
+                            <constraint firstItem="0hS-ch-e8m" firstAttribute="height" secondItem="tUh-nM-fK9" secondAttribute="height" multiplier="0.0704225" id="J1u-qx-Fwo"/>
+                            <constraint firstItem="0Tg-3v-PdC" firstAttribute="trailing" secondItem="0hS-ch-e8m" secondAttribute="trailing" id="OoA-to-Sag"/>
+                            <constraint firstItem="0Tg-3v-PdC" firstAttribute="trailing" secondItem="CGB-DQ-dEd" secondAttribute="trailing" id="TdO-dM-guU"/>
+                            <constraint firstItem="0Tg-3v-PdC" firstAttribute="trailing" secondItem="OIa-Jf-kDG" secondAttribute="trailing" constant="4" id="UJE-5n-RWp"/>
+                            <constraint firstItem="CGB-DQ-dEd" firstAttribute="top" secondItem="Zn2-w7-9Ng" secondAttribute="bottom" id="WHi-Dc-Vgc"/>
+                            <constraint firstItem="Zn2-w7-9Ng" firstAttribute="top" secondItem="0hS-ch-e8m" secondAttribute="bottom" id="fp4-hc-SL4"/>
+                            <constraint firstItem="0hS-ch-e8m" firstAttribute="top" secondItem="0Tg-3v-PdC" secondAttribute="top" id="k8z-mZ-fvh"/>
+                            <constraint firstItem="OIa-Jf-kDG" firstAttribute="leading" secondItem="0Tg-3v-PdC" secondAttribute="leading" constant="4" id="kFs-eZ-Z0s"/>
+                            <constraint firstItem="OIa-Jf-kDG" firstAttribute="height" secondItem="tUh-nM-fK9" secondAttribute="height" multiplier="0.246479" id="pj1-hv-wKw"/>
+                            <constraint firstItem="0Tg-3v-PdC" firstAttribute="bottom" secondItem="CGB-DQ-dEd" secondAttribute="bottom" id="sFA-rg-jWj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Tg-3v-PdC"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="EdC-Eg-qeF">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="add" id="6k0-Ff-Dlf">
+                            <connections>
+                                <action selector="createMoneyAction:" destination="Vpx-9a-ulN" id="CiJ-Lg-MEX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="additionView" destination="c9P-JV-aa7" id="mKx-os-Smb"/>
+                        <outlet property="calculateScreen" destination="Zn2-w7-9Ng" id="kQ3-nW-2gj"/>
+                        <outlet property="calculateView" destination="CGB-DQ-dEd" id="7Qr-aQ-25n"/>
+                        <outlet property="dateChooseView" destination="hI6-1A-PdB" id="FCc-SB-XUw"/>
+                        <outlet property="deleteActionView" destination="Qba-QG-I3L" id="MYf-Tl-Mab"/>
+                        <outlet property="deleteView" destination="8Pf-lY-Qbw" id="Kr0-7B-01w"/>
+                        <outlet property="divisionView" destination="4j3-Vi-hOi" id="VKX-QQ-cpU"/>
+                        <outlet property="multView" destination="kma-Nm-jjY" id="K39-y3-t09"/>
+                        <outlet property="nameView" destination="1GB-er-8cO" id="gXG-OT-0BA"/>
+                        <outlet property="navigationBar" destination="0hS-ch-e8m" id="eSf-r3-xL6"/>
+                        <outlet property="numberEightView" destination="gVO-pK-bWi" id="vi7-8p-bOS"/>
+                        <outlet property="numberFiveView" destination="m7M-bZ-kmb" id="6IS-PB-biN"/>
+                        <outlet property="numberFourView" destination="CEo-5b-FZs" id="1fB-Co-o5s"/>
+                        <outlet property="numberNineView" destination="BI9-1f-j69" id="Doy-QA-xRd"/>
+                        <outlet property="numberNullView" destination="gPc-gK-c5m" id="49G-bn-8E2"/>
+                        <outlet property="numberOneView" destination="Fwp-rc-lZt" id="tsG-gf-dNq"/>
+                        <outlet property="numberSevenView" destination="VTe-Jl-FOJ" id="N0p-yc-PRx"/>
+                        <outlet property="numberSixView" destination="U85-IB-ZAA" id="MJc-b2-gVA"/>
+                        <outlet property="numberThreeView" destination="UGs-8a-Vf9" id="hhD-Nw-aWf"/>
+                        <outlet property="numberTwoView" destination="hDE-z6-jSa" id="c1V-SG-hC3"/>
+                        <outlet property="percentView" destination="9KN-CT-udH" id="nqW-8a-WhM"/>
+                        <outlet property="pointView" destination="sgd-SC-Xq7" id="zY7-hw-VQF"/>
+                        <outlet property="resultsView" destination="pmh-zX-mlm" id="orG-Ge-zP7"/>
+                        <outlet property="substractionView" destination="w31-cG-3nc" id="7Xd-zc-KfA"/>
+                        <outlet property="textView" destination="OIa-Jf-kDG" id="TZP-DU-kJb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTr-Id-T8j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2768" y="464"/>
+        </scene>
+        <!--Edit Money Action View Controller-->
+        <scene sceneID="eJL-EB-UPv">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="avI-O1-HQf" customClass="EditMoneyActionViewController" customModule="SaveMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gqy-ee-nj0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="law-Ez-PgO" customClass="AddMoneyActionNavigationBar" customModule="SaveMoney" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="320" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3F1-21-zDg">
+                                <rect key="frame" x="0.0" y="169.5" width="320" height="398.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="oOs-rh-dmH">
+                                        <rect key="frame" x="4" y="5" width="312" height="352.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cEP-7o-D5c">
+                                                <rect key="frame" x="0.0" y="0.0" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9Q-Uz-zPE" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="в"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeActionName"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-6i-9ap" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="AC"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="deleteAction"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-rc-DKJ" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="%"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doPersent"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5WY-pC-YHe" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="+"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doAddition"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="r21-ff-z6R">
+                                                <rect key="frame" x="0.0" y="71" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTz-ns-Avq" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="1"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeOne"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spP-7D-3Hr" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="2"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeTwo"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8j7-N8-mgl" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="3"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeThree"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLM-bY-bP9" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="-"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doSubtraction"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xFI-1V-hHp">
+                                                <rect key="frame" x="0.0" y="142" width="312" height="68.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBA-iC-TYw" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="4"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeFour"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hF-Gp-uY7" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="5"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeFive"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yG-81-mc5" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeSix"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zf5-YR-9ps" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="68.5"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="×"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doMultiplication"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PZE-eD-S5d">
+                                                <rect key="frame" x="0.0" y="212.5" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7P-Fo-JOt" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="7"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeSeven"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKH-2b-sBo" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="8"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeEight"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5KX-ui-cQ4" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="9"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeNine"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Adr-Tf-UbA" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="÷"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="doDivision"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bub-vO-O9B">
+                                                <rect key="frame" x="0.0" y="283.5" width="312" height="69"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqq-Ky-MYe" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value=","/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writePoint"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fi3-3q-JvI" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="78" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="0"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="writeNull"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avJ-Am-auZ" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="156" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="⌫"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="delete"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVX-ax-zrs" customClass="CalculateView" customModule="SaveMoney" customModuleProvider="target">
+                                                        <rect key="frame" x="234" y="0.0" width="78" height="69"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="="/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSupportView" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeAdapter" value="calculateResult"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZo-lJ-DcR">
+                                        <rect key="frame" x="0.0" y="357.5" width="320" height="1"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="pgQ-mO-4XS"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-8V-b5z" customClass="DateChooseView" customModule="SaveMoney" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="358.5" width="320" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="akp-Av-xc9"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="GZo-lJ-DcR" firstAttribute="top" secondItem="oOs-rh-dmH" secondAttribute="bottom" id="9a8-dH-gx4"/>
+                                    <constraint firstItem="oOs-rh-dmH" firstAttribute="top" secondItem="3F1-21-zDg" secondAttribute="top" constant="5" id="BZd-Lj-6qg"/>
+                                    <constraint firstItem="mIM-8V-b5z" firstAttribute="leading" secondItem="3F1-21-zDg" secondAttribute="leading" id="Ctc-Lz-DgB"/>
+                                    <constraint firstAttribute="trailing" secondItem="oOs-rh-dmH" secondAttribute="trailing" constant="4" id="Gra-jV-xPM"/>
+                                    <constraint firstItem="mIM-8V-b5z" firstAttribute="top" secondItem="GZo-lJ-DcR" secondAttribute="bottom" id="I8P-7b-zYu"/>
+                                    <constraint firstItem="GZo-lJ-DcR" firstAttribute="leading" secondItem="3F1-21-zDg" secondAttribute="leading" id="OU7-8J-5Ax"/>
+                                    <constraint firstAttribute="trailing" secondItem="mIM-8V-b5z" secondAttribute="trailing" id="azL-GC-VQc"/>
+                                    <constraint firstItem="oOs-rh-dmH" firstAttribute="leading" secondItem="3F1-21-zDg" secondAttribute="leading" constant="4" id="dcU-dz-Vvk"/>
+                                    <constraint firstAttribute="trailing" secondItem="GZo-lJ-DcR" secondAttribute="trailing" id="jlu-tB-KJg"/>
+                                    <constraint firstAttribute="bottom" secondItem="mIM-8V-b5z" secondAttribute="bottom" id="nsg-TG-MgQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PJ-iq-cFM" customClass="CalculaterScreen" customModule="SaveMoney" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="320" height="85.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3k-5O-mI0">
+                                <rect key="frame" x="4" y="349.5" width="312" height="140"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="K50-OE-O3i" firstAttribute="trailing" secondItem="3F1-21-zDg" secondAttribute="trailing" id="0VR-KR-BgD"/>
+                            <constraint firstItem="E3k-5O-mI0" firstAttribute="height" secondItem="Gqy-ee-nj0" secondAttribute="height" multiplier="0.246479" id="0me-oz-yEv"/>
+                            <constraint firstItem="law-Ez-PgO" firstAttribute="leading" secondItem="K50-OE-O3i" secondAttribute="leading" id="1kp-qA-Skx"/>
+                            <constraint firstItem="K50-OE-O3i" firstAttribute="bottom" secondItem="3F1-21-zDg" secondAttribute="bottom" id="8M0-UJ-trs"/>
+                            <constraint firstItem="K50-OE-O3i" firstAttribute="trailing" secondItem="3PJ-iq-cFM" secondAttribute="trailing" id="B1Q-Y1-LlA"/>
+                            <constraint firstItem="law-Ez-PgO" firstAttribute="top" secondItem="K50-OE-O3i" secondAttribute="top" id="Bv1-4W-IPU"/>
+                            <constraint firstItem="3PJ-iq-cFM" firstAttribute="leading" secondItem="K50-OE-O3i" secondAttribute="leading" id="CVd-Of-20f"/>
+                            <constraint firstItem="3F1-21-zDg" firstAttribute="top" secondItem="3PJ-iq-cFM" secondAttribute="bottom" id="DZm-ud-xX6"/>
+                            <constraint firstItem="3F1-21-zDg" firstAttribute="leading" secondItem="K50-OE-O3i" secondAttribute="leading" id="Fpa-mi-FxD"/>
+                            <constraint firstItem="E3k-5O-mI0" firstAttribute="top" secondItem="3PJ-iq-cFM" secondAttribute="bottom" constant="180" id="I41-iE-N3R"/>
+                            <constraint firstItem="K50-OE-O3i" firstAttribute="trailing" secondItem="E3k-5O-mI0" secondAttribute="trailing" constant="4" id="Ruc-yJ-ycI"/>
+                            <constraint firstItem="E3k-5O-mI0" firstAttribute="leading" secondItem="K50-OE-O3i" secondAttribute="leading" constant="4" id="Xru-c8-a96"/>
+                            <constraint firstItem="3PJ-iq-cFM" firstAttribute="top" secondItem="law-Ez-PgO" secondAttribute="bottom" id="c7g-xk-vgY"/>
+                            <constraint firstItem="law-Ez-PgO" firstAttribute="height" secondItem="Gqy-ee-nj0" secondAttribute="height" multiplier="0.0704225" id="cQm-Li-w46"/>
+                            <constraint firstItem="K50-OE-O3i" firstAttribute="trailing" secondItem="law-Ez-PgO" secondAttribute="trailing" id="kTI-0B-6LM"/>
+                            <constraint firstItem="3PJ-iq-cFM" firstAttribute="height" secondItem="Gqy-ee-nj0" secondAttribute="height" multiplier="0.15067" id="poQ-VS-tQw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="K50-OE-O3i"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="V7t-8T-IC1">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="add" id="vrZ-9d-S5e">
+                            <connections>
+                                <action selector="createMoneyAction:" destination="avI-O1-HQf" id="f2B-Th-VGn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="additionView" destination="5WY-pC-YHe" id="kDe-Ed-05d"/>
+                        <outlet property="calculateScreen" destination="3PJ-iq-cFM" id="egV-fb-cg6"/>
+                        <outlet property="calculateView" destination="3F1-21-zDg" id="NIZ-dZ-nhE"/>
+                        <outlet property="dateChooseView" destination="mIM-8V-b5z" id="M5w-fJ-eXy"/>
+                        <outlet property="deleteActionView" destination="PWM-6i-9ap" id="dyR-Ao-gCd"/>
+                        <outlet property="deleteView" destination="avJ-Am-auZ" id="d3g-DQ-Htz"/>
+                        <outlet property="divisionView" destination="Adr-Tf-UbA" id="IhG-Xn-V5n"/>
+                        <outlet property="multView" destination="zf5-YR-9ps" id="CCw-LS-QmK"/>
+                        <outlet property="nameView" destination="V9Q-Uz-zPE" id="2II-5f-2j1"/>
+                        <outlet property="navigationBar" destination="law-Ez-PgO" id="AJv-sZ-9Nn"/>
+                        <outlet property="numberEightView" destination="VKH-2b-sBo" id="dn5-WH-XUp"/>
+                        <outlet property="numberFiveView" destination="4hF-Gp-uY7" id="hWw-KS-7Kf"/>
+                        <outlet property="numberFourView" destination="fBA-iC-TYw" id="jpW-mr-ffk"/>
+                        <outlet property="numberNineView" destination="5KX-ui-cQ4" id="OQq-OT-X27"/>
+                        <outlet property="numberNullView" destination="fi3-3q-JvI" id="ZrD-8U-kWa"/>
+                        <outlet property="numberOneView" destination="lTz-ns-Avq" id="arq-ad-P7d"/>
+                        <outlet property="numberSevenView" destination="A7P-Fo-JOt" id="lOe-Tx-xFH"/>
+                        <outlet property="numberSixView" destination="7yG-81-mc5" id="nsD-HU-9C2"/>
+                        <outlet property="numberThreeView" destination="8j7-N8-mgl" id="2TF-ep-vGt"/>
+                        <outlet property="numberTwoView" destination="spP-7D-3Hr" id="iZS-qa-HhU"/>
+                        <outlet property="percentView" destination="4gn-rc-DKJ" id="NqY-go-p6x"/>
+                        <outlet property="pointView" destination="Dqq-Ky-MYe" id="zHe-Cj-vS2"/>
+                        <outlet property="resultsView" destination="GVX-ax-zrs" id="vvk-8y-9W9"/>
+                        <outlet property="substractionView" destination="NLM-bY-bP9" id="cmv-Y9-LaF"/>
+                        <outlet property="textView" destination="E3k-5O-mI0" id="5Qa-tx-HW5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a8I-xN-rHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2633" y="-750"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

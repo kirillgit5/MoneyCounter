@@ -1,23 +1,18 @@
 //
-//  CreateMoneyActionViewModel.swift
+//  EditMoneyActionViewModelProtocol.swift
 //  SaveMoney
 //
-//  Created by Кирилл Крамар on 12.09.2020.
+//  Created by Кирилл Крамар on 16.09.2020.
 //  Copyright © 2020 Кирилл Крамар. All rights reserved.
 //
 
 import Foundation
-import RealmSwift
 
-struct AlertError {
-    let isError: Bool
-    var message = ""
-}
 
-protocol CreateMoneyActionViewModelProtocol {
+protocol EditMoneyActionViewModelProtocol {
     var amountForShow: Box<String> { get }
     var currentAction: Box<CalculateActionWithOperate> { get }
-    init(categoryForAdd: Category, moneyCategory: MoneyCategory?)
+    init(editMoneyAction: MoneyAction)
     func setName(name: String?)
     func setDate(date: Date)
     func setName(name: String)
@@ -32,25 +27,25 @@ protocol CreateMoneyActionViewModelProtocol {
     func saveMoneyAction() -> AlertError
 }
 
-class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
+class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
+    
     
     var amountForShow: Box<String>
     var currentAction = Box<CalculateActionWithOperate>(value: .noAction)
-    private var firstOperand: Double?
-    private var name: String = ""
-    private var date: Date
-    private var isFractional = false
-    private var categoryForAdd: Category?
-    private var moneyCategory: MoneyCategory?
-    private var isFirstOperation = true
+       private var firstOperand: Double?
+       private var name: String = ""
+       private var date: Date
+       private var isFractional = false
+       private var editMoneyAction: MoneyAction
+       private var isFirstOperation = true
     
-    required init(categoryForAdd: Category, moneyCategory: MoneyCategory? = nil) {
-        self.categoryForAdd = categoryForAdd
-        self.moneyCategory = moneyCategory
-        amountForShow = Box<String>(value: "")
-        date = Date()
+    required init(editMoneyAction: MoneyAction) {
+        self.editMoneyAction = editMoneyAction
+        date = editMoneyAction.date
+        name = editMoneyAction.name
+        firstOperand = editMoneyAction.moneyCount
+        amountForShow = Box<String>(value: editMoneyAction.moneyCount.toString())
     }
-    
     
     func setName(name: String?) {
         self.name = name ?? ""
@@ -69,16 +64,7 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
     }
     
     func getNavigationBarTitile() -> String {
-      
-        if let moneyCategory = self.moneyCategory, let purhasesCategory = self.categoryForAdd {
-            return "\(moneyCategory.name) -> \(purhasesCategory.name)"
-        }
-        
-        if let category = categoryForAdd {
-            return "Получен доход в \(category.name)"
-        }
-        
-        return ""
+        "Редактирование"
     }
     
     func getResult() -> AlertError {
@@ -236,6 +222,7 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
         }
         
         firstOperand = Double(amountForShow.value)
+        
     }
     
     func operateActionWitOperation(action: CalculateActionWithOperate) -> AlertError {
@@ -289,20 +276,10 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
     }
     
     func saveMoneyAction() -> AlertError {
-     
-        guard !name.isEmpty else { return AlertError(isError: true, message: "Введите имя") }
-        guard let amount = firstOperand else { return AlertError(isError: true, message: "Введите сумму") }
-        if let purchasesCategory = categoryForAdd as? PurchasesCategory , let moneyCategory = moneyCategory {
-            let purchases = CategoryCreator.shared.createPurchases(name: name, amount: amount, date: date)
-            StorageManager.shared.savePurchase(purchases: purchases, purchasesCategory: purchasesCategory, moneyCategory: moneyCategory)
-            return AlertError(isError: false)
-        }
-        if let moneyCategory = categoryForAdd as? MoneyCategory {
-            let income = CategoryCreator.shared.createIncome(name: name, amount: amount, date: date)
-            StorageManager.shared.saveIncomeInMoneyCategory(moneyCategory: moneyCategory, income: income)
-            return AlertError(isError: false)
-        }
-        
-        return AlertError(isError: true, message: "Введите корректные данные")
+        guard let moneyCount = firstOperand, moneyCount > 0 else { return  AlertError(isError: true, message: "Write Correct number")}
+        guard name.count > 0 else { return AlertError(isError: true, message: "Write Correct name") }
+        StorageManager.shared.changeMoneyAction(action: editMoneyAction, name: name, date: date, moneyCount: moneyCount)
+         return AlertError(isError: false)
     }
+    
 }

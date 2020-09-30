@@ -114,6 +114,7 @@ enum ChangeMoneyActionType {
     case removeSection
     case noAction
     case createSection
+//    case reloadRow
 }
 
 enum CategoriesType {

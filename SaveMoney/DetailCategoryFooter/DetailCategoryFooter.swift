@@ -45,20 +45,38 @@ class DetailCategoryFooter: UITableViewHeaderFooterView {
         ])
     }
     
-    func setupAmountLabelForCategory(moneyActions: [MoneyAction], category: Category) {
+    func setupAmountLabelForCategory(moneyActions: [MoneyAction], categoryType: CategoriesType) {
         var sum = 0.0
-        if category is MoneyCategory {
+        switch categoryType {
+       
+        case .moneyCategory:
             moneyActions.forEach { action in
                 sum += action is Income ? action.moneyCount : -action.moneyCount
             }
             amountLabel.textColor = sum >= 0 ? .systemGreen : .systemRed
-        } else {
+        case .purchasesCategory:
             moneyActions.forEach { action in
-                sum += action.moneyCount
-            }
-            amountLabel.textColor = .systemRed
+                           sum += action.moneyCount
+                       }
+                       amountLabel.textColor = .systemRed
         }
         amountLabel.text = sum.formatToShow()
+        guard let date = moneyActions.first?.date else { return }
+        dateLabel.text = DateManager.shared.formatDateToStringDetailHeader(date: date)
+        
+//        if categoryType {
+//            moneyActions.forEach { action in
+//                sum += action is Income ? action.moneyCount : -action.moneyCount
+//            }
+//            amountLabel.textColor = sum >= 0 ? .systemGreen : .systemRed
+//        } else {
+//            moneyActions.forEach { action in
+//                sum += action.moneyCount
+//            }
+//            amountLabel.textColor = .systemRed
+//        }
+        
+        
     }
     
     func setupAmountLabelForAllCategories(moneyActions: [MoneyAction], categoryType: CategoriesType) {

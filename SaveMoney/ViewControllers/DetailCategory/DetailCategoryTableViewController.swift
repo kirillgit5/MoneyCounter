@@ -11,9 +11,6 @@ import RealmSwift
 
 class DetailCategoryTableViewController: UITableViewController {
     
-    // MARK: - Public Property
-    var category: Category!
-    
     // MARK: - Private Property
     private var sortedMoneyAction = [[MoneyAction]]()
     private var editIndexPath: IndexPath?
@@ -28,16 +25,17 @@ class DetailCategoryTableViewController: UITableViewController {
         return dates
     }
     
+    var viewModel: DetailCategoryViewModelProtocol!
     private var newIndexPath: IndexPath?
     private var changeMoneyActionType = ChangeMoneyActionType.noAction
     
-    //MARK: - override Methods
+    //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
        setupNavigationBar()
         reloadData()
         tableView.register(DetailCategoryFooter.self, forHeaderFooterViewReuseIdentifier: DetailCategoryFooter.identifier)
-        if category is MoneyCategory {
+        if viewModel.isMoneyCategory() {
             tableView.register(DetailCategoryTableViewCell.nib(), forCellReuseIdentifier: DetailCategoryTableViewCell.identifier)
         } else {
             tableView.register(DetailPurchasesTableViewCell.nib(), forCellReuseIdentifier: DetailPurchasesTableViewCell.identifier)
@@ -129,10 +127,8 @@ class DetailCategoryTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        editIndexPath = indexPath
-        let createVC = segue.destination as! CreateMoneyActionViewController
-//        createVC.editMoneyAction = sortedMoneyAction[indexPath.section][indexPath.row]
+        let createVC = segue.destination as! EditMoneyActionViewController
+        createVC.viewModel = sender as? EditMoneyActionViewModelProtocol
         createVC.updateTableViewDelegate = self
         
     }
@@ -140,23 +136,22 @@ class DetailCategoryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        sortedMoneyAction.count
+        viewModel.numberOfSections()
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sortedMoneyAction[section].count
+        viewModel.numberOfRows(in: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if category is MoneyCategory {
+        if viewModel.isMoneyCategory() {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailCategoryTableViewCell.identifier, for: indexPath) as! DetailCategoryTableViewCell
-            cell.setupCellForMoneyCategory(action: sortedMoneyAction[indexPath.section][indexPath.row])
+            cell.setupCellForMoneyCategory(action: viewModel.getMoneyAction(at: indexPath))
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailPurchasesTableViewCell.identifier, for: indexPath) as! DetailPurchasesTableViewCell
-            cell.amountLabel.text = sortedMoneyAction[indexPath.section][indexPath.row].moneyCount.formatToShow()
-            cell.nameLabel.text = sortedMoneyAction[indexPath.section][indexPath.row].name
+            cell.viewModel = viewModel.viewModelForPurshasesCell(at: indexPath)
             return cell
         }
     }
@@ -173,9 +168,7 @@ class DetailCategoryTableViewController: UITableViewController {
                             viewForHeaderInSection section: Int) -> UIView? {
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier:
             DetailCategoryFooter.identifier) as! DetailCategoryFooter
-        footer.setupAmountLabelForCategory(moneyActions: sortedMoneyAction[section], category: category)
-        guard let date = sortedMoneyAction[section].first?.date else { return nil }
-        footer.dateLabel.text = DateManager.shared.formatDateToStringDetailHeader(date: date)
+        footer.setupAmountLabelForCategory(moneyActions: viewModel.getMoneyActionsInSections(section: section), categoryType: viewModel.getCategoryType())
         return footer
     }
     
@@ -183,11 +176,11 @@ class DetailCategoryTableViewController: UITableViewController {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, _) in
             guard let self = self else { return }
-            StorageManager.shared.delete(action: self.sortedMoneyAction[indexPath.section][indexPath.row])
+            self.viewModel.deleteMoneyAction(at: indexPath)
             self.sortedMoneyAction[indexPath.section].remove(at: indexPath.row)
-            if self.sortedMoneyAction[indexPath.section].isEmpty {
-                let indexSet = IndexSet(arrayLiteral: indexPath.section)
+            if self.viewModel.deleteSection(at: indexPath) {
                 self.sortedMoneyAction.remove(at: indexPath.section)
+                let indexSet = IndexSet(arrayLiteral: indexPath.section)
                 tableView.beginUpdates()
                 tableView.deleteSections(indexSet, with: .automatic)
                 tableView.endUpdates()
@@ -204,17 +197,19 @@ class DetailCategoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueIndentifire.editMoneyAction.rawValue, sender: nil)
+        let viewModelForSegue = viewModel.viewModelForEdit(at: indexPath)
+        editIndexPath = indexPath
+        performSegue(withIdentifier: SegueIndentifire.editMoneyAction.rawValue, sender: viewModelForSegue)
     }
     
     //MARK: - Private Methods
     private func setupNavigationBar() {
-        title = category.name
+        title = viewModel.getName()
         navigationController?.navigationBar.prefersLargeTitles = true
         let navBarApperance = UINavigationBarAppearance()
         navBarApperance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navBarApperance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarApperance.backgroundColor = category is MoneyCategory ? .systemYellow : .systemGreen
+        navBarApperance.backgroundColor = viewModel.isMoneyCategory() ? .systemYellow : .systemGreen
         navigationController?.navigationBar.standardAppearance = navBarApperance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarApperance
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(back))
@@ -227,6 +222,7 @@ class DetailCategoryTableViewController: UITableViewController {
         dates.sort{ $0 > $1 }
         guard let index = dates.firstIndex(of: date) else { return nil }
         return index
+        
     }
     
     private func searchNewIndexForRow(date: Date) -> Int? {
@@ -237,6 +233,7 @@ class DetailCategoryTableViewController: UITableViewController {
         dates.sort{ $0 > $1 }
         guard let index = dates.firstIndex(of: date) else { return nil }
         return index
+        
     }
     
     private func searchNewIndexPathForRow(date: Date) -> IndexPath? {
@@ -246,14 +243,11 @@ class DetailCategoryTableViewController: UITableViewController {
         dates.sort { $0 > $1 }
         guard let item = dates.firstIndex(of: date) else { return nil }
         return IndexPath(item: item, section: section)
+        
     }
     
     private func reloadData() {
-        if let moneyCategory = category as? MoneyCategory {
-            sortedMoneyAction = SortManager.shared.sortMoneyActionsByDate(moneyActions: moneyCategory.allActions)
-        } else if let purchasesCategory = category as? PurchasesCategory {
-            sortedMoneyAction = SortManager.shared.sortMoneyActionsByDate(moneyActions: Array(purchasesCategory.purchases))
-        }
+        sortedMoneyAction = viewModel.getMoneyActions()
         tableView.reloadData()
     }
     // MARK: - Selector
@@ -267,7 +261,7 @@ class DetailCategoryTableViewController: UITableViewController {
 extension DetailCategoryTableViewController: UpdateTableViewDateDelegate {
     
     func changeIndexPath(date: Date) {
-        guard let indexPath = editIndexPath else { return }
+        guard  let indexPath = editIndexPath else { return }
         if  !DateManager.shared.isEqualDates(firstDate: sortedMoneyAction[indexPath.section][indexPath.row].date, secondDate: date) && DateManager.shared.isDatesContainsDate(dates: allDates, date: date)  {
             changeMoneyActionType = sortedMoneyAction[indexPath.section].count == 1 ? .removeSection : .moveRow
             if changeMoneyActionType == .removeSection {

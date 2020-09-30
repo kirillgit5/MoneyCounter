@@ -65,18 +65,13 @@ import RealmSwift
     }
     
     // MARK : - Public Methods
-    func setBalance(moneyCatigories: Results<MoneyCategory>) {
-        var sum = 0.0
-        moneyCatigories.forEach { sum += $0.moneyCount }
-        balanceCountLabel.text = sum.formatToShow()
+    func setBalance(balance: String) {
+        balanceCountLabel.text = balance
     }
     
-    func setExpense(purchasesCatigories: Results<PurchasesCategory>) {
-        var sum = 0.0
-        purchasesCatigories.forEach { sum += $0.moneyCount }
-        expensesCountLabel.text = sum.formatToShow()
+    func setExpense(expense: String) {
+        expensesCountLabel.text = expense
     }
-    
     
     //MARK : - Private Methods
     private func commonInit() {

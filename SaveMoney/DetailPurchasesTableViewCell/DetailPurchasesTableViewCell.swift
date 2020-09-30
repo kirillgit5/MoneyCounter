@@ -8,6 +8,10 @@
 
 import UIKit
 
+
+
+
+
 class DetailPurchasesTableViewCell: UITableViewCell {
 
     static let identifier = "DetailPurchasesTableViewCell"
@@ -15,11 +19,19 @@ class DetailPurchasesTableViewCell: UITableViewCell {
         return UINib(nibName: "DetailPurchasesTableViewCell",
                      bundle: nil)
     }
+    
         
     @IBOutlet var nameLabel: UILabel!
     
     @IBOutlet var amountLabel: UILabel!
-   
+
+    var viewModel: DetailPurchasesTableViewCellViewModelProtocol! {
+        didSet {
+            nameLabel.text = viewModel.getName()
+            amountLabel.text = viewModel.getAmount()
+        }
+    }
     
 }
+
 
