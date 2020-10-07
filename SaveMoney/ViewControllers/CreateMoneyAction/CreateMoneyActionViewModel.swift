@@ -43,6 +43,7 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
     private var categoryForAdd: Category?
     private var moneyCategory: MoneyCategory?
     private var isFirstOperation = true
+    private var secondOperand: Double?
     
     required init(categoryForAdd: Category, moneyCategory: MoneyCategory? = nil) {
         self.categoryForAdd = categoryForAdd
@@ -82,8 +83,7 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
     }
     
     func getResult() -> AlertError {
-        guard let secondNumber = Double(amountForShow.value) else { return AlertError(isError: true, message: "Введите корректное число")}
-        guard let firstNumber = firstOperand else { return AlertError(isError: true, message: "Первое число введено некорректно. Нажмите AC") }
+        guard let firstNumber = firstOperand, let secondNumber = secondOperand else { return AlertError(isError: true, message: "Введите корректное число")}
         var checkString = ""
         var checkNumber: Double?
         switch currentAction.value {
@@ -127,7 +127,9 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
         amountForShow.value = checkString
         isFractional = amountForShow.value.contains(".")
         firstOperand = checkNumber
+        secondOperand = nil
         currentAction.value = .noAction
+        isFirstOperation = true
         return AlertError(isError: false)
     }
     
@@ -145,7 +147,6 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
             return
         }
         
-        isFirstOperation = true
         switch action {
         case .writeNull:
             if amountForShow.value.count == 1 ,  amountForShow.value.first! == "0" {
@@ -234,16 +235,20 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
             amountForShow.value.append(".")
             isFractional.toggle()
         }
+        if isFirstOperation {
+            firstOperand = Double(amountForShow.value)
+        } else {
+            secondOperand = Double(amountForShow.value)
+        }
         
-        firstOperand = Double(amountForShow.value)
     }
     
     func operateActionWitOperation(action: CalculateActionWithOperate) -> AlertError {
-        if !isFirstOperation {
-            currentAction.value = action
-            return AlertError(isError: false)
-        }
-        guard let number = Double(amountForShow.value) else { return AlertError(isError: true, message: "Введите корректное число")  }
+
+        let number = Double(amountForShow.value)
+        if number != nil || action == .deleteAction {
+            
+        
         firstOperand = number
         
         switch action {
@@ -264,12 +269,13 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
             currentAction.value  = .doPersent
             
         case .noAction:
-            return  AlertError(isError: true, message: "Введена некорректная операция. Нажмите AC")
+            return  AlertError(isError: false)
             
         case .deleteAction:
             currentAction.value = .noAction
             firstOperand = nil
             amountForShow.value = ""
+            isFirstOperation = true
             return AlertError(isError: false)
         }
         
@@ -278,6 +284,9 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
         isFractional = false
         isFirstOperation = false
         return AlertError(isError: false)
+        }
+        
+        return AlertError(isError: true, message: "Введите первое число")
     }
     
     func acceptCloseKeyBoard() -> Bool {
@@ -290,15 +299,15 @@ class CreateMoneyActionViewModel: CreateMoneyActionViewModelProtocol {
     
     func saveMoneyAction() -> AlertError {
      
-        guard !name.isEmpty else { return AlertError(isError: true, message: "Введите имя") }
         guard let amount = firstOperand else { return AlertError(isError: true, message: "Введите сумму") }
+        guard currentAction.value == .noAction else { return AlertError(isError: true, message: "Завершите операцию") }
         if let purchasesCategory = categoryForAdd as? PurchasesCategory , let moneyCategory = moneyCategory {
-            let purchases = CategoryCreator.shared.createPurchases(name: name, amount: amount, date: date)
+            let purchases = CategoryCreator.shared.createPurchases(name: name.isEmpty ? "unknow" : name, amount: amount, date: date)
             StorageManager.shared.savePurchase(purchases: purchases, purchasesCategory: purchasesCategory, moneyCategory: moneyCategory)
             return AlertError(isError: false)
         }
         if let moneyCategory = categoryForAdd as? MoneyCategory {
-            let income = CategoryCreator.shared.createIncome(name: name, amount: amount, date: date)
+            let income = CategoryCreator.shared.createIncome(name: name.isEmpty ? "unknow" : name, amount: amount, date: date)
             StorageManager.shared.saveIncomeInMoneyCategory(moneyCategory: moneyCategory, income: income)
             return AlertError(isError: false)
         }

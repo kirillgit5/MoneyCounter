@@ -33,7 +33,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="HFo-N5-SNa" secondAttribute="height" multiplier="1:1" id="cXi-Hv-BtJ"/>
                             </constraints>
-                            <state key="normal" backgroundImage="menu">
+                            <state key="normal" backgroundImage="purshases">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                             <connections>
@@ -130,7 +130,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="d3d-Z7-SbI" secondAttribute="height" multiplier="1:1" id="Ier-vI-fbK"/>
                             </constraints>
-                            <state key="normal" backgroundImage="purse">
+                            <state key="normal" backgroundImage="income">
                                 <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             </state>
                             <connections>
@@ -172,7 +172,7 @@
         </view>
     </objects>
     <resources>
-        <image name="menu" width="64" height="64"/>
-        <image name="purse" width="64" height="64"/>
+        <image name="income" width="64" height="64"/>
+        <image name="purshases" width="64" height="64"/>
     </resources>
 </document>

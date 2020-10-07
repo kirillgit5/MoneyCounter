@@ -19,8 +19,8 @@ enum SegueIndentifire: String {
     case editMoneyActionForAllCategories
     case addCategory
     case chooseIconForCategory
-    case showTaskList
     case addIncome
+    case showTaskList
 }
 
 enum CalculateActionWithNumber: String {
@@ -47,7 +47,7 @@ enum CalculateActionWithOperate: String {
     case doDivision = "÷"
     case doPersent = "%"
     case noAction = ""
-    case deleteAction
+    case deleteAction = " "
 }
 
 enum CalculateAction: String {

@@ -19,7 +19,7 @@ protocol AddPurshaeseViewModelProtocol {
     func viewModelForSelectedRow() -> ChooseMoneyCategoryViewModelProtocol?
 }
 
- class AddPurshasesViewModel: AddPurshaeseViewModelProtocol {
+class AddPurshasesViewModel: AddPurshaeseViewModelProtocol {
     
     //MARK: - Private Property
     private var purshasesCategory: Results<PurchasesCategory>
@@ -28,6 +28,8 @@ protocol AddPurshaeseViewModelProtocol {
     required init(purshasesCategory: Results<PurchasesCategory>) {
         self.purshasesCategory = purshasesCategory
     }
+    
+    //MARK: - Public Methods
     
     func getNavigationBarTitile() -> String {
         "Добавление расхода"

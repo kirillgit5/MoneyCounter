@@ -73,6 +73,10 @@ import RealmSwift
         expensesCountLabel.text = expense
     }
     
+    func setTaskCount(tasksCount: String) {
+        planCountLabel.text = tasksCount
+    }
+    
     //MARK : - Private Methods
     private func commonInit() {
         let bundle = Bundle(for: MainNavigationBar.self)

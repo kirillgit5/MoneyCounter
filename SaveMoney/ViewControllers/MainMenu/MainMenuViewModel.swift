@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import RealmSwift
 
 protocol MainMenuViewModelProtocol {
     func numberOfItems(collectionType: CategoriesType) -> Int
@@ -22,13 +22,17 @@ protocol MainMenuViewModelProtocol {
     func cellViewModelPurchasesCategory(for indexPath: IndexPath) -> PurchasesCategoryCollectionViewCellViewModel
     func getBalance() -> String
     func getExpense() -> String
+    func getViewModelForAddItem() -> MoneyCategoryCollectionViewCellViewModelProtocol
+    func getTaskCount() -> String
+    func getTaskList() -> Results<Task>
 }
 
 class MainMenuViewModel: MainMenuViewModelProtocol {
-    
+
     private var indexPath: IndexPath?
     private var moneyCategories = StorageManager.shared.realm.objects(MoneyCategory.self)
     private var purchasesCategories = StorageManager.shared.realm.objects(PurchasesCategory.self)
+    private var taskList = StorageManager.shared.realm.objects(Task.self)
     
     
     func getAddMoneyCategoryCellIdentifire() -> String {
@@ -98,6 +102,18 @@ class MainMenuViewModel: MainMenuViewModelProtocol {
         var sum = 0.0
         purchasesCategories.forEach { sum += $0.moneyCount }
         return sum.formatToShow()
+    }
+    
+    func getTaskList() -> Results<Task> {
+        taskList
+    }
+    
+    func getTaskCount() -> String {
+        "\(taskList.count)"
+    }
+    
+    func getViewModelForAddItem() -> MoneyCategoryCollectionViewCellViewModelProtocol {
+        MoneyCategoryCollectionViewCellViewModel(category: MoneyCategory(value: []), isAddItem: true)
     }
     
     

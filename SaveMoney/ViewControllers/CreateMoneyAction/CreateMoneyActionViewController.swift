@@ -148,10 +148,13 @@ extension CreateMoneyActionViewController: AddMoneyActionNavigationBarDelegate {
     }
     
     func createMoneyAction() {
-        viewModel.saveMoneyAction()
+       let alert = viewModel.saveMoneyAction()
+        if !alert.isError {
         dismiss(animated: true)
+        } else {
+            showAlert(title: "Внимание !", message: alert.message)
+        }
     }
-
 }
 
 extension CreateMoneyActionViewController: CalculateViewDelegate {
@@ -188,7 +191,7 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
 extension CreateMoneyActionViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if let text = textView.text , text.count > 150 {
+        if let text = textView.text , text.count > 16 {
             return false
         }
         return true

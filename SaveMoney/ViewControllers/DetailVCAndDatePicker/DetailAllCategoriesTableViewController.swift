@@ -30,7 +30,7 @@ class DetailAllCategoriesTableViewController: UITableViewController {
     private var newIndexPath: IndexPath?
     private var changeMoneyActionType = ChangeMoneyActionType.noAction
     
-    //MARK: _ Override Methods
+    //MARK: - Override Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,15 +125,16 @@ class DetailAllCategoriesTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        editIndexPath = indexPath
-        let createVC = segue.destination as! CreateMoneyActionViewController
-//        createVC.editMoneyAction = sortedMoneyAction[indexPath.section][indexPath.row]
+        guard let viewModel = sender as? EditMoneyActionViewModel else { return }
+        let createVC = segue.destination as! EditMoneyActionViewController
         createVC.updateTableViewDelegate = self
+        createVC.viewModel = viewModel
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueIndentifire.editMoneyActionForAllCategories.rawValue, sender: nil)
+        editIndexPath = indexPath
+        let viewModel = EditMoneyActionViewModel(editMoneyAction: sortedMoneyAction[indexPath.section][indexPath.row])
+        performSegue(withIdentifier: SegueIndentifire.editMoneyActionForAllCategories.rawValue, sender: viewModel)
     }
     
     // MARK: - Table view data source
@@ -258,25 +259,27 @@ class DetailAllCategoriesTableViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = .white
     }
     
+ 
+    
     @objc func back() {
         dismiss(animated: true)
     }
 }
 
 extension DetailAllCategoriesTableViewController: UpdateTableViewDateDelegate {
-    func changeIndexPath(date: Date) {
-        guard let indexPath = editIndexPath else { return }
-        if  !DateManager.shared.isEqualDates(firstDate: sortedMoneyAction[indexPath.section][indexPath.row].date, secondDate: date) && DateManager.shared.isDatesContainsDate(dates: allDates, date: date)  {
-            changeMoneyActionType = sortedMoneyAction[indexPath.section].count == 1 ? .removeSection : .moveRow
-            if changeMoneyActionType == .removeSection {
-                newIndexPath = searchNewIndexPathForRow(date: date)
-            }
-        } else if sortedMoneyAction[indexPath.section].count == 1, let index = searchNewIndexForRow(date: date), index - indexPath.section != 0 {
-            changeMoneyActionType = .moveSection
-        } else if sortedMoneyAction[indexPath.section].count > 1 && !DateManager.shared.isEqualDates(firstDate: sortedMoneyAction[indexPath.section][indexPath.row].date, secondDate: date) {
-            changeMoneyActionType = .createSection
-        } else {
-            changeMoneyActionType = .reloadSection
-        }
-    }
+   func changeIndexPath(date: Date) {
+       guard  let indexPath = editIndexPath else { return }
+       if  !DateManager.shared.isEqualDates(firstDate: sortedMoneyAction[indexPath.section][indexPath.row].date, secondDate: date) && DateManager.shared.isDatesContainsDate(dates: allDates, date: date)  {
+           changeMoneyActionType = sortedMoneyAction[indexPath.section].count == 1 ? .removeSection : .moveRow
+           if changeMoneyActionType == .removeSection {
+               newIndexPath = searchNewIndexPathForRow(date: date)
+           }
+       } else if sortedMoneyAction[indexPath.section].count == 1, let index = searchNewIndexForRow(date: date), index - indexPath.section != 0 {
+           changeMoneyActionType = .moveSection
+       } else if sortedMoneyAction[indexPath.section].count > 1 && !DateManager.shared.isEqualDates(firstDate: sortedMoneyAction[indexPath.section][indexPath.row].date, secondDate: date) {
+           changeMoneyActionType = .createSection
+       } else {
+           changeMoneyActionType = .reloadSection
+       }
+   }
 }

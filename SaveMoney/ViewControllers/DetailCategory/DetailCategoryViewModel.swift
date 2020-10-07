@@ -24,15 +24,15 @@ protocol DetailCategoryViewModelProtocol {
     func isMoneyCategory() -> Bool
     func getName() -> String
     func getCategoryType() -> CategoriesType
-    func getMoneyAction(at indexPath: IndexPath) -> MoneyAction
-    func getMoneyForShow(at indexPath: IndexPath) -> String
-    func getMoneyActionName(at indexPath: IndexPath) -> String
-    func viewModelForPurshasesCell(at inexPath: IndexPath) -> DetailPurchasesTableViewCellViewModelProtocol
-    func getMoneyActionsInSections(section: Int) -> [MoneyAction]
-    func deleteMoneyAction(at indexPath: IndexPath)
-    func isSectionIsEmpty(at indexPath: IndexPath) -> Bool
-    func deleteSection(at indexPath: IndexPath) -> Bool
-    func viewModelForEdit(at indexPath: IndexPath) -> EditMoneyActionViewModelProtocol
+//    func getMoneyAction(at indexPath: IndexPath) -> MoneyAction
+//    func getMoneyForShow(at indexPath: IndexPath) -> String
+//    func getMoneyActionName(at indexPath: IndexPath) -> String
+//    func viewModelForPurshasesCell(at inexPath: IndexPath) -> DetailPurchasesTableViewCellViewModelProtocol
+//    func getMoneyActionsInSections(section: Int) -> [MoneyAction]
+//    func deleteMoneyAction(at indexPath: IndexPath)
+//    func isSectionIsEmpty(at indexPath: IndexPath) -> Bool
+//    func deleteSection(at indexPath: IndexPath) -> Bool
+//    func viewModelForEdit(at indexPath: IndexPath) -> EditMoneyActionViewModelProtocol
 }
 
 class DetailCategoryViewModel: DetailCategoryViewModelProtocol {
@@ -67,10 +67,7 @@ class DetailCategoryViewModel: DetailCategoryViewModelProtocol {
         moneyActions.count
     }
     
-    func viewModelForEdit(at indexPath: IndexPath) -> EditMoneyActionViewModelProtocol {
-       return  EditMoneyActionViewModel(editMoneyAction: moneyActions[indexPath.section][indexPath.row])
-       
-    }
+
     
     func deleteSection(at indexPath: IndexPath) -> Bool {
         if moneyActions[indexPath.section].isEmpty {
@@ -89,25 +86,12 @@ class DetailCategoryViewModel: DetailCategoryViewModelProtocol {
         StorageManager.shared.delete(action: moneyAction)
     }
     
-    func getMoneyActionsInSections(section: Int) -> [MoneyAction] {
-        moneyActions[section]
-    }
+
     
     func viewModelForPurshasesCell(at indexPath: IndexPath) -> DetailPurchasesTableViewCellViewModelProtocol {
         DetailPurchasesTableViewCellViewModel(moneyAction: moneyActions[indexPath.section][indexPath.item])
     }
     
-    func getMoneyAction(at indexPath: IndexPath) -> MoneyAction {
-        moneyActions[indexPath.section][indexPath.item]
-    }
-    
-    func getMoneyForShow(at indexPath: IndexPath) -> String {
-        moneyActions[indexPath.section][indexPath.item].moneyCount.formatToShow()
-    }
-    
-    func getMoneyActionName(at indexPath: IndexPath) -> String {
-        moneyActions[indexPath.section][indexPath.item].name;
-    }
     
     func getCategoryType() -> CategoriesType {
         rowType

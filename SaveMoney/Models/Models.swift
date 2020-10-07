@@ -12,7 +12,7 @@ import RealmSwift
 
 
 class Category: Object {
-    @objc dynamic var name = ""
+    @objc dynamic var name = "unknow"
     @objc dynamic var iconName = ""
 }
 
@@ -20,13 +20,9 @@ class Category: Object {
 class MoneyAction: Object {
     
     
-    @objc dynamic var name = ""
+    @objc dynamic var name = "unknow"
     @objc dynamic var date = Date()
     @objc dynamic var moneyCount = 0.0
-    
-    func copy() -> MoneyAction {
-        MoneyAction(value: ["name": name, "date": date, "moneyCount": moneyCount])
-    }
 }
 
 
@@ -77,6 +73,11 @@ class Purchases:  MoneyAction {
 
 class Income: MoneyAction {
     let moneyCategory = LinkingObjects(fromType: MoneyCategory.self, property: "incomes")
+}
+
+class Task: Object {
+     @objc dynamic var name = ""
+     @objc dynamic var date = Date()
 }
 
 

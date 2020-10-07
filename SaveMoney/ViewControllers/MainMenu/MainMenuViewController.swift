@@ -14,6 +14,7 @@ class MainMenuViewController: UIViewController {
     @IBOutlet var moneyCategoryCollectionView: UICollectionView!
     @IBOutlet var navigationBar: MainNavigationBar!
     @IBOutlet var purchasesCategoryCollectionView: UICollectionView!
+    @IBOutlet var collectionsView: UIView!
     
     // MARK: - Private Property
     private let viewModel = MainMenuViewModel()
@@ -30,6 +31,8 @@ class MainMenuViewController: UIViewController {
         purchasesCategoryCollectionView.dataSource = self
         purchasesCategoryCollectionView.register(PurchasesCategoryCollectionViewCell.nib(),
                                                  forCellWithReuseIdentifier: PurchasesCategoryCollectionViewCell.identifier)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,8 +40,10 @@ class MainMenuViewController: UIViewController {
         purchasesCategoryCollectionView.reloadData()
         navigationBar.setBalance(balance: viewModel.getBalance())
         navigationBar.setExpense(expense: viewModel.getExpense())
-        
+        navigationBar.setTaskCount(tasksCount: viewModel.getTaskCount())
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIndentifire.addIncome.rawValue {
@@ -73,8 +78,14 @@ class MainMenuViewController: UIViewController {
             } else {
                 createCategoryVC.categoriesType = .purchasesCategory
             }
+        } else if segue.identifier == SegueIndentifire.showTaskList.rawValue {
+            guard let navController = segue.destination as? UINavigationController else { return }
+            guard let taskListVC = navController.topViewController as? TaskListTableViewController else { return }
+            guard let taskList = sender as? Results<Task> else { return }
+            taskListVC.taskLists = taskList
         }
     }
+    
 }
 
 //MARK: - MainNavigationBarDelegate
@@ -86,7 +97,7 @@ extension MainMenuViewController: MainNavigationBarDelegate {
         performSegue(withIdentifier: SegueIndentifire.detailAllCategories.rawValue, sender: CategoriesType.purchasesCategory)
     }
     func watchPlan() {
-        //        performSegue(withIdentifier: SegueIndentifire.showTaskList.rawValue, sender: nil)
+        performSegue(withIdentifier: SegueIndentifire.showTaskList.rawValue, sender: viewModel.getTaskList())
     }
     func addMoney() {
         let incomeViewModel = viewModel.getAddIncomeViewModel()
@@ -96,6 +107,8 @@ extension MainMenuViewController: MainNavigationBarDelegate {
         let purchasesViewModel = viewModel.getAddPurshasesViewModel()
         performSegue(withIdentifier: SegueIndentifire.addPurchases.rawValue , sender: purchasesViewModel)
     }
+    
+    
 }
 
 
@@ -106,6 +119,7 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         collectionView.deselectItem(at: indexPath, animated: true)
         if collectionView == moneyCategoryCollectionView {
             if indexPath.row < viewModel.getMoneyCategoriesCount() {
@@ -116,13 +130,16 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
             }
         } else {
             if indexPath.row < viewModel.getPurshasesCategoryCount() {
-                 let viewModelForSegue = viewModel.viewModelForDetailMoneyActions(at: indexPath, collectionType: CategoriesType.purchasesCategory)
+                let viewModelForSegue = viewModel.viewModelForDetailMoneyActions(at: indexPath, collectionType: CategoriesType.purchasesCategory)
                 performSegue(withIdentifier: SegueIndentifire.showDetailCategory.rawValue, sender: viewModelForSegue)
             } else {
                 performSegue(withIdentifier: SegueIndentifire.addCategory.rawValue, sender: purchasesCategoryCollectionView)
             }
         }
+        
     }
+    
+    
 }
 
 //MARK: - extension UICollectionViewDataSource
@@ -148,6 +165,7 @@ extension MainMenuViewController: UICollectionViewDataSource {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PurchasesCategoryCollectionViewCell.identifier,
                                                               for: indexPath) as! PurchasesCategoryCollectionViewCell
                 cell.viewModel = viewModel.cellViewModelPurchasesCategory(for: indexPath)
+                
                 return cell
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewModel.getAddPurchasesCategoryCellIdentifire(), for: indexPath)
@@ -156,6 +174,10 @@ extension MainMenuViewController: UICollectionViewDataSource {
         }
     }
 }
+
+
+
+
 
 
 

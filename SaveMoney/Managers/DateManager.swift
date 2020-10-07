@@ -33,7 +33,6 @@ class DateManager {
     func formatDateToStringDetailHeader(date: Date) -> String {
         let calendar = Calendar.current
         let currentDate = Date()
-        
         let currentYearComponets = calendar.dateComponents([.year], from: currentDate)
         let currentDayComponets = calendar.dateComponents([.day], from: currentDate)
         let currentMounthComponets = calendar.dateComponents([.month], from: currentDate)

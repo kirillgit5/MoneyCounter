@@ -32,7 +32,7 @@ class DetailCategoryTableViewController: UITableViewController {
     //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupNavigationBar()
+        setupNavigationBar()
         reloadData()
         tableView.register(DetailCategoryFooter.self, forHeaderFooterViewReuseIdentifier: DetailCategoryFooter.identifier)
         if viewModel.isMoneyCategory() {
@@ -40,7 +40,7 @@ class DetailCategoryTableViewController: UITableViewController {
         } else {
             tableView.register(DetailPurchasesTableViewCell.nib(), forCellReuseIdentifier: DetailPurchasesTableViewCell.identifier)
         }
-         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,22 +136,22 @@ class DetailCategoryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.numberOfSections()
+        sortedMoneyAction.count
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRows(in: section)
+        sortedMoneyAction[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if viewModel.isMoneyCategory() {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailCategoryTableViewCell.identifier, for: indexPath) as! DetailCategoryTableViewCell
-            cell.setupCellForMoneyCategory(action: viewModel.getMoneyAction(at: indexPath))
+            cell.setupCellForMoneyCategory(action: sortedMoneyAction[indexPath.section][indexPath.row])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailPurchasesTableViewCell.identifier, for: indexPath) as! DetailPurchasesTableViewCell
-            cell.viewModel = viewModel.viewModelForPurshasesCell(at: indexPath)
+            cell.viewModel = DetailPurchasesTableViewCellViewModel(moneyAction: sortedMoneyAction[indexPath.section][indexPath.row])
             return cell
         }
     }
@@ -168,7 +168,7 @@ class DetailCategoryTableViewController: UITableViewController {
                             viewForHeaderInSection section: Int) -> UIView? {
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier:
             DetailCategoryFooter.identifier) as! DetailCategoryFooter
-        footer.setupAmountLabelForCategory(moneyActions: viewModel.getMoneyActionsInSections(section: section), categoryType: viewModel.getCategoryType())
+        footer.setupAmountLabelForCategory(moneyActions: sortedMoneyAction[section], categoryType: viewModel.getCategoryType())
         return footer
     }
     
@@ -176,9 +176,8 @@ class DetailCategoryTableViewController: UITableViewController {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, _) in
             guard let self = self else { return }
-            self.viewModel.deleteMoneyAction(at: indexPath)
             self.sortedMoneyAction[indexPath.section].remove(at: indexPath.row)
-            if self.viewModel.deleteSection(at: indexPath) {
+            if self.sortedMoneyAction[indexPath.section].isEmpty {
                 self.sortedMoneyAction.remove(at: indexPath.section)
                 let indexSet = IndexSet(arrayLiteral: indexPath.section)
                 tableView.beginUpdates()
@@ -197,7 +196,7 @@ class DetailCategoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewModelForSegue = viewModel.viewModelForEdit(at: indexPath)
+        let viewModelForSegue = EditMoneyActionViewModel(editMoneyAction: sortedMoneyAction[indexPath.section][indexPath.row])
         editIndexPath = indexPath
         performSegue(withIdentifier: SegueIndentifire.editMoneyAction.rawValue, sender: viewModelForSegue)
     }

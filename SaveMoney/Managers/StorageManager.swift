@@ -82,6 +82,26 @@ class StorageManager {
         }
         save(categories: purchasesCategories)
     }
+    
+    func save(task: Task) {
+        write {
+            realm.add(task)
+        }
+    }
+    
+    func delete(task: Task) {
+        write {
+            realm.delete(task)
+        }
+    }
+    
+    func edit(task: Task, newValue: String) {
+        write {
+            task.name = newValue
+        }
+    }
+
+    
     private func write(_ completion: () -> Void) {
         do {
             try realm.write {

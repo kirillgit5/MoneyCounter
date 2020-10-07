@@ -17,7 +17,7 @@ class AddPurshasesViewController: UIViewController {
     
     // MARK : - Pubic Properties
     var viewModel: AddPurshaeseViewModelProtocol!
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.categoryCollectionView.register(PurchasesCategoryCollectionViewCell.nib(),
@@ -53,7 +53,7 @@ class AddPurshasesViewController: UIViewController {
 //MARK : CollectionViewDataSourse
 extension AddPurshasesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         viewModel.numberOfItems()
+        viewModel.numberOfItems()
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PurchasesCategoryCollectionViewCell.identifier ,
