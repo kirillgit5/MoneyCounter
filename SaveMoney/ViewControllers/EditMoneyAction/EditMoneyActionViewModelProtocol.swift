@@ -13,6 +13,7 @@ protocol EditMoneyActionViewModelProtocol {
     var amountForShow: Box<String> { get }
     var currentAction: Box<CalculateActionWithOperate> { get }
     init(editMoneyAction: MoneyAction)
+   
     func setName(name: String?)
     func setDate(date: Date)
     func setName(name: String)
@@ -32,12 +33,13 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
     
     var amountForShow: Box<String>
     var currentAction = Box<CalculateActionWithOperate>(value: .noAction)
-       private var firstOperand: Double?
-       private var name: String = ""
-       private var date: Date
-       private var isFractional = false
-       private var editMoneyAction: MoneyAction
-       private var isFirstOperation = true
+    private var firstOperand: Double?
+    private var name: String = ""
+    private var date: Date
+    private var isFractional = false
+    private var editMoneyAction: MoneyAction
+    private var isFirstOperation = true
+    private var secondOperand: Double?
     
     required init(editMoneyAction: MoneyAction) {
         self.editMoneyAction = editMoneyAction
@@ -46,6 +48,7 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
         firstOperand = editMoneyAction.moneyCount
         amountForShow = Box<String>(value: editMoneyAction.moneyCount.toString())
     }
+    
     
     func setName(name: String?) {
         self.name = name ?? ""
@@ -60,7 +63,7 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
     }
     
     func getDateForShow() -> String {
-         DateManager.shared.formatDateToString(date: date)
+        DateManager.shared.formatDateToString(date: date)
     }
     
     func getNavigationBarTitile() -> String {
@@ -68,8 +71,7 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
     }
     
     func getResult() -> AlertError {
-        guard let secondNumber = Double(amountForShow.value) else { return AlertError(isError: true, message: "Введите корректное число")}
-        guard let firstNumber = firstOperand else { return AlertError(isError: true, message: "Первое число введено некорректно. Нажмите AC") }
+        guard let firstNumber = firstOperand, let secondNumber = secondOperand else { return AlertError(isError: true, message: "Введите корректное число")}
         var checkString = ""
         var checkNumber: Double?
         switch currentAction.value {
@@ -113,7 +115,9 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
         amountForShow.value = checkString
         isFractional = amountForShow.value.contains(".")
         firstOperand = checkNumber
+        secondOperand = nil
         currentAction.value = .noAction
+        isFirstOperation = true
         return AlertError(isError: false)
     }
     
@@ -131,7 +135,6 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
             return
         }
         
-        isFirstOperation = true
         switch action {
         case .writeNull:
             if amountForShow.value.count == 1 ,  amountForShow.value.first! == "0" {
@@ -220,51 +223,56 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
             amountForShow.value.append(".")
             isFractional.toggle()
         }
-        
-        firstOperand = Double(amountForShow.value)
-        
+        if isFirstOperation {
+            firstOperand = Double(amountForShow.value)
+        } else {
+            secondOperand = Double(amountForShow.value)
+        }
     }
     
     func operateActionWitOperation(action: CalculateActionWithOperate) -> AlertError {
-        if !isFirstOperation {
-            currentAction.value = action
-            return AlertError(isError: false)
-        }
-        guard let number = Double(amountForShow.value) else { return AlertError(isError: true, message: "Введите корректное число")  }
-        firstOperand = number
-        
-        switch action {
-            
-        case .doAddition:
-            currentAction.value = .doAddition
-            
-        case .doSubtraction:
-            currentAction.value = .doSubtraction
-            
-        case .doMultiplication:
-            currentAction.value = .doMultiplication
-            
-        case .doDivision:
-            currentAction.value = .doDivision
-            
-        case .doPersent:
-            currentAction.value  = .doPersent
-            
-        case .noAction:
-            return  AlertError(isError: true, message: "Введена некорректная операция. Нажмите AC")
-            
-        case .deleteAction:
-            currentAction.value = .noAction
-            firstOperand = nil
-            amountForShow.value = ""
-            return AlertError(isError: false)
-        }
-        
-        firstOperand = number
-        amountForShow.value = ""
-        isFractional = false
-        isFirstOperation = false
-        return AlertError(isError: false)
+         let number = Double(amountForShow.value)
+               if number != nil || action == .deleteAction {
+                   
+               
+               firstOperand = number
+               
+               switch action {
+                   
+               case .doAddition:
+                   currentAction.value = .doAddition
+                   
+               case .doSubtraction:
+                   currentAction.value = .doSubtraction
+                   
+               case .doMultiplication:
+                   currentAction.value = .doMultiplication
+                   
+               case .doDivision:
+                   currentAction.value = .doDivision
+                   
+               case .doPersent:
+                   currentAction.value  = .doPersent
+                   
+               case .noAction:
+                   return  AlertError(isError: false)
+                   
+               case .deleteAction:
+                   currentAction.value = .noAction
+                   firstOperand = nil
+                   amountForShow.value = ""
+                   isFirstOperation = true
+                   return AlertError(isError: false)
+               }
+               
+               firstOperand = number
+               amountForShow.value = ""
+               isFractional = false
+               isFirstOperation = false
+               return AlertError(isError: false)
+               }
+               
+               return AlertError(isError: true, message: "Введите первое число")
     }
     
     func acceptCloseKeyBoard() -> Bool {
@@ -276,10 +284,11 @@ class EditMoneyActionViewModel: EditMoneyActionViewModelProtocol {
     }
     
     func saveMoneyAction() -> AlertError {
-        guard let moneyCount = firstOperand, moneyCount > 0 else { return  AlertError(isError: true, message: "Write Correct number")}
-        guard name.count > 0 else { return AlertError(isError: true, message: "Write Correct name") }
-        StorageManager.shared.changeMoneyAction(action: editMoneyAction, name: name, date: date, moneyCount: moneyCount)
-         return AlertError(isError: false)
+        guard let amount = firstOperand else { return AlertError(isError: true, message: "Введите сумму") }
+        guard currentAction.value == .noAction else { return AlertError(isError: true, message: "Завершите операцию") }
+        
+        StorageManager.shared.changeMoneyAction(action: editMoneyAction, name: name.isEmpty ?  name : "unknow", date: date, moneyCount: amount)
+        return AlertError(isError: false)
     }
     
 }

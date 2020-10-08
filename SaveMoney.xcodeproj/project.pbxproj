@@ -286,7 +286,6 @@
 				EEF81E4424BCA91600C96B67 /* ViewControllers */,
 				EE51959024A39F5B00F71F5C /* Models */,
 				EE2632F9252E3BA900CCA0B8 /* StoryBoard */,
-				EE2632F8252E3B4100CCA0B8 /* TaskViewController */,
 				EE08EB1624C6F02200626AEB /* AddMoneyActionNavBar */,
 				EE93DB3324A8FE17003F01DA /* PurchasesCategoryCollectionCell */,
 				EE51959724A3B41C00F71F5C /* MainNavigationControoler */,
@@ -466,7 +465,9 @@
 		EEF81E4424BCA91600C96B67 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EE6CB98525122E1A004A1FAA /* EditMoneyAction */,
 				EE6CB970250D11FE004A1FAA /* MainMenu */,
+				EE2632F8252E3B4100CCA0B8 /* TaskViewController */,
 				EE68ACAA2509314700E95BE2 /* AddPuchases */,
 				EE2632FD252E3C4700CCA0B8 /* DetailVCAndDatePicker */,
 				EE6CB97925109FEB004A1FAA /* DetailCategory */,
@@ -487,7 +488,6 @@
 				EE27C9D224EC23B8004130C9 /* DataManager.swift */,
 				EEE2EC7B24F93F7600644F8C /* CategoryCreaterProtocol.swift */,
 				EEE2EC7D24F94B5600644F8C /* MoneyActionFabricMethod.swift */,
-				EE6CB98525122E1A004A1FAA /* EditMoneyAction */,
 			);
 			path = Managers;
 			sourceTree = "<group>";

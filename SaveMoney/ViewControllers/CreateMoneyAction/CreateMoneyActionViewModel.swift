@@ -18,6 +18,7 @@ protocol CreateMoneyActionViewModelProtocol {
     var amountForShow: Box<String> { get }
     var currentAction: Box<CalculateActionWithOperate> { get }
     init(categoryForAdd: Category, moneyCategory: MoneyCategory?)
+    
     func setName(name: String?)
     func setDate(date: Date)
     func setName(name: String)

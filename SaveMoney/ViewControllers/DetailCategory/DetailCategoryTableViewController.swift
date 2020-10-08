@@ -253,6 +253,10 @@ class DetailCategoryTableViewController: UITableViewController {
     @objc func back() {
         dismiss(animated: true)
     }
+    
+    deinit {
+        print()
+    }
 }
 
 

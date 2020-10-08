@@ -49,6 +49,9 @@ class AddIncomeViewController: UIViewController {
         infoLabel.text = viewModel.getInfoText()
     }
     
+    deinit {
+        
+    }
     
 }
 

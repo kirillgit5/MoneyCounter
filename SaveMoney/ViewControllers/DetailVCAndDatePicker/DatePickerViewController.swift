@@ -16,6 +16,7 @@ final class DatePickerViewController: UIViewController {
     
     fileprivate lazy var datePicker: UIDatePicker = { [unowned self] in
         $0.addTarget(self, action: #selector(DatePickerViewController.actionForDatePicker), for: .valueChanged)
+        $0.preferredDatePickerStyle = .wheels
         return $0
         }(UIDatePicker())
     

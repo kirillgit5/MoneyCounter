@@ -44,7 +44,7 @@ class CreateMoneyActionViewController: UIViewController {
     
     // MARK : Public Property
 
-    var updateTableViewDelegate: UpdateTableViewDateDelegate?
+    weak var updateTableViewDelegate: UpdateTableViewDateDelegate?
     var viewModel: CreateMoneyActionViewModelProtocol!
 
     
@@ -140,6 +140,8 @@ class CreateMoneyActionViewController: UIViewController {
             showAlert(title: "Внимание !", message: "Введите название действия")
         }
     }
+    
+
 }
 
 extension CreateMoneyActionViewController: AddMoneyActionNavigationBarDelegate {
@@ -180,12 +182,13 @@ extension CreateMoneyActionViewController: CalculateViewDelegate {
         textView.isHidden  = false
         textView.becomeFirstResponder()
         textView.text = viewModel.getName()
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let self = self else { return }
+        UIView.animate(withDuration: 0.3) { [unowned self] in
             self.textView.frame.origin.y = self.calculateScreen.frame.maxY + 8
         }
         
     }
+    
+   
 }
 
 extension CreateMoneyActionViewController: UITextViewDelegate {
@@ -202,8 +205,7 @@ extension CreateMoneyActionViewController: DateChooseViewDelegate {
     func chooseDate() {
         let alert = UIAlertController(style: .actionSheet, source: view)
         let locale = Locale(identifier: "ru_RU")
-        alert.addDatePicker(date: viewModel.getDate(), locale: locale) { [weak self] date in
-            guard let self = self else { return }
+        alert.addDatePicker(date: viewModel.getDate(), locale: locale) { [unowned self] date in
             self.viewModel.setDate(date: date)
             self.dateChooseView.dateLabel.text = self.viewModel.getDateForShow()
         }

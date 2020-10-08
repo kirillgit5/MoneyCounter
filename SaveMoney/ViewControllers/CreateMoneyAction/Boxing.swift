@@ -13,7 +13,7 @@ class Box<T> {
     
     typealias Listener = ((T) -> Void)
     
-    private var listener: Listener?
+     private var listener: Listener?
     
      var value: T {
         didSet {
@@ -29,6 +29,4 @@ class Box<T> {
         self.listener = listener
         listener(value)
     }
-    
-    
 }

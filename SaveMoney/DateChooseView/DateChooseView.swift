@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol DateChooseViewDelegate {
+protocol DateChooseViewDelegate: class {
     func chooseDate()
 }
 
@@ -19,7 +19,7 @@ protocol DateChooseViewDelegate {
     @IBOutlet var dateLabel: UILabel!
     
     // MARK : Public Property
-    var delegate: DateChooseViewDelegate?
+    weak var delegate: DateChooseViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

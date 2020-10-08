@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-protocol UpdateTableViewDateDelegate {
+protocol UpdateTableViewDateDelegate: class {
     func changeIndexPath(date: Date)
 }
 
@@ -44,7 +44,7 @@ class EditMoneyActionViewController: UIViewController {
     @IBOutlet var dateChooseView: DateChooseView!
     
     
-    var viewModel: EditMoneyActionViewModelProtocol!
+    var viewModel: EditMoneyActionViewModelProtocol! 
     var updateTableViewDelegate: UpdateTableViewDateDelegate?
     
     // MARK : Override Methods
@@ -150,6 +150,10 @@ class EditMoneyActionViewController: UIViewController {
             showAlert(title: "Внимание !", message: "Введите название действия")
         }
     }
+    
+    deinit {
+        print()
+    }
 }
 
 extension EditMoneyActionViewController: AddMoneyActionNavigationBarDelegate {
@@ -159,8 +163,12 @@ extension EditMoneyActionViewController: AddMoneyActionNavigationBarDelegate {
     
     func createMoneyAction() {
         updateTableViewDelegate?.changeIndexPath(date: viewModel.getDate())
-        viewModel.saveMoneyAction()
+        let error = viewModel.saveMoneyAction()
+        if !error.isError {
         navigationController?.popToRootViewController(animated: true)
+        } else {
+            showAlert(title: "Внимание!", message: error.message)
+        }
     }
         
 }

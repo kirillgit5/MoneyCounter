@@ -48,6 +48,7 @@ class AddPurshasesViewController: UIViewController {
         alert.addAction(okAction)
         present(alert,animated: true)
     }
+    
 }
 
 //MARK : CollectionViewDataSourse
